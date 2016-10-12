@@ -6,13 +6,18 @@ HOST: https://medic-trust.com/api/v8
 Improvement dari API Versi 7 terutama pada proses sinkronisasi 
 
 
-# Group Synchronization User
+# Group Synchronization Patient
 
-## Status [/status]
+## Status [/patient/synchronize/status]
 
 ### Synchronize Status [POST]
 
 + Request (application/json)
+
+   + Headers
+
+        X-MedicTrust-Token: 129j0asn0cn1
+        X-MedicTrust-Lang: en
 
    + Attributes (SyncStatusRequestUser)
    
@@ -108,11 +113,12 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
                        }
                    ],
                    "version_status": "deprecated",
-                   "version_notice": "Please update MedicTrust."
+                   "version_notice": "Please update MedicTrust.",
+                   "unread_notif": 1
                 }
                 
 
-## Records [/synchronize/records]
+## Records [/patient/synchronize/records]
 
 ### Synchronize Records [POST]
 
@@ -174,7 +180,7 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
                ]
             }
             
-## Events [/synchronize/events]
+## Events [/patient/synchronize/events]
 
 ### Synchronize Events [POST]
 
@@ -218,7 +224,7 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
                ]
             }
 
-## Doctors [/synchronize/doctors]
+## Doctors [/patient/synchronize/doctors]
 
 ### Synchronize Doctors [POST]
 
@@ -285,7 +291,7 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
                ]
             }
             
-## Drugs List [/synchronize/drugs_list]
+## Drugs List [/patient/synchronize/drugs_list]
 
 ### Synchronize Drugs List [POST]
 
@@ -323,7 +329,7 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
                ]
             }
             
-## Chart Info [/synchronize/chart_info]
+## Chart Info [/patient/synchronize/chart_info]
 
 ### Synchronize Chart Info [POST]
 
@@ -418,7 +424,7 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
                ]
             }
             
-## Medical History Questions [/synchronize/medical_history_question_master]
+## Medical History Questions [/patient/synchronize/medical_history_question_master]
 
 ### Synchronize Medical History Question Master [POST]
 
@@ -464,7 +470,7 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
                ]
             }
             
-## Medical History [/synchronize/medical_history]
+## Medical History [/patient/synchronize/medical_history]
 
 ### Synchronize Medical History [POST]
 
@@ -502,7 +508,7 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
             }
 
 
-## Delayed Responses [/synchronize/delayed_responses]
+## Delayed Responses [/patient/synchronize/delayed_responses]
 
 ### Synchronize Delayed Responses [POST]
 
@@ -537,7 +543,7 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
                ]
             }
             
-## Statistics [/synchronize/statistics]
+## Statistics [/patient/synchronize/statistics]
 
 ### Synchronize Statistics [POST]
 
@@ -585,7 +591,7 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
                ]
             }
 
-## Medications [/synchronize/medications]
+## Medications [/patient/synchronize/medications]
 
 ### Synchronize Medications [POST]
 
@@ -633,7 +639,7 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
                ]
             }
 
-## Shared Records [/synchronize/shared_records]
+## Shared Records [/patient/synchronize/shared_records]
 
 ### Synchronize Shared Records [POST]
 
@@ -703,7 +709,7 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
                ]
             }
 
-## Health Status [/synchronize/health_status]
+## Health Status [/patient/synchronize/health_status]
 
 ### Synchronize Health Status [POST]
 
@@ -744,7 +750,7 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
                ]
             }
             
-## Medical History Requests [/synchronize/medical_history_requests]
+## Medical History Requests [/patient/synchronize/medical_history_requests]
 
 ### Medical History Requests [POST]
 
@@ -782,7 +788,7 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
                ]
             }
             
-## Vaccines [/synchronize/vaccines]
+## Vaccines [/patient/synchronize/vaccines]
 
 ### Vaccines [POST]
 
@@ -826,7 +832,7 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
                ]
             }
             
-## Allergies [/synchronize/allergies]
+## Allergies [/patient/synchronize/allergies]
 
 ### Allergies [POST]
 
@@ -864,7 +870,7 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
 
 # Group Synchronization Doctor
 
-## Status [/status/{token}]
+## Status [/doctor/synchronize/status/{token}]
 
 ### Synchronize Status [POST]
 
@@ -961,7 +967,7 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
                    "version_notice": "Please update MedicTrust."
                 }
 
-## Labels [/synchronize/labels/{token}]
+## Labels [/doctor/synchronize/labels/{token}]
 
 ### Synchronize Label [POST]
 
@@ -1008,7 +1014,7 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
                     "last_page": true
                 }
 
-## Patients [/synchronize/patients/{token}]
+## Patients [/doctor/synchronize/patients/{token}]
 
 ### Synchronize Patient [POST]
 
@@ -1083,7 +1089,7 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
                     "last_page": true
                 }
 
-## Soaps [/synchronize/soaps/{token}]
+## Soaps [/doctor/synchronize/soaps/{token}]
 
 ### Synchronize Soaps [POST]
 
@@ -1163,7 +1169,7 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
                     "last_page": true
                 }
 
-## Statistics [/synchronize/statistics/{token}]
+## Statistics [/doctor/synchronize/statistics/{token}]
 
 ### Synchronize Statistics [POST]
 
@@ -1218,7 +1224,7 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
                     "last_page": true
                 }
 
-## Promotions [/synchronize/promotions/{token}]
+## Promotions [/doctor/synchronize/promotions/{token}]
 
 ### Synchronize Promotions [POST]
 
@@ -1268,7 +1274,7 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
                     "last_page": true
                 }
 
-## Health Status [/synchronize/health_status/{token}]
+## Health Status [/doctor/synchronize/health_status/{token}]
 
 ### Synchronize Health Status [POST]
 
@@ -1311,7 +1317,7 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
                     "last_page": true
                 }
 
-## Medical History Question Master [/synchronize/medical_history_question_master/{token}]
+## Medical History Question Master [/doctor/synchronize/medical_history_question_master/{token}]
 
 ### Synchronize Medical History Question Master [POST]
 
