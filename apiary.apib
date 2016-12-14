@@ -16,8 +16,8 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
 
    + Headers
 
-        X-MedicTrust-Token: 129j0asn0cn1
-        X-MedicTrust-Lang: en
+            X-MedicTrust-Token: 129j0asn0cn1
+            X-MedicTrust-Lang: en
 
    + Attributes (SyncStatusRequestUser)
    
@@ -114,7 +114,7 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
                    ],
                    "version_status": "deprecated",
                    "version_notice": "Please update MedicTrust.",
-                   "unread_notif": 1
+                   "unread_notification": 1
                 }
                 
 
@@ -618,24 +618,19 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
                 "last_page": true,
                 "collection": [
                     {
-                       "id": 342,
-                       "medical_record_id": 1,
-                       "chart_info_id": 1,
-                       "time": null,
-                       "created_at": "2016-02-26T08:50:35.000+00:00",
-                       "updated_at": "2016-04-15T10:21:27.000+00:00",
-                       "resource_status": "updated",
-                       "classification": "blood_test",
-                       "category_name": "Hematology",
-                       "name_en": "Hemoglobin",
-                       "name_id": "Hemoglobin",
-                       "value": "13",
-                       "value_unit": "g/dL",
-                       "notes": null,
-                       "normal_value": "Men: 14-17.4 g/dL<br/>Women: 12-16 g/dL<br/>Children : 9.5-20.5 g/dL<br/>Newborn : 14.5-24.5 g/dL",
-                       "is_normal": true,
-                       "is_string": false
-                   }
+                        "id": 1,
+                        "medical_record_id": null,
+                        "drug_id": "null",
+                        "name": "Vitaplus",
+                        "duration": "2",
+                        "duration_unit": "days",
+                        "frequency": "1",
+                        "dosage": "1000",
+                        "dosage_unit": "mg",
+                        "ongoing": true
+                        "created_at": "2015-05-12T09:45:12.473+00:00",
+                        "updated_at": "2015-05-12T09:45:12.473+00:00"
+                    }
                ]
             }
 
@@ -1404,6 +1399,7 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
 + profiles (array[Profile]) - Daftar profile lengkap
 + version_status: deprecated (string) - Status apakah app harus di update atau tidak.
 + version_notice: `Please update MedicTrust.` (string, optional)
++ unread_notification: 1 (number)
 
 ## SyncStatusRequestUser (SyncStatusRequestDoctor)
 
@@ -1423,6 +1419,8 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
    Sebaiknya setelah selesai request setiap halamannya, `last_sync` ini di update juga supaya bisa handle kalo semisal ada data yang baru ditambahin selama proses sync.
 
    + Default: `2000-01-01T00:00:00+00:00`
+
++ clear_cache: true (boolean) - Cache pada request sebelumnya akan dihapus jika ada dan value dari atribut in diset true
    
 
 ## SyncResourceResponseInfo
