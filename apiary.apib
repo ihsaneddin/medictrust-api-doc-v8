@@ -1568,7 +1568,552 @@ New Payment API
                 "token":"9NEvew8YG4rOxGd_5Lhq-Q"
             }
             
+# Group Partners
+    Partners namespace meliputi clinic dan doctor APIs
+    
+# Group Partner Doctor
+   List API di group ini meliputi sync (dengan token yang di simpan di header bukan di url request), locations, practice locations, consultation appointments, consultations, messaging
+  
+# Group Partner Doctor Synchronization 
 
+## Status [/partners/doctor/synchronize/status]
+
+### Synchronize Status [POST]
+
++ Request (application/json)
+
+   + Headers
+
+            X-MedicTrust-Token: 129j0asn0cn1
+            X-MedicTrust-Lang: en
+            
+   + Attributes (SyncStatusRequestDoctor)
+   
+        + last_sync_labels (string, optional)
+        + last_sync_patients (string, optional)
+        + last_sync_soaps (string, optional)
+        + last_sync_statistics (string, optional)
+        + last_sync_promotions (string, optional)
+        + last_sync_medical_history_question_master (string, optional)
+        + last_sync_shared_records (string, optional)
+        + last_sync_medical_history_requests (string, optional)
+        + last_sync_health_status (string, optional)
+
+   + Body
+
+               {
+                   "app_version": "1.3.0",
+                   "last_sync_patients": "2015-11-30T09:45:03+07:00"
+               }
+           
++ Response 200 (application/json)
+
+   + Attributes (SyncStatusResponseDoctor)
+   
+   + Body
+   
+                {
+                   "available": {
+                       "patients": 10,
+                   },
+                   "profiles": [
+                       {
+                           "account_id": 1,
+                           "order": 1,
+                           "first_name": "Peter",
+                           "last_name": "Bloom",
+                           "sex": "Male",
+                           "weight": "70",
+                           "height": "170",
+                           "date_of_birth": "1970-01-01",
+                           "marital_status": "Single",
+                           "blood_type": "AB",
+                           "avatar": "http://www.hellomagazine.com/imagenes/profiles/daniel-craig/5775-daniel-craig3.jpg",
+                           "blurred_avatar": "http://www.hellomagazine.com/imagenes/profiles/daniel-craig/5775-daniel-craig3.jpg",
+                           "contact": {
+                               "profile_id": 1,
+                               "primary": true,
+                               "name": "Home",
+                               "address": "Cikarang Tengah blok M/2 no. 3",
+                               "city": "Jakarta",
+                               "zip_code": "13941",
+                               "phone_number": "12345678",
+                               "country": "Indonesia",
+                               "resource_status": "new",
+                               "id": 1,
+                               "created_at": "2015-05-12T09:45:12.473+00:00",
+                               "updated_at": "2015-05-12T09:45:12.473+00:00"
+                           },
+                           "emergency_contact": {
+                               "profile_id": 1,
+                               "first_name": "Maria",
+                               "last_name": "Bloom",
+                               "mobile_phone": "08154319283",
+                               "home_phone": "+6212938112",
+                               "relationship": "Sister",
+                               "resource_status": "new",
+                               "id": 1,
+                               "created_at": "2015-05-12T09:45:12.473+00:00",
+                               "updated_at": "2015-05-12T09:45:12.473+00:00"
+                           },
+                           "bookmark_list": [
+                               {
+                                 "doctor_id": 1,
+                                 "is_bookmark": true,
+                                 "is_private": false
+                               }
+                           ],
+                           "resource_status": "new",
+                           "id": 1,
+                           "created_at": "2015-05-12T09:45:12.473+00:00",
+                           "updated_at": "2015-05-12T09:45:12.473+00:00"
+                           ],
+                         "resource_status": "new",
+                         "id": 2,
+                         "created_at": "2015-05-13T10:54:12.394+00:00",
+                         "updated_at": "2015-05-13T10:54:12.394+00:00"
+                       }
+                   ],
+                   "version_status": "deprecated",
+                   "version_notice": "Please update MedicTrust."
+                }
+
+## Labels [/partners/doctor/synchronize/labels]
+
+### Synchronize Label [POST]
+
++ Request (application/json)
+    
+   + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+
+   + Attributes (SyncResourceRequest)
+   
+   + Body
+
+               {
+                   "last_sync": "2015-11-30T09:45:03+07:00",
+                   "per_page": 100,
+                   "page": 1
+               }
+           
++ Response 200 (application/json)
+
+   + Attributes (SyncResourceResponseInfo)
+        + collection (array[Label])
+   
+   + Body
+   
+                {
+                    "collection": [
+                        {
+                          "id": 1,
+                          "name": "Label 1",
+                          "profile_ids": [
+                            1,
+                            2,
+                            3,
+                            4,
+                            5,
+                            7
+                          ],
+                          "resource_status": "new",
+                          "created_at": "2016-05-13T09:19:13.000+00:00",
+                          "updated_at": "2016-05-13T09:19:13.000+00:00"
+                        }
+                    ],
+                    "per_page": 100,
+                    "current_page": 1,
+                    "total_pages": 1,
+                    "last_page": true
+                }
+
+## Patients [/partners/doctor/synchronize/patients]
+
+### Synchronize Patient [POST]
+
++ Request (application/json)
+
+   + Headers
+
+            X-MedicTrust-Token: 129j0asn0cn1
+            X-MedicTrust-Lang: en
+
+   + Attributes (SyncResourceRequest)
+   
+   + Body
+
+               {
+                   "last_sync": "2015-11-30T09:45:03+07:00",
+                   "per_page": 100,
+                   "page": 1
+               }
+           
++ Response 200 (application/json)
+
+   + Attributes (SyncResourceResponseInfo)
+        + collection (array[Patient])
+   
+   + Body
+   
+                {
+                    "collection": [
+                       {
+                          "id": 161,
+                          "first_name": "Tomas",
+                          "last_name": "Berdych",
+                          "sex": "M",
+                          "weight": "92",
+                          "height": "196",
+                          "date_of_birth": "1985-09-17",
+                          "marital_status": "MARRIED",
+                          "blood_type": "O",
+                          "email": null,
+                          "mobile_phone": "6282316190000",
+                          "updated_at": "2016-08-23T03:14:18.000+00:00",
+                          "created_at": "2015-02-20T07:18:09.000+00:00",
+                          "resource_status": "updated",
+                          "addresses": [
+                            {
+                              "id": 180,
+                              "profile_id": 161,
+                              "name": "",
+                              "address": null,
+                              "city": null,
+                              "zip_code": null,
+                              "phone_number": null,
+                              "country": null,
+                              "primary": true,
+                              "resource_status": "new",
+                              "created_at": "2015-02-20T07:18:09.000+00:00",
+                              "updated_at": "2015-02-20T07:18:09.000+00:00"
+                            }
+                          ],
+                          "emergency_contact": {
+                            "id": 161,
+                            "profile_id": 161,
+                            "first_name": null,
+                            "last_name": null,
+                            "mobile_phone": null,
+                            "home_phone": null,
+                            "relationship": null,
+                            "created_at": "2012-01-01T00:00:00.000+00:00",
+                            "updated_at": "2012-01-01T00:00:00.000+00:00"
+                          }
+                        }
+                    ],
+                    "per_page": 100,
+                    "current_page": 1,
+                    "total_pages": 1,
+                    "last_page": true
+                }
+
+## Soaps [/partners/doctor/synchronize/soaps]
+
+### Synchronize Soaps [POST]
+
++ Request (application/json)
+    
+    + Headers
+    
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+   
+   + Attributes (SyncResourceRequest)
+   
+   + Body
+
+               {
+                   "last_sync": "2015-11-30T09:45:03+07:00",
+                   "per_page": 100,
+                   "page": 1
+               }
+           
++ Response 200 (application/json)
+
+   + Attributes (SyncResourceResponseInfo)
+   
+   + Body
+   
+                {
+                    "collection": [
+                       {
+                          "id": 283,
+                          "date": "2015-11-30T00:00:00.000+00:00",
+                          "objective": "Test",
+                          "subject": "Test",
+                          "doctor_appointment_id": null,
+                          "action": "Test",
+                          "resource_status": "new",
+                          "profile_id": 640,
+                          "notes": null,
+                          "events": [
+                            {
+                              "id": 639,
+                              "profile_id": 640,
+                              "title": "consultation",
+                              "date": "2015-11-30",
+                              "event_header": null,
+                              "doctor_name": "Optimus Primes",
+                              "doctor_id": 1,
+                              "location": null,
+                              "location_id": null,
+                              "resource_status": "new",
+                              "records": [],
+                              "description": null,
+                              "result": "Test",
+                              "created_at": "2015-11-30T06:01:56.000+00:00",
+                              "updated_at": "2015-11-30T06:01:56.000+00:00"
+                            }
+                          ],
+                          "event": {
+                            "id": 639,
+                            "profile_id": 640,
+                            "title": "consultation",
+                            "date": "2015-11-30",
+                            "event_header": null,
+                            "doctor_name": "Optimus Primes",
+                            "doctor_id": 1,
+                            "location": null,
+                            "location_id": null,
+                            "resource_status": "new",
+                            "records": [],
+                            "description": null,
+                            "result": "Test",
+                            "created_at": "2015-11-30T06:01:56.000+00:00",
+                            "updated_at": "2015-11-30T06:01:56.000+00:00"
+                          },
+                          "created_at": "2015-11-30T06:01:56.000+00:00",
+                          "updated_at": "2015-11-30T06:01:56.000+00:00"
+                        }
+                    ],
+                    "per_page": 100,
+                    "current_page": 1,
+                    "total_pages": 1,
+                    "last_page": true
+                }
+
+## Statistics [/partners/doctor/synchronize/statistics]
+
+### Synchronize Statistics [POST]
+
++ Request (application/json)
+
+   + Headers
+
+            X-MedicTrust-Token: 129j0asn0cn1
+            X-MedicTrust-Lang: en
+
+   + Attributes (SyncResourceRequest)
+
+   + Body
+
+               {
+                   "last_sync": "2015-11-30T09:45:03+07:00",
+                   "per_page": 100,
+                   "page": 1
+               }
+           
++ Response 200 (application/json)
+
+   + Attributes (SyncResourceResponseInfo)
+            + collection (array[ChartData])
+   
+   + Body
+   
+                {
+                    "collection": [
+                        {
+                          "id": 19901,
+                          "parent_id": null,
+                          "profile_id": 1,
+                          "chart_info_id": 1,
+                          "medical_record_id": null,
+                          "time": "2016-01-18T15:48:12.000+00:00",
+                          "created_at": "2016-04-27T08:34:20.000+00:00",
+                          "updated_at": "2016-04-27T08:34:20.000+00:00",
+                          "resource_status": "new",
+                          "classification": "blood_test",
+                          "category_name": "Hematology",
+                          "name_en": "Hemoglobin",
+                          "name_id": "Hemoglobin",
+                          "value": "120",
+                          "value_unit": "g/dL",
+                          "notes": "Sebelum sarapan pagi",
+                          "normal_value": "Men: 14-17.4 g/dL<br/>Women: 12-16 g/dL<br/>Children : 9.5-20.5 g/dL<br/>Newborn : 14.5-24.5 g/dL",
+                          "is_normal": false,
+                          "is_string": false,
+                          "hidden": false,
+                          "child_statistics": []
+                        }
+                    ],
+                    "per_page": 100,
+                    "current_page": 1,
+                    "total_pages": 1,
+                    "last_page": true
+                }
+
+## Promotions [/partners/doctor/synchronize/promotions]
+
+### Synchronize Promotions [POST]
+
++ Request (application/json)
+
+    + Headers
+    
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+
+   + Attributes (SyncResourceRequest)
+
+   + Body
+
+               {
+                   "last_sync": "2015-11-30T09:45:03+07:00",
+                   "per_page": 100,
+                   "page": 1
+               }
+           
++ Response 200 (application/json)
+
+   + Attributes (SyncResourceResponseInfo)
+   
+   + Body
+   
+                {
+                    "collection": [
+                        {
+                          "id": 51,
+                          "push_message": "Testing promotion",
+                          "content": " Halo testing testing",
+                          "profile_ids": [
+                            "718",
+                            "1",
+                            "623"
+                          ],
+                          "attachments": [
+                            {
+                              "id": 58,
+                              "image_url": "http://localhost:3000/uploads/promotion_attachment/attachment/58/avatar.png",
+                              "thumbnail_url": "http://localhost:3000/uploads/promotion_attachment/attachment/58/thumb_avatar.png"
+                            }
+                          ],
+                          "created_at": "2015-11-30T04:10:20.000+00:00",
+                          "updated_at": "2015-11-30T04:10:20.000+00:00"
+                        }
+                    ],
+                    "per_page": 100,
+                    "current_page": 1,
+                    "total_pages": 1,
+                    "last_page": true
+                }
+
+## Health Status [/partners/doctor/synchronize/health_status]
+
+### Synchronize Health Status [POST]
+
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+
+   + Attributes (SyncResourceRequest)
+
+   + Body
+
+               {
+                   "last_sync": "2015-11-30T09:45:03+07:00",
+                   "per_page": 100,
+                   "page": 1
+               }
+           
++ Response 200 (application/json)
+
+   + Attributes (SyncResourceResponseInfo)
+   
+   + Body
+   
+                {
+                    "collection": [
+                        {
+                          "id": 1,
+                          "doctor_id": 1,
+                          "profile_id": 1,
+                          "state": "open",
+                          "resource_status": "new",
+                          "soaps": [],
+                          "records": [],
+                          "statistics": [],
+                          "created_at": "2016-08-16T07:45:21.000+00:00",
+                          "updated_at": "2016-08-16T07:45:21.000+00:00"
+                        }
+                    ],
+                    "per_page": 100,
+                    "current_page": 1,
+                    "total_pages": 1,
+                    "last_page": true
+                }
+
+## Medical History Question Master [/partners/doctor/synchronize/medical_history_question_master]
+
+### Synchronize Medical History Question Master [POST]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+
+   + Attributes (SyncResourceRequest)
+
+   + Body
+
+               {
+                   "last_sync": "2015-11-30T09:45:03+07:00",
+                   "per_page": 100,
+                   "page": 1
+               }
+           
++ Response 200 (application/json)
+
+   + Attributes (SyncResourceResponseInfo)
+   
+   + Body
+   
+                {
+                    "collection": [
+                        {
+                          "id": 1,
+                          "section": "IIlness",
+                          "section_translation": {
+                            "en": "Illness",
+                            "id": "Penyakit"
+                          },
+                          "questions": [
+                            {
+                              "id": 2,
+                              "title": "Heart",
+                              "title_translation": {
+                                "en": "Heart",
+                                "id": "Jantung"
+                              }
+                          ],
+                          "resource_status": "updated",
+                          "created_at": "2016-08-16T07:45:21.000+00:00",
+                          "updated_at": "2016-08-29T07:43:17.000+00:00"
+                        }
+                    ],
+                    "per_page": 100,
+                    "current_page": 1,
+                    "total_pages": 1,
+                    "last_page": true
+                }
 
 
 # Data Structures
