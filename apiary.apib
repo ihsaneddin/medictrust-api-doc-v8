@@ -3,7 +3,12 @@ HOST: https://medic-trust.com/api/v8
 
 # Medictrust API Docs (Versi 8)
 
-Improvement dari API Versi 7 terutama pada proses sinkronisasi 
+Improvement dari API Versi 7 terutama pada proses sinkronisasi
+New Clinic and Doctor API
+New Appoinment API
+New Consultation API
+New Payment API
+
 
 
 # Group Synchronization Patient
@@ -1362,7 +1367,209 @@ Improvement dari API Versi 7 terutama pada proses sinkronisasi
                     "total_pages": 1,
                     "last_page": true
                 }
+ 
+ 
+
+# Group Registrations
+
+## Registration doctor [/api/v8/partners/doctors/registrations]
+
+### Registration doctor [POST]
+
++ Request (application/json)
+
+   + Headers
+
+            X-MedicTrust-Token: 129j0asn0cn1
+            X-MedicTrust-Lang: en
+
+   + Attributes
+
+   + Body
+   
+            {
+                "account":
+                   {
+                        "email": "01x@medic-trust.com",
+                        "username": "xs2",
+                        "first_name": "00000000000",
+                        "speciality_id": 3,
+                        "str": "12333",
+                        "sip": "1111111111100",
+                        "last_name": "last",
+                        "password": "mypassword",
+                        "password_confirmation": "mypassword",
+                        "device_token": "78a7sgdb718cn0axczxcqwe1",
+                        "device_type": "android",
+                        "device_model": "XM314GHZ",
+                        "locale": "en",
+                        "timezone": "Asia/Jakarta",
+                        "contact_phone": "083333333"
+                    },
             
+                "address": 
+                   {
+                       "name": "blah",
+                       "address": "jalan blah blah",
+                       "city": "tegal",
+                       "country": "indonesia",
+                       "zip_code":"2000", 
+                       "phone_number": "02883883"
+                   }
+            }
++ Response 201 (application/json)
+
+       
+   + Body
+
+            {
+                "id":3681,
+                "email":"",
+                "encrypted_password":"$2a$10$nJSEWmudDL9PonU72OVECeLYQTQozGZkCB9d2i6YA2zRX9GSTYeuC",
+                "reset_password_token":null,
+                "reset_password_sent_at":null,
+                "remember_created_at":null,
+                "sign_in_count":0,
+                "current_sign_in_at":null,
+                "last_sign_in_at":null,
+                "current_sign_in_ip":null,
+                "last_sign_in_ip":null,
+                "confirmation_token":"cdfc8ba702500690dc7c9e1fa16bf1cd1269a6787b689a3333e3bae1470e28e0",
+                "confirmed_at":null,
+                "confirmation_sent_at":"2016-12-22T09:37:44.000+00:00",
+                "unconfirmed_email":"01x@medic-trust.com"",
+                "created_at":"2016-12-22T09:37:44.000+00:00",
+                "updated_at":"2016-12-22T09:37:44.000+00:00",
+                "admin":false,"pin":"",
+                "enable_pin":false,
+                "username":"xs2",
+                "reset_pin_token":null,
+                "reset_pin_sent_at":null,
+                "tutorial_status":0,
+                "mobile_enable_pin":true,
+                "user_type":"clinic",
+                "approved":false,
+                "authentication_token":"sK2whrUjNX2w-LmM7FuJ",
+                "point":0,
+                "invitation_id":null,
+                "invitation_limit":10000,
+                "facebook_id":null,
+                "facebook_token":null,
+                "menstruation_reminder":null,
+                "scaling_reminder":null,
+                "timezone":null,
+                "role":null,
+                "signed_up_location":null,
+                "signed_up_device":null,
+                "medical_summary_usage":0,
+                "expired_password_date":null,
+                "skip_password_expired":false,
+                "activated_by":null,
+                "referral_sent_at":null,
+                "contact_phone":"083333333",
+                "message":"signed up and active",
+                "token":"9NEvew8YG4rOxGd_5Lhq-Q"
+            }
+
+## Registration clinic [/api/v8/partners/clinics/registrations]
+
+### Registration clinic [POST]
+
++ Request (application/json)
+
+   + Headers
+
+            X-MedicTrust-Token: 129j0asn0cn1
+            X-MedicTrust-Lang: en
+
+   + Attributes
+
+   + Body
+            
+            {
+              "account":
+               {
+                "email": "1234x2344@medic-trust.com",
+                "username": "x22",
+                "first_name": "petex2 rb",
+                "last_name": "last",
+                "password": "mypassword",
+                "password_confirmation": "mypassword",
+                "device_token": "78a7sgdb718cn0axczxcqwe1",
+                "device_type": "android",
+                "device_model": "XM314GHZ",
+                "locale": "en",
+                "timezone": "Asia/Jakarta",
+                "contact_phone": "083333333"
+              },
+            
+             "address": 
+              {
+               "name": "blah",
+               "address": "jalan blah blah",
+               "city": "tegal",
+               "country": "indonesia",
+               "zip_code":"2000", 
+               "phone_number": "02883883"
+               }
+            }
+
+
++ Response 201 (application/json)
+       
+   + Body
+
+            {
+                "id":3683,
+                "email":"",
+                "encrypted_password":"$2a$10$nJSEWmudDL9PonU72OVECeLYQTQozGZkCB9d2i6YA2zRX9GSTYeuC",
+                "reset_password_token":null,
+                "reset_password_sent_at":null,
+                "remember_created_at":null,
+                "sign_in_count":0,
+                "current_sign_in_at":null,
+                "last_sign_in_at":null,
+                "current_sign_in_ip":null,
+                "last_sign_in_ip":null,
+                "confirmation_token":"cdfc8ba702500690dc7c9e1fa16bf1cd1269a6787b689a3333e3bae1470e28e0",
+                "confirmed_at":null,
+                "confirmation_sent_at":"2016-12-22T09:37:44.000+00:00",
+                "unconfirmed_email":"1234x2344@medic-trust.com",
+                "created_at":"2016-12-22T09:37:44.000+00:00",
+                "updated_at":"2016-12-22T09:37:44.000+00:00",
+                "admin":false,"pin":"",
+                "enable_pin":false,
+                "username":"x22",
+                "reset_pin_token":null,
+                "reset_pin_sent_at":null,
+                "tutorial_status":0,
+                "mobile_enable_pin":true,
+                "user_type":"clinic",
+                "approved":false,
+                "authentication_token":"sK2whrUjNX2w-LmM7FuJ",
+                "point":0,
+                "invitation_id":null,
+                "invitation_limit":10000,
+                "facebook_id":null,
+                "facebook_token":null,
+                "menstruation_reminder":null,
+                "scaling_reminder":null,
+                "timezone":null,
+                "role":null,
+                "signed_up_location":null,
+                "signed_up_device":null,
+                "medical_summary_usage":0,
+                "expired_password_date":null,
+                "skip_password_expired":false,
+                "activated_by":null,
+                "referral_sent_at":null,
+                "contact_phone":"083333333",
+                "message":"signed up and active",
+                "token":"9NEvew8YG4rOxGd_5Lhq-Q"
+            }
+            
+
+
 
 # Data Structures
 
