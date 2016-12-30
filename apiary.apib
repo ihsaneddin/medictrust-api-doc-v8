@@ -1570,11 +1570,12 @@ New Payment API
             
 # Group Partners
     Partners namespace meliputi clinic dan doctor APIs
-    
+
 # Group Partner Doctor
-   List API di group ini meliputi sync (dengan token yang di simpan di header bukan di url request), locations, practice locations, consultation appointments, consultations, messaging
+     List APIs dibawah merupakan API yang dipakai untuk proses sync, appointment dan consultation (online maupun offline)
   
 # Group Partner Doctor Synchronization 
+    List API di group ini meliputi sync (dengan token yang di simpan di header bukan di url request), locations, practice locations, consultation appointments, consultations, messaging
 
 ## Status [/partners/doctor/synchronize/status]
 
@@ -1598,6 +1599,13 @@ New Payment API
         + last_sync_shared_records (string, optional)
         + last_sync_medical_history_requests (string, optional)
         + last_sync_health_status (string, optional)
+        + last_sync_locations (string, optional)
+        + last_sync_services (string, optional)
+        + last_sync_practice_locations (string, optional)
+        + last_sync_online_consultation_appointments (string, optional)
+        + last_sync_offline_consultation_appointments (string, optional)
+        + last_sync_online_consultations (string, optional)
+        + last_sync_offline_consultations (string, optional)
 
    + Body
 
@@ -2694,9 +2702,6 @@ New Payment API
                   "last_page": true
                 }
 
-
-# Group Partner Doctor Locations, Practices, Schedules, Appointment And Consultation
-  List APIs dibawah merupakan API yang dipakai untuk proses appointment dan consultation (online maupun offline)
 
 # Group Partner Doctor Location
 
@@ -5840,6 +5845,3815 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
 
     + Body
     
+            {
+                "statistics": [
+                    {
+                        "profile_id": 1,
+                        "_destroy": false,
+                        "chart_info_id": 1,
+                        "time": "2016-01-18T15:48:12.000+00:00",
+                        "classification": "blood_test",
+                        "name_en": "",
+                        "name_id": "Trombosit",
+                        "value": "120",
+                        "value_unit": "",
+                        "notes": "Sebelum sarapan pagi",
+                        "child_statistics": [
+                          {
+                            "profile_id": 1,
+                            "_destroy": false,
+                            "chart_info_id": 1,
+                            "time": "2016-01-18T15:48:12.000+00:00",
+                            "classification": "blood_test",
+                            "name_en": "",
+                            "name_id": "Trombosit",
+                            "value": "120",
+                            "value_unit": "",
+                            "notes": "Sebelum saradasdaspan pagi",
+                          }
+                        ]
+                    },
+                    {
+                        "id": 123,
+                        "profile_id": 1,
+                        "_destroy": true,
+                        "health_status_id": 1,
+                        "chart_info_id": 1,
+                        "time": "2016-01-18T15:48:12.000+00:00",
+                        "classification": "blood_test",
+                        "name_en": "",
+                        "name_id": "Trombosit",
+                        "value": "120",
+                        "value_unit": "",
+                        "notes": "Sebelum sarapan pagi",
+                        "child_statistics": [
+                          {
+                            "profile_id": 1,
+                            "_destroy": true,
+                            "chart_info_id": 1,
+                            "time": "2016-01-18T15:48:12.000+00:00",
+                            "classification": "blood_test",
+                            "name_en": "",
+                            "name_id": "Trombosit",
+                            "value": "120",
+                            "value_unit": "",
+                            "notes": "Sebelum saradasdaspan pagi",
+                          }
+                        ]
+                    }
+                ]
+            }
+
+
++ Response 200 (application/json)
+
+        {
+            "statistics": [
+                "id": 1,
+                "state": "pending"
+                "statistics": [
+                    {
+                      "id": 1,
+                      "profile_id": 1,
+                      "health_status_id": 1,
+                      "chart_info_id": 1,
+                      "time": "2016-01-18T22:48:12+07:00",
+                      "classification": "blood_test",
+                      "name_en": "",
+                      "name_id": "Trombosit",
+                      "value": "120",
+                      "value_unit": "",
+                      "notes": "Sebelum sarapan pagi",
+                      "state": "pending",
+                      "resource_status": "new"
+                      "child_statistics": [
+                        {
+                            "id": 2,
+                            "profile_id": 1,
+                            "health_status_id": 1,
+                            "chart_info_id": 1,
+                            "time": "2016-01-18T22:48:12+07:00",
+                            "classification": "blood_test",
+                            "name_en": "",
+                            "name_id": "Trombosit",
+                            "value": "120",
+                            "value_unit": "",
+                            "notes": "Sebelum sarapan pagi",
+                            "state": "pending"
+                            "resource_status": "new"
+                        }
+                      ]
+                    },
+                    {
+                        "id": 123,
+                        "profile_id": 1,
+                        "_destroy": true,
+                        "health_status_id": 1,
+                        "chart_info_id": 1,
+                        "time": "2016-01-18T15:48:12.000+00:00",
+                        "classification": "blood_test",
+                        "name_en": "",
+                        "name_id": "Trombosit",
+                        "value": "120",
+                        "value_unit": "",
+                        "notes": "Sebelum sarapan pagi",
+                        "resource_status": "deleted",
+                        "child_statistics": [
+                          {
+                            "profile_id": 1,
+                            "_destroy": true,
+                            "chart_info_id": 1,
+                            "time": "2016-01-18T15:48:12.000+00:00",
+                            "classification": "blood_test",
+                            "name_en": "",
+                            "name_id": "Trombosit",
+                            "value": "120",
+                            "value_unit": "",
+                            "notes": "Sebelum saradasdaspan pagi",
+                            "resource_status": "deleted"
+                          }
+                        ]
+                    }
+                ]   
+            ]
+        }
+
++ Response 404 (application/json)
+
+        {
+            "message": "Route not found",
+            "verbose": "Route not found"
+        }
+
++ Response 422 (application/json)
+
+        {
+            "message": "Unprocessable entity",
+            "errors": {}
+        }
+        
+
+# Group Partner Clinic
+    List APIs dibawah merupakan API yang dipakai untuk proses sync, appointment dan consultation (offline)
+
+# Group Partner Clinic Synchronization 
+    List API di group ini meliputi sync (dengan token yang di simpan di header bukan di url request), locations, practice locations, consultation appointments, consultations, messaging
+
+## Status [/partners/clinic/synchronize/status]
+
+### Synchronize Status [POST]
+
++ Request (application/json)
+
+   + Headers
+
+            X-MedicTrust-Token: 129j0asn0cn1
+            X-MedicTrust-Lang: en
+            
+   + Attributes (SyncStatusRequestDoctor)
+   
+        + last_sync_labels (string, optional)
+        + last_sync_patients (string, optional)
+        + last_sync_soaps (string, optional)
+        + last_sync_statistics (string, optional)
+        + last_sync_promotions (string, optional)
+        + last_sync_medical_history_question_master (string, optional)
+        + last_sync_shared_records (string, optional)
+        + last_sync_medical_history_requests (string, optional)
+        + last_sync_health_status (string, optional)
+        + last_sync_locations (string, optional)
+        + last_sync_practice_locations (string, optional)
+        + last_sync_services (string, optional)
+        + last_sync_offline_consultation_appointments (string, optional)
+        + last_sync_offline_consultations (string, optional)
+        + last_sync_offline_consultation_appointments_by_locations (string, optional)
+        + last_sync_offline_consultations_by_locations (string, optional)
+        + last_sync_practicioners (string, optional)
+
+   + Body
+
+               {
+                   "app_version": "1.3.0",
+                   "last_sync_patients": "2015-11-30T09:45:03+07:00"
+               }
+           
++ Response 200 (application/json)
+
+   + Attributes (SyncStatusResponseDoctor)
+   
+   + Body
+   
+                {
+                   "available": {
+                       "patients": 10,
+                   },
+                   "profiles": [
+                       {
+                           "account_id": 1,
+                           "order": 1,
+                           "first_name": "Peter",
+                           "last_name": "Bloom",
+                           "sex": "Male",
+                           "weight": "70",
+                           "height": "170",
+                           "date_of_birth": "1970-01-01",
+                           "marital_status": "Single",
+                           "blood_type": "AB",
+                           "avatar": "http://www.hellomagazine.com/imagenes/profiles/daniel-craig/5775-daniel-craig3.jpg",
+                           "blurred_avatar": "http://www.hellomagazine.com/imagenes/profiles/daniel-craig/5775-daniel-craig3.jpg",
+                           "contact": {
+                               "profile_id": 1,
+                               "primary": true,
+                               "name": "Home",
+                               "address": "Cikarang Tengah blok M/2 no. 3",
+                               "city": "Jakarta",
+                               "zip_code": "13941",
+                               "phone_number": "12345678",
+                               "country": "Indonesia",
+                               "resource_status": "new",
+                               "id": 1,
+                               "created_at": "2015-05-12T09:45:12.473+00:00",
+                               "updated_at": "2015-05-12T09:45:12.473+00:00"
+                           },
+                           "emergency_contact": {
+                               "profile_id": 1,
+                               "first_name": "Maria",
+                               "last_name": "Bloom",
+                               "mobile_phone": "08154319283",
+                               "home_phone": "+6212938112",
+                               "relationship": "Sister",
+                               "resource_status": "new",
+                               "id": 1,
+                               "created_at": "2015-05-12T09:45:12.473+00:00",
+                               "updated_at": "2015-05-12T09:45:12.473+00:00"
+                           },
+                           "bookmark_list": [
+                               {
+                                 "doctor_id": 1,
+                                 "is_bookmark": true,
+                                 "is_private": false
+                               }
+                           ],
+                           "resource_status": "new",
+                           "id": 1,
+                           "created_at": "2015-05-12T09:45:12.473+00:00",
+                           "updated_at": "2015-05-12T09:45:12.473+00:00"
+                           ],
+                         "resource_status": "new",
+                         "id": 2,
+                         "created_at": "2015-05-13T10:54:12.394+00:00",
+                         "updated_at": "2015-05-13T10:54:12.394+00:00"
+                       }
+                   ],
+                   "version_status": "deprecated",
+                   "version_notice": "Please update MedicTrust."
+                }
+
+## Labels [/partners/clinic/synchronize/labels]
+
+### Synchronize Label [POST]
+
++ Request (application/json)
+    
+   + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+
+   + Attributes (SyncResourceRequest)
+   
+   + Body
+
+               {
+                   "last_sync": "2015-11-30T09:45:03+07:00",
+                   "per_page": 100,
+                   "page": 1
+               }
+           
++ Response 200 (application/json)
+
+   + Attributes (SyncResourceResponseInfo)
+        + collection (array[Label])
+   
+   + Body
+   
+                {
+                    "collection": [
+                        {
+                          "id": 1,
+                          "name": "Label 1",
+                          "profile_ids": [
+                            1,
+                            2,
+                            3,
+                            4,
+                            5,
+                            7
+                          ],
+                          "resource_status": "new",
+                          "created_at": "2016-05-13T09:19:13.000+00:00",
+                          "updated_at": "2016-05-13T09:19:13.000+00:00"
+                        }
+                    ],
+                    "per_page": 100,
+                    "current_page": 1,
+                    "total_pages": 1,
+                    "last_page": true
+                }
+
+## Patients [/partners/clinic/synchronize/patients]
+
+### Synchronize Patient [POST]
+
++ Request (application/json)
+
+   + Headers
+
+            X-MedicTrust-Token: 129j0asn0cn1
+            X-MedicTrust-Lang: en
+
+   + Attributes (SyncResourceRequest)
+   
+   + Body
+
+               {
+                   "last_sync": "2015-11-30T09:45:03+07:00",
+                   "per_page": 100,
+                   "page": 1
+               }
+           
++ Response 200 (application/json)
+
+   + Attributes (SyncResourceResponseInfo)
+        + collection (array[Patient])
+   
+   + Body
+   
+                {
+                    "collection": [
+                       {
+                          "id": 161,
+                          "first_name": "Tomas",
+                          "last_name": "Berdych",
+                          "sex": "M",
+                          "weight": "92",
+                          "height": "196",
+                          "date_of_birth": "1985-09-17",
+                          "marital_status": "MARRIED",
+                          "blood_type": "O",
+                          "email": null,
+                          "mobile_phone": "6282316190000",
+                          "updated_at": "2016-08-23T03:14:18.000+00:00",
+                          "created_at": "2015-02-20T07:18:09.000+00:00",
+                          "resource_status": "updated",
+                          "addresses": [
+                            {
+                              "id": 180,
+                              "profile_id": 161,
+                              "name": "",
+                              "address": null,
+                              "city": null,
+                              "zip_code": null,
+                              "phone_number": null,
+                              "country": null,
+                              "primary": true,
+                              "resource_status": "new",
+                              "created_at": "2015-02-20T07:18:09.000+00:00",
+                              "updated_at": "2015-02-20T07:18:09.000+00:00"
+                            }
+                          ],
+                          "emergency_contact": {
+                            "id": 161,
+                            "profile_id": 161,
+                            "first_name": null,
+                            "last_name": null,
+                            "mobile_phone": null,
+                            "home_phone": null,
+                            "relationship": null,
+                            "created_at": "2012-01-01T00:00:00.000+00:00",
+                            "updated_at": "2012-01-01T00:00:00.000+00:00"
+                          }
+                        }
+                    ],
+                    "per_page": 100,
+                    "current_page": 1,
+                    "total_pages": 1,
+                    "last_page": true
+                }
+
+## Soaps [/partners/clinic/synchronize/soaps]
+
+### Synchronize Soaps [POST]
+
++ Request (application/json)
+    
+    + Headers
+    
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+   
+   + Attributes (SyncResourceRequest)
+   
+   + Body
+
+               {
+                   "last_sync": "2015-11-30T09:45:03+07:00",
+                   "per_page": 100,
+                   "page": 1
+               }
+           
++ Response 200 (application/json)
+
+   + Attributes (SyncResourceResponseInfo)
+   
+   + Body
+   
+                {
+                    "collection": [
+                       {
+                          "id": 283,
+                          "date": "2015-11-30T00:00:00.000+00:00",
+                          "objective": "Test",
+                          "subject": "Test",
+                          "doctor_appointment_id": null,
+                          "action": "Test",
+                          "resource_status": "new",
+                          "profile_id": 640,
+                          "notes": null,
+                          "events": [
+                            {
+                              "id": 639,
+                              "profile_id": 640,
+                              "title": "consultation",
+                              "date": "2015-11-30",
+                              "event_header": null,
+                              "doctor_name": "Optimus Primes",
+                              "doctor_id": 1,
+                              "location": null,
+                              "location_id": null,
+                              "resource_status": "new",
+                              "records": [],
+                              "description": null,
+                              "result": "Test",
+                              "created_at": "2015-11-30T06:01:56.000+00:00",
+                              "updated_at": "2015-11-30T06:01:56.000+00:00"
+                            }
+                          ],
+                          "event": {
+                            "id": 639,
+                            "profile_id": 640,
+                            "title": "consultation",
+                            "date": "2015-11-30",
+                            "event_header": null,
+                            "doctor_name": "Optimus Primes",
+                            "doctor_id": 1,
+                            "location": null,
+                            "location_id": null,
+                            "resource_status": "new",
+                            "records": [],
+                            "description": null,
+                            "result": "Test",
+                            "created_at": "2015-11-30T06:01:56.000+00:00",
+                            "updated_at": "2015-11-30T06:01:56.000+00:00"
+                          },
+                          "created_at": "2015-11-30T06:01:56.000+00:00",
+                          "updated_at": "2015-11-30T06:01:56.000+00:00"
+                        }
+                    ],
+                    "per_page": 100,
+                    "current_page": 1,
+                    "total_pages": 1,
+                    "last_page": true
+                }
+
+## Statistics [/partners/clinic/synchronize/statistics]
+
+### Synchronize Statistics [POST]
+
++ Request (application/json)
+
+   + Headers
+
+            X-MedicTrust-Token: 129j0asn0cn1
+            X-MedicTrust-Lang: en
+
+   + Attributes (SyncResourceRequest)
+
+   + Body
+
+               {
+                   "last_sync": "2015-11-30T09:45:03+07:00",
+                   "per_page": 100,
+                   "page": 1
+               }
+           
++ Response 200 (application/json)
+
+   + Attributes (SyncResourceResponseInfo)
+            + collection (array[ChartData])
+   
+   + Body
+   
+                {
+                    "collection": [
+                        {
+                          "id": 19901,
+                          "parent_id": null,
+                          "profile_id": 1,
+                          "chart_info_id": 1,
+                          "medical_record_id": null,
+                          "time": "2016-01-18T15:48:12.000+00:00",
+                          "created_at": "2016-04-27T08:34:20.000+00:00",
+                          "updated_at": "2016-04-27T08:34:20.000+00:00",
+                          "resource_status": "new",
+                          "classification": "blood_test",
+                          "category_name": "Hematology",
+                          "name_en": "Hemoglobin",
+                          "name_id": "Hemoglobin",
+                          "value": "120",
+                          "value_unit": "g/dL",
+                          "notes": "Sebelum sarapan pagi",
+                          "normal_value": "Men: 14-17.4 g/dL<br/>Women: 12-16 g/dL<br/>Children : 9.5-20.5 g/dL<br/>Newborn : 14.5-24.5 g/dL",
+                          "is_normal": false,
+                          "is_string": false,
+                          "hidden": false,
+                          "child_statistics": []
+                        }
+                    ],
+                    "per_page": 100,
+                    "current_page": 1,
+                    "total_pages": 1,
+                    "last_page": true
+                }
+
+## Promotions [/partners/clinic/synchronize/promotions]
+
+### Synchronize Promotions [POST]
+
++ Request (application/json)
+
+    + Headers
+    
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+
+   + Attributes (SyncResourceRequest)
+
+   + Body
+
+               {
+                   "last_sync": "2015-11-30T09:45:03+07:00",
+                   "per_page": 100,
+                   "page": 1
+               }
+           
++ Response 200 (application/json)
+
+   + Attributes (SyncResourceResponseInfo)
+   
+   + Body
+   
+                {
+                    "collection": [
+                        {
+                          "id": 51,
+                          "push_message": "Testing promotion",
+                          "content": " Halo testing testing",
+                          "profile_ids": [
+                            "718",
+                            "1",
+                            "623"
+                          ],
+                          "attachments": [
+                            {
+                              "id": 58,
+                              "image_url": "http://localhost:3000/uploads/promotion_attachment/attachment/58/avatar.png",
+                              "thumbnail_url": "http://localhost:3000/uploads/promotion_attachment/attachment/58/thumb_avatar.png"
+                            }
+                          ],
+                          "created_at": "2015-11-30T04:10:20.000+00:00",
+                          "updated_at": "2015-11-30T04:10:20.000+00:00"
+                        }
+                    ],
+                    "per_page": 100,
+                    "current_page": 1,
+                    "total_pages": 1,
+                    "last_page": true
+                }
+
+## Health Status [/partners/clinic/synchronize/health_status]
+
+### Synchronize Health Status [POST]
+
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+
+   + Attributes (SyncResourceRequest)
+
+   + Body
+
+               {
+                   "last_sync": "2015-11-30T09:45:03+07:00",
+                   "per_page": 100,
+                   "page": 1
+               }
+           
++ Response 200 (application/json)
+
+   + Attributes (SyncResourceResponseInfo)
+   
+   + Body
+   
+                {
+                    "collection": [
+                        {
+                          "id": 1,
+                          "doctor_id": 1,
+                          "profile_id": 1,
+                          "state": "open",
+                          "resource_status": "new",
+                          "soaps": [],
+                          "records": [],
+                          "statistics": [],
+                          "created_at": "2016-08-16T07:45:21.000+00:00",
+                          "updated_at": "2016-08-16T07:45:21.000+00:00"
+                        }
+                    ],
+                    "per_page": 100,
+                    "current_page": 1,
+                    "total_pages": 1,
+                    "last_page": true
+                }
+
+## Medical History Question Master [/partners/clinic/synchronize/medical_history_question_master]
+
+### Synchronize Medical History Question Master [POST]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+
+   + Attributes (SyncResourceRequest)
+
+   + Body
+
+               {
+                   "last_sync": "2015-11-30T09:45:03+07:00",
+                   "per_page": 100,
+                   "page": 1
+               }
+           
++ Response 200 (application/json)
+
+   + Attributes (SyncResourceResponseInfo)
+   
+   + Body
+   
+                {
+                    "collection": [
+                        {
+                          "id": 1,
+                          "section": "IIlness",
+                          "section_translation": {
+                            "en": "Illness",
+                            "id": "Penyakit"
+                          },
+                          "questions": [
+                            {
+                              "id": 2,
+                              "title": "Heart",
+                              "title_translation": {
+                                "en": "Heart",
+                                "id": "Jantung"
+                              }
+                          ],
+                          "resource_status": "updated",
+                          "created_at": "2016-08-16T07:45:21.000+00:00",
+                          "updated_at": "2016-08-29T07:43:17.000+00:00"
+                        }
+                    ],
+                    "per_page": 100,
+                    "current_page": 1,
+                    "total_pages": 1,
+                    "last_page": true
+                }
+
+## Locations [/partners/clinic/synchronize/locations]
+
+### Synchronize partner clinic locations [POST]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+
+   + Attributes (SyncResourceRequest)
+
+   + Body
+
+               {
+                   "last_sync": "2015-11-30T09:45:03+07:00",
+                   "per_page": 100,
+                   "page": 1
+               }
+           
++ Response 200 (application/json)
+
+   + Attributes (SyncResourceResponseInfo)
+   
+   + Body
+   
+                {
+                  "collection": [
+                    {
+                      "id": 51,
+                      "name": "Name",
+                      "address": "Another",
+                      "city": "Bandung",
+                      "province": "Jawa Barat",
+                      "country": "Indonesia",
+                      "latitude": null,
+                      "longitude": null,
+                      "online": false,
+                      "created_at": "2016-12-21T15:29:10.000+00:00",
+                      "updated_at": "2016-12-21T15:29:10.000+00:00",
+                      "resource_status": "new",
+                      "partner_id": 1,
+                      "practice_location": {
+                        "id": 37,
+                        "location_id": 51,
+                        "partner_id": 1,
+                        "rate": 0,
+                        "created_at": "2016-12-21T15:29:10.000+00:00",
+                        "updated_at": "2016-12-21T15:29:10.000+00:00",
+                        "resource_status": "new",
+                        "schedules": [
+                          {
+                            "id": 1,
+                            "partner_id": 37,
+                            "schedulable_type": "Partners::PracticeLocation",
+                            "day": 1,
+                            "name_of_the_day": "Monday",
+                            "start": null,
+                            "end": null,
+                            "created_at": "2016-12-21T15:29:10.000+00:00",
+                            "updated_at": "2016-12-21T15:29:10.000+00:00",
+                            "resource_status": "new"
+                          },
+                          {
+                            "id": 2,
+                            "partner_id": 37,
+                            "schedulable_type": "Partners::PracticeLocation",
+                            "day": 2,
+                            "name_of_the_day": "Tuesday",
+                            "start": null,
+                            "end": null,
+                            "created_at": "2016-12-21T15:29:10.000+00:00",
+                            "updated_at": "2016-12-21T15:29:10.000+00:00",
+                            "resource_status": "new"
+                          },
+                          {
+                            "id": 3,
+                            "partner_id": 37,
+                            "schedulable_type": "Partners::PracticeLocation",
+                            "day": 3,
+                            "name_of_the_day": "Wednesday",
+                            "start": null,
+                            "end": null,
+                            "created_at": "2016-12-21T15:29:10.000+00:00",
+                            "updated_at": "2016-12-21T15:29:10.000+00:00",
+                            "resource_status": "new"
+                          },
+                          {
+                            "id": 4,
+                            "partner_id": 37,
+                            "schedulable_type": "Partners::PracticeLocation",
+                            "day": 4,
+                            "name_of_the_day": "Thursday",
+                            "start": null,
+                            "end": null,
+                            "created_at": "2016-12-21T15:29:10.000+00:00",
+                            "updated_at": "2016-12-21T15:29:10.000+00:00",
+                            "resource_status": "new"
+                          },
+                          {
+                            "id": 5,
+                            "partner_id": 37,
+                            "schedulable_type": "Partners::PracticeLocation",
+                            "day": 5,
+                            "name_of_the_day": "Friday",
+                            "start": null,
+                            "end": null,
+                            "created_at": "2016-12-21T15:29:10.000+00:00",
+                            "updated_at": "2016-12-21T15:29:10.000+00:00",
+                            "resource_status": "new"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "per_page": 50,
+                  "current_page": 1,
+                  "total_pages": 1,
+                  "last_page": true
+                }
+                
+
+## Practice Locations [/partners/clinic/synchronize/practice_locations]
+
+### Synchronize partner clinic practice locations [POST]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+
+   + Attributes (SyncResourceRequest)
+
+   + Body
+
+               {
+                   "last_sync": "2015-11-30T09:45:03+07:00",
+                   "per_page": 100,
+                   "page": 1
+               }
+           
++ Response 200 (application/json)
+
+   + Attributes (SyncResourceResponseInfo)
+   
+   + Body
+   
+                {
+                  "collection": [
+                    {
+                      "id": 37,
+                      "location_id": 51,
+                      "partner_id": 1,
+                      "rate": 0,
+                      "created_at": "2016-12-21T15:29:10.000+00:00",
+                      "updated_at": "2016-12-21T15:29:10.000+00:00",
+                      "resource_status": "new",
+                      "schedules": [
+                        {
+                          "id": 1,
+                          "partner_id": 37,
+                          "schedulable_type": "Partners::PracticeLocation",
+                          "day": 1,
+                          "name_of_the_day": "Monday",
+                          "start": null,
+                          "end": null,
+                          "created_at": "2016-12-21T15:29:10.000+00:00",
+                          "updated_at": "2016-12-21T15:29:10.000+00:00",
+                          "resource_status": "new"
+                        },
+                        {
+                          "id": 2,
+                          "partner_id": 37,
+                          "schedulable_type": "Partners::PracticeLocation",
+                          "day": 2,
+                          "name_of_the_day": "Tuesday",
+                          "start": null,
+                          "end": null,
+                          "created_at": "2016-12-21T15:29:10.000+00:00",
+                          "updated_at": "2016-12-21T15:29:10.000+00:00",
+                          "resource_status": "new"
+                        },
+                        {
+                          "id": 3,
+                          "partner_id": 37,
+                          "schedulable_type": "Partners::PracticeLocation",
+                          "day": 3,
+                          "name_of_the_day": "Wednesday",
+                          "start": null,
+                          "end": null,
+                          "created_at": "2016-12-21T15:29:10.000+00:00",
+                          "updated_at": "2016-12-21T15:29:10.000+00:00",
+                          "resource_status": "new"
+                        },
+                        {
+                          "id": 4,
+                          "partner_id": 37,
+                          "schedulable_type": "Partners::PracticeLocation",
+                          "day": 4,
+                          "name_of_the_day": "Thursday",
+                          "start": null,
+                          "end": null,
+                          "created_at": "2016-12-21T15:29:10.000+00:00",
+                          "updated_at": "2016-12-21T15:29:10.000+00:00",
+                          "resource_status": "new"
+                        },
+                        {
+                          "id": 5,
+                          "partner_id": 37,
+                          "schedulable_type": "Partners::PracticeLocation",
+                          "day": 5,
+                          "name_of_the_day": "Friday",
+                          "start": null,
+                          "end": null,
+                          "created_at": "2016-12-21T15:29:10.000+00:00",
+                          "updated_at": "2016-12-21T15:29:10.000+00:00",
+                          "resource_status": "new"
+                        }
+                      ]
+                    }
+                  ],
+                  "per_page": 50,
+                  "current_page": 1,
+                  "total_pages": 1,
+                  "last_page": true
+                }
+                
+
+## Offline Consultation Appointments [/partners/clinic/synchronize/offline_consultation_appointments]
+
+### Synchronize partner clinic offline consultation appointments [POST]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+
+   + Attributes (SyncResourceRequest)
+
+   + Body
+
+               {
+                   "last_sync": "2015-11-30T09:45:03+07:00",
+                   "per_page": 100,
+                   "page": 1
+               }
+           
++ Response 200 (application/json)
+
+   + Attributes (SyncResourceResponseInfo)
+   
+   + Body
+   
+                {
+                  "collection": [
+                    {
+                      "id": 60,
+                      "profile_id": 1,
+                      "partner_id": 1,
+                      "location_id": 51,
+                      "service_id": 4,
+                      "datetime": "2017-01-11T12:00:00.000+00:00",
+                      "date": "2017-01-11",
+                      "time": "12:00",
+                      "type": "Offline",
+                      "notes": null,
+                      "state": "ongoing",
+                      "consultation": {
+                        "id": 16,
+                        "appointment_id": 60,
+                        "partner_id": 1,
+                        "service_id": 4,
+                        "profile_id": 1,
+                        "location_id": 51,
+                        "complain": null,
+                        "allergies": null,
+                        "vaccines": null,
+                        "notes": null,
+                        "state": "started",
+                        "type": "Offline",
+                        "health_statuses": [],
+                        "resource_status": "updated",
+                        "started_at": "2016-12-29T11:08:25.000+00:00",
+                        "completed_at": null,
+                        "created_at": "2016-12-29T11:07:26.000+00:00",
+                        "updated_at": "2016-12-29T11:08:25.000+00:00"
+                      },
+                      "resource_status": "updated",
+                      "started_at": "2016-12-29T11:07:26.000+00:00",
+                      "completed_at": null,
+                      "valid": true,
+                      "updated_at": "2016-12-29T11:07:26.000+00:00",
+                      "created_at": "2016-12-29T11:05:50.000+00:00",
+                      "initial_appointment_id": null
+                    }
+                  ],
+                  "per_page": 50,
+                  "current_page": 1,
+                  "total_pages": 1,
+                  "last_page": true
+                }
+                
+
+## Offline Consultations [/partners/clinic/synchronize/offline_consultations]
+
+### Synchronize partner clinic offline consultations [POST]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+
+   + Attributes (SyncResourceRequest)
+
+   + Body
+
+               {
+                   "last_sync": "2015-11-30T09:45:03+07:00",
+                   "per_page": 100,
+                   "page": 1
+               }
+           
++ Response 200 (application/json)
+
+   + Attributes (SyncResourceResponseInfo)
+   
+   + Body
+   
+                {
+                  "collection": [
+                    {
+                      "id": 16,
+                      "appointment_id": 60,
+                      "partner_id": 1,
+                      "service_id": 4,
+                      "profile_id": 1,
+                      "location_id": 51,
+                      "complain": null,
+                      "allergies": null,
+                      "vaccines": null,
+                      "notes": null,
+                      "state": "started",
+                      "type": "Offline",
+                      "health_statuses": [],
+                      "resource_status": "updated",
+                      "started_at": "2016-12-29T11:08:25.000+00:00",
+                      "completed_at": null,
+                      "created_at": "2016-12-29T11:07:26.000+00:00",
+                      "updated_at": "2016-12-29T11:08:25.000+00:00"
+                    }
+                  ],
+                  "per_page": 50,
+                  "current_page": 1,
+                  "total_pages": 1,
+                  "last_page": true
+                }
+                
+
+## Offline Consultation Appointments by Locations [/partners/clinic/synchronize/offline_consultation_appointments_by_locations]
+
+### Synchronize partner clinic offline consultation appointments by locations [POST]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+
+   + Attributes (SyncResourceRequest)
+
+   + Body
+
+               {
+                   "last_sync": "2015-11-30T09:45:03+07:00",
+                   "per_page": 100,
+                   "page": 1
+               }
+           
++ Response 200 (application/json)
+
+   + Attributes (SyncResourceResponseInfo)
+   
+   + Body
+   
+                {
+                  "collection": [
+                    {
+                      "id": 60,
+                      "profile_id": 1,
+                      "partner_id": 1,
+                      "location_id": 51,
+                      "service_id": 4,
+                      "datetime": "2017-01-11T12:00:00.000+00:00",
+                      "date": "2017-01-11",
+                      "time": "12:00",
+                      "type": "Offline",
+                      "notes": null,
+                      "state": "ongoing",
+                      "consultation": {
+                        "id": 16,
+                        "appointment_id": 60,
+                        "partner_id": 1,
+                        "service_id": 4,
+                        "profile_id": 1,
+                        "location_id": 51,
+                        "complain": null,
+                        "allergies": null,
+                        "vaccines": null,
+                        "notes": null,
+                        "state": "started",
+                        "type": "Offline",
+                        "health_statuses": [],
+                        "resource_status": "updated",
+                        "started_at": "2016-12-29T11:08:25.000+00:00",
+                        "completed_at": null,
+                        "created_at": "2016-12-29T11:07:26.000+00:00",
+                        "updated_at": "2016-12-29T11:08:25.000+00:00"
+                      },
+                      "resource_status": "updated",
+                      "started_at": "2016-12-29T11:07:26.000+00:00",
+                      "completed_at": null,
+                      "valid": true,
+                      "updated_at": "2016-12-29T11:07:26.000+00:00",
+                      "created_at": "2016-12-29T11:05:50.000+00:00",
+                      "initial_appointment_id": null
+                    }
+                  ],
+                  "per_page": 50,
+                  "current_page": 1,
+                  "total_pages": 1,
+                  "last_page": true
+                }
+
+## Offline Consultations by Locations [/partners/clinic/synchronize/offline_consultations_by_locations]
+
+### Synchronize partner clinic offline consultations by locations [POST]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+
+   + Attributes (SyncResourceRequest)
+
+   + Body
+
+               {
+                   "last_sync": "2015-11-30T09:45:03+07:00",
+                   "per_page": 100,
+                   "page": 1
+               }
+           
++ Response 200 (application/json)
+
+   + Attributes (SyncResourceResponseInfo)
+   
+   + Body
+   
+                {
+                  "collection": [
+                    {
+                      "id": 16,
+                      "appointment_id": 60,
+                      "partner_id": 1,
+                      "service_id": 4,
+                      "profile_id": 1,
+                      "location_id": 51,
+                      "complain": null,
+                      "allergies": null,
+                      "vaccines": null,
+                      "notes": null,
+                      "state": "started",
+                      "type": "Offline",
+                      "health_statuses": [],
+                      "resource_status": "updated",
+                      "started_at": "2016-12-29T11:08:25.000+00:00",
+                      "completed_at": null,
+                      "created_at": "2016-12-29T11:07:26.000+00:00",
+                      "updated_at": "2016-12-29T11:08:25.000+00:00"
+                    }
+                  ],
+                  "per_page": 50,
+                  "current_page": 1,
+                  "total_pages": 1,
+                  "last_page": true
+                }
+                
+
+## Practicioners [/partners/clinic/synchronize/practicioners]
+
+### Synchronize partner clinic practicioners [POST]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+
+   + Attributes (SyncResourceRequest)
+
+   + Body
+
+               {
+                   "last_sync": "2015-11-30T09:45:03+07:00",
+                   "per_page": 100,
+                   "page": 1
+               }
+           
++ Response 200 (application/json)
+
+   + Attributes (SyncResourceResponseInfo)
+   
+   + Body
+   
+                {
+                  "collection": [
+                    {
+                      "id": 37,
+                      "location_id": 51,
+                      "partner_id": 1,
+                      "rate": 0,
+                      "created_at": "2016-12-21T15:29:10.000+00:00",
+                      "updated_at": "2016-12-21T15:29:10.000+00:00",
+                      "resource_status": "new",
+                      "practicioner": 
+                        {
+                          "id": 1,
+                          "first_name": "Doctor",
+                          "last_name": "Lee",
+                          "specialist": "Dentist",
+                          "avatar_url": "some_url",
+                          "avatar_blurred_url": "some_url"
+                        }
+                      "schedules": [
+                        {
+                          "id": 1,
+                          "partner_id": 37,
+                          "schedulable_type": "Partners::PracticeLocation",
+                          "day": 1,
+                          "name_of_the_day": "Monday",
+                          "start": null,
+                          "end": null,
+                          "created_at": "2016-12-21T15:29:10.000+00:00",
+                          "updated_at": "2016-12-21T15:29:10.000+00:00",
+                          "resource_status": "new"
+                        },
+                        {
+                          "id": 2,
+                          "partner_id": 37,
+                          "schedulable_type": "Partners::PracticeLocation",
+                          "day": 2,
+                          "name_of_the_day": "Tuesday",
+                          "start": null,
+                          "end": null,
+                          "created_at": "2016-12-21T15:29:10.000+00:00",
+                          "updated_at": "2016-12-21T15:29:10.000+00:00",
+                          "resource_status": "new"
+                        },
+                        {
+                          "id": 3,
+                          "partner_id": 37,
+                          "schedulable_type": "Partners::PracticeLocation",
+                          "day": 3,
+                          "name_of_the_day": "Wednesday",
+                          "start": null,
+                          "end": null,
+                          "created_at": "2016-12-21T15:29:10.000+00:00",
+                          "updated_at": "2016-12-21T15:29:10.000+00:00",
+                          "resource_status": "new"
+                        },
+                        {
+                          "id": 4,
+                          "partner_id": 37,
+                          "schedulable_type": "Partners::PracticeLocation",
+                          "day": 4,
+                          "name_of_the_day": "Thursday",
+                          "start": null,
+                          "end": null,
+                          "created_at": "2016-12-21T15:29:10.000+00:00",
+                          "updated_at": "2016-12-21T15:29:10.000+00:00",
+                          "resource_status": "new"
+                        },
+                        {
+                          "id": 5,
+                          "partner_id": 37,
+                          "schedulable_type": "Partners::PracticeLocation",
+                          "day": 5,
+                          "name_of_the_day": "Friday",
+                          "start": null,
+                          "end": null,
+                          "created_at": "2016-12-21T15:29:10.000+00:00",
+                          "updated_at": "2016-12-21T15:29:10.000+00:00",
+                          "resource_status": "new"
+                        }
+                      ]
+                    }
+                  ],
+                  "per_page": 50,
+                  "current_page": 1,
+                  "total_pages": 1,
+                  "last_page": true
+                }
+
+
+# Group Partner Clinic Location
+
+## List Partner Locations [/partners/clinic/locations]
+
+### List partner locations [GET]
+    to search all partners locations with filter
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+
+   + Body
+
+               {
+                 "address": "Address",
+                 "city": "Bandung",
+                 "province": "Jawa Barat",
+                 "name": "Name",
+                 "partner_id": 1
+               }
+           
++ Response 200 (application/json)
+   
+   + Body
+   
+                { 
+                  "collection": [
+                    {
+                      "id": 50,
+                      "name": "Name",
+                      "address": "Address",
+                      "city": "Bandung",
+                      "province": "Jawa Barat",
+                      "country": "Indonesia",
+                      "latitude": 41.40338,
+                      "longitude": 2.17403,
+                      "online": false,
+                      "attachments": [
+                        {
+                           "id": 1,
+                           "created_at": "2015-03-18T17:39:10.000+00:00",
+                           "updated_at": "2015-03-18T17:39:10.000+00:00",
+                           "resource_status": "new",
+                           "attachable_id": 1,
+                           "image_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                           "thumbnail_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                           "file_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                           "attachment_type": "image"
+                        }
+                      ]
+                      "created_at": "2016-12-20T19:15:03.000+00:00",
+                      "updated_at": "2016-12-20T19:15:03.000+00:00",
+                      "resource_status": "new",
+                      "partner_id": 1,
+                      "practice_location": {
+                        "id": 36,
+                        "location_id": 50,
+                        "partner_id": 1,
+                        "rate": 0,
+                        "created_at": "2016-12-20T19:15:03.000+00:00",
+                        "updated_at": "2016-12-20T19:15:03.000+00:00",
+                        "resource_status": "new",
+                        "schedules": []
+                      }
+                  ],
+                  "per_page": 50,
+                  "current_page": 1,
+                  "total_pages": 1,
+                  "last_page": true
+                }
+                
+
+## Create Clinic Location [/partners/clinic/locations]
+
+### Create partner clinic location [POST]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+
+   + Body
+
+               {
+                 "name": "Name",
+                 "address": "Address",
+                 "city": "Bandung",
+                 "province": "Jawa Barat",
+                 "country": "Indonesia",
+                 "latitude": 41.40338,
+                 "longitude": 2.17403,
+                 "attachments_attributes": [ { "attachment":  `<file:/image.png>`} ]
+               }
+           
++ Response 200 (application/json)
+   
+   + Body
+   
+                {
+                  "id": 50,
+                  "name": "Name",
+                  "address": "Address",
+                  "city": "Bandung",
+                  "province": "Jawa Barat",
+                  "country": "Indonesia",
+                  "latitude": 41.40338,
+                  "longitude": 2.17403,
+                  "online": false,
+                  "attachments": [
+                    {
+                       "id": 1,
+                       "created_at": "2015-03-18T17:39:10.000+00:00",
+                       "updated_at": "2015-03-18T17:39:10.000+00:00",
+                       "resource_status": "new",
+                       "attachable_id": 1,
+                       "image_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "thumbnail_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "file_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "attachment_type": "image"
+                    }
+                  ]
+                  "created_at": "2016-12-20T19:15:03.000+00:00",
+                  "updated_at": "2016-12-20T19:15:03.000+00:00",
+                  "resource_status": "new",
+                  "partner_id": 1,
+                  "practice_location": {
+                    "id": 36,
+                    "location_id": 50,
+                    "partner_id": 1,
+                    "rate": 0,
+                    "created_at": "2016-12-20T19:15:03.000+00:00",
+                    "updated_at": "2016-12-20T19:15:03.000+00:00",
+                    "resource_status": "new",
+                    "schedules": []
+                  }
+                }
+                
+
+## Update Clinic Location [/partners/clinic/locations/{id}]
+
+### Update partner clinic location [PUT]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+
+   + Body
+
+               {
+                 "address": "Address",
+                 "name": "Name",
+                 "city": "Bandung",
+                 "province": "Jawa Barat",
+                 "country": "Indonesia",
+                 "latitude": 41.40338,
+                 "longitude": 2.17403,
+                 "attachments_attributes": [ { "id": 1, "_destroy": true},{ "attachment":  `<file:/image.png>`} ]
+               }
+           
++ Response 200 (application/json)
+   
+   + Body
+   
+                {
+                  "id": 50,
+                  "name": "Name",
+                  "address": "Address",
+                  "city": "Bandung",
+                  "province": "Jawa Barat",
+                  "country": "Indonesia",
+                  "latitude": 41.40338,
+                  "longitude": 2.17403,
+                  "online": false,
+                  "attachments": [
+                    {
+                       "id": 1,
+                       "created_at": "2015-03-18T17:39:10.000+00:00",
+                       "updated_at": "2015-03-18T17:39:10.000+00:00",
+                       "resource_status": "deleted",
+                       "attachable_id": 1,
+                       "image_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "thumbnail_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "file_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "attachment_type": "image"
+                    },
+                    {
+                       "id": 2,
+                       "created_at": "2015-03-18T17:39:10.000+00:00",
+                       "updated_at": "2015-03-18T17:39:10.000+00:00",
+                       "resource_status": "new",
+                       "attachable_id": 1,
+                       "image_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "thumbnail_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "file_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "attachment_type": "image"
+                    }
+                  ]
+                  "created_at": "2016-12-20T19:15:03.000+00:00",
+                  "updated_at": "2016-12-20T19:15:03.000+00:00",
+                  "resource_status": "updated",
+                  "partner_id": 1,
+                  "practice_location": {
+                    "id": 36,
+                    "location_id": 50,
+                    "partner_id": 1,
+                    "rate": 0,
+                    "created_at": "2016-12-20T19:15:03.000+00:00",
+                    "updated_at": "2016-12-20T19:15:03.000+00:00",
+                    "resource_status": "updated",
+                    "schedules": []
+                  }
+                }
+                
+
+## Delete Clinic Location [/partners/clinic/locations/{id}]
+
+### Delete partner clinic location [DELETE]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+           
++ Response 200 (application/json)
+   
+   + Body
+   
+                {
+                  "id": 50,
+                  "address": "Address",
+                  "city": "Bandung",
+                  "province": "Jawa Barat",
+                  "country": "Indonesia",
+                  "latitude": 41.40338,
+                  "longitude": 2.17403,
+                  "online": false,
+                  "attachments": [
+                    {
+                       "id": 1,
+                       "created_at": "2015-03-18T17:39:10.000+00:00",
+                       "updated_at": "2015-03-18T17:39:10.000+00:00",
+                       "resource_status": "deleted",
+                       "attachable_id": 1,
+                       "image_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "thumbnail_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "file_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "attachment_type": "image"
+                    },
+                    {
+                       "id": 2,
+                       "created_at": "2015-03-18T17:39:10.000+00:00",
+                       "updated_at": "2015-03-18T17:39:10.000+00:00",
+                       "resource_status": "deleted",
+                       "attachable_id": 1,
+                       "image_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "thumbnail_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "file_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "attachment_type": "image"
+                    }
+                  ]
+                  "created_at": "2016-12-20T19:15:03.000+00:00",
+                  "updated_at": "2016-12-20T19:15:03.000+00:00",
+                  "resource_status": "deleted",
+                  "partner_id": 1,
+                  "practice_location": {
+                    "id": 36,
+                    "location_id": 50,
+                    "partner_id": 1,
+                    "rate": 0,
+                    "created_at": "2016-12-20T19:15:03.000+00:00",
+                    "updated_at": "2016-12-20T19:15:03.000+00:00",
+                    "resource_status": "deleted",
+                    "schedules": []
+                  }
+                }
+                
+
+## Create Clinic Location Attachment [/partners/clinic/locations/:location_id/attachments]
+
+### Create partner clinic location attachment [POST]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+
+   + Body
+
+               { "attachment":  `<file:/image.png>`}
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                   "id": 2,
+                   "created_at": "2015-03-18T17:39:10.000+00:00",
+                   "updated_at": "2015-03-18T17:39:10.000+00:00",
+                   "resource_status": "new",
+                   "attachable_id": 1,
+                   "image_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                   "thumbnail_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                   "file_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                   "attachment_type": "image"
+                }
+
+## Delete Clinic Location Attachment [/partners/clinic/locations/:location_id/attachments/{id}]
+
+### Delete partner clinic location attachment [DELETE]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                   "id": 2,
+                   "created_at": "2015-03-18T17:39:10.000+00:00",
+                   "updated_at": "2015-03-18T17:39:10.000+00:00",
+                   "resource_status": "deleted",
+                   "attachable_id": 1,
+                   "image_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                   "thumbnail_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                   "file_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                   "attachment_type": "image"
+                }
+                    
+
+## Batch Clinic Location Attachment [/partners/clinic/locations/:location_id/attachments/batch]
+
+### Batch partner clinic location attachment [POST]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+
+   + Body
+
+               { "attachments":  [ {  "attachment": `<file:/image.png>`}, { "id": 1, "_destroy": true } ]}
+           
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                   "attachments": 
+                   [
+                    {
+                        "id": 1,
+                       "created_at": "2015-03-18T17:39:10.000+00:00",
+                       "updated_at": "2015-03-18T17:39:10.000+00:00",
+                       "resource_status": "deleted",
+                       "attachable_id": 1,
+                       "image_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "thumbnail_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "file_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "attachment_type": "image"
+                    },
+                    {
+                        "id": 2,
+                       "created_at": "2015-03-18T17:39:10.000+00:00",
+                       "updated_at": "2015-03-18T17:39:10.000+00:00",
+                       "resource_status": "new",
+                       "attachable_id": 1,
+                       "image_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "thumbnail_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "file_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "attachment_type": "image"
+                    }
+                   ]
+                }
+                
+# Group Partner Clinic Practice Location 
+
+## Create Clinic Practice Location [/partners/clinic/locations/practices]
+  Create clinic practice location.
+  Perlu diperhatikan untuk parameter `day` di `schedules_attributes` mengikuti standar value dari Date::DAYNAMES di ruby. Hari dimulai dari hari minggu dengan index 0 dan sabtu dengan index 6. Dan untuk params `day_name` memakai bahasa inggris
+
+### Create partner clinic practice location [POST]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+    
+    + Body
+
+               {
+                 "location_id": 1,
+                 "rate": 1000,
+                 "schedules_attributes": [ { "day": 1, "day_name": "Monday", "start": "07:00", "end": "12:00" } ]
+               }
+           
++ Response 200 (application/json)
+   
+   + Body
+   
+                {
+                  "id": 37,
+                  "location_id": 1,
+                  "partner_id": 1,
+                  "rate": 1000,
+                  "created_at": "2016-12-21T15:29:10.000+00:00",
+                  "updated_at": "2016-12-29T13:41:45.000+00:00",
+                  "resource_status": "created",
+                  "schedules": [
+                    {
+                      "id": 1,
+                      "partner_id": 37,
+                      "schedulable_type": "Partners::PracticeLocation",
+                      "day": 1,
+                      "name_of_the_day": "Monday",
+                      "start": "07:00",
+                      "end": "12:00",
+                      "created_at": "2016-12-21T15:29:10.000+00:00",
+                      "updated_at": "2016-12-21T15:29:10.000+00:00",
+                      "resource_status": "created"
+                    }
+                  ]
+                }
+                
+
+## Update Clinic Practice Location [/partners/clinic/locations/practices/{id}]
+  Update clinic practice location.
+  Perlu diperhatikan untuk parameter `day` di `schedules_attributes` mengikuti standar value dari Date::DAYNAMES di ruby. Hari dimulai dari hari minggu dengan index 0 dan sabtu dengan index 6. Dan untuk params `day_name` memakai bahasa inggris
+
+### Update partner clinic practice location [PUT]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+    
+    + Body
+
+               {
+                 "rate": 5000,
+                 "schedules_attributes": [ { id: 1, "_destroy": true ]
+               }
+           
++ Response 200 (application/json)
+   
+   + Body
+   
+                {
+                  "id": 37,
+                  "location_id": 1,
+                  "partner_id": 1,
+                  "rate": 5000,
+                  "created_at": "2016-12-21T15:29:10.000+00:00",
+                  "updated_at": "2016-12-29T13:41:45.000+00:00",
+                  "resource_status": "updated",
+                  "schedules": [
+                    {
+                      "id": 1,
+                      "partner_id": 37,
+                      "schedulable_type": "Partners::PracticeLocation",
+                      "day": 1,
+                      "name_of_the_day": "Monday",
+                      "start": "07:00",
+                      "end": "12:00",
+                      "created_at": "2016-12-21T15:29:10.000+00:00",
+                      "updated_at": "2016-12-21T15:29:10.000+00:00",
+                      "resource_status": "deleted"
+                    }
+                  ]
+                }
+
+## Delete Clinic Practice Location [/partners/clinic/locations/practices/{id}]
+  
+### Delete partner clinic practice location [DELETE]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+           
++ Response 200 (application/json)
+   
+   + Body
+   
+                {
+                  "id": 37,
+                  "location_id": 1,
+                  "partner_id": 1,
+                  "rate": 5000,
+                  "created_at": "2016-12-21T15:29:10.000+00:00",
+                  "updated_at": "2016-12-29T13:41:45.000+00:00",
+                  "resource_status": "deleted",
+                  "schedules": []
+                }
+                
+
+# Group Partner Clinic Practice Location Schedules
+
+## Create Partner Clinic Practice Location Schedules [/partners/clinic/locations/practices/{practice_id}/schedules]
+  Create partner clinic practice location schedule.
+  Perlu diperhatikan untuk parameter `day` di `schedules_attributes` mengikuti standar value dari Date::DAYNAMES di ruby. Hari dimulai dari hari minggu dengan index 0 dan sabtu dengan index 6. Dan untuk params `day_name` memakai bahasa inggris
+
+### Create partner clinic practice location [POST]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+    
+    + Body
+
+               { 
+                "day": 1, 
+                "day_name": "Monday", 
+                "start": "07:00", 
+                "end": "12:00" 
+                }
+           
++ Response 200 (application/json)
+   
+   + Body
+   
+                {
+                  "id": 1,
+                  "partner_id": 37,
+                  "schedulable_type": "Partners::PracticeLocation",
+                  "day": 1,
+                  "name_of_the_day": "Monday",
+                  "start": "07:00",
+                  "end": "12:00",
+                  "created_at": "2016-12-21T15:29:10.000+00:00",
+                  "updated_at": "2016-12-21T15:29:10.000+00:00",
+                  "resource_status": "new"
+                }
+                
+
+## Update Partner clinic Practice Location Schedules [/partners/clinic/locations/practices/{practice_id}/schedules/{id}]
+  Update partner clinic practice location schedule.
+  Perlu diperhatikan untuk parameter `day` di `schedules_attributes` mengikuti standar value dari Date::DAYNAMES di ruby. Hari dimulai dari hari minggu dengan index 0 dan sabtu dengan index 6. Dan untuk params `day_name` memakai bahasa inggris
+
+### Update partner clinic practice location [POST]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+    
+    + Body
+
+               { 
+                "day": 1, 
+                "day_name": "Monday", 
+                "start": "07:00", 
+                "end": "12:00" 
+                }
+           
++ Response 200 (application/json)
+   
+   + Body
+   
+                {
+                  "id": 1,
+                  "partner_id": 37,
+                  "schedulable_type": "Partners::PracticeLocation",
+                  "day": 1,
+                  "name_of_the_day": "Monday",
+                  "start": "07:00",
+                  "end": "12:00",
+                  "created_at": "2016-12-21T15:29:10.000+00:00",
+                  "updated_at": "2016-12-21T15:29:10.000+00:00",
+                  "resource_status": "updated"
+                }
+                
+
+## Batch Partner Clinic Practice Location Schedules [/partners/clinic/locations/practices/{practice_id}/schedules/batch]
+  Btach partner clinic practice location schedule.
+  Perlu diperhatikan untuk parameter `day` di `schedules_attributes` mengikuti standar value dari Date::DAYNAMES di ruby. Hari dimulai dari hari minggu dengan index 0 dan sabtu dengan index 6. Dan untuk params `day_name` memakai bahasa inggris
+
+### Batch partner clinic practice location [POST]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+    
+    + Body
+
+               {
+                    "schedules": [
+                       { 
+                        "day": 1, 
+                        "day_name": "Monday", 
+                        "start": "07:00", 
+                        "end": "12:00" 
+                        },
+                        { 
+                        "id": 1, 
+                        "_destroy": true
+                        }
+                    ]
+                }
+           
++ Response 200 (application/json)
+   
+   + Body
+   
+                {
+                    "schedules": [
+                        {
+                          "id": 1,
+                          "partner_id": 37,
+                          "schedulable_type": "Partners::PracticeLocation",
+                          "day": 1,
+                          "name_of_the_day": "Monday",
+                          "start": "07:00",
+                          "end": "12:00",
+                          "created_at": "2016-12-21T15:29:10.000+00:00",
+                          "updated_at": "2016-12-21T15:29:10.000+00:00",
+                          "resource_status": "deleted"
+                        },
+                        {
+                          "id": 2,
+                          "partner_id": 37,
+                          "schedulable_type": "Partners::PracticeLocation",
+                          "day": 1,
+                          "name_of_the_day": "Monday",
+                          "start": "07:00",
+                          "end": "12:00",
+                          "created_at": "2016-12-21T15:29:10.000+00:00",
+                          "updated_at": "2016-12-21T15:29:10.000+00:00",
+                          "resource_status": "new"
+                        }
+                    ]
+                }
+
+## Delete Partner Clinic Practice Location Schedules [/partners/clinic/locations/practices/{practice_id}/schedules/{id}]
+  
+### Delete partner clinic practice location [DELETE]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+           
++ Response 200 (application/json)
+   
+   + Body
+   
+                {
+                  "id": 1,
+                  "partner_id": 37,
+                  "schedulable_type": "Partners::PracticeLocation",
+                  "day": 1,
+                  "name_of_the_day": "Monday",
+                  "start": "07:00",
+                  "end": "12:00",
+                  "created_at": "2016-12-21T15:29:10.000+00:00",
+                  "updated_at": "2016-12-21T15:29:10.000+00:00",
+                  "resource_status": "deleted"
+                }
+                
+
+# Group Clinic Practicioners
+
+## List Clinic Practicioners [/partners/clinic/practicioners]
+
+### List clinic practicioners [GET]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                { 
+                  "collection": [
+                    {
+                      "id": 50,
+                      "name": "Name",
+                      "address": "Address",
+                      "city": "Bandung",
+                      "province": "Jawa Barat",
+                      "country": "Indonesia",
+                      "latitude": 41.40338,
+                      "longitude": 2.17403,
+                      "online": false,
+                      "attachments": [
+                        {
+                           "id": 1,
+                           "created_at": "2015-03-18T17:39:10.000+00:00",
+                           "updated_at": "2015-03-18T17:39:10.000+00:00",
+                           "resource_status": "new",
+                           "attachable_id": 1,
+                           "image_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                           "thumbnail_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                           "file_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                           "attachment_type": "image"
+                        }
+                      ]
+                      "created_at": "2016-12-20T19:15:03.000+00:00",
+                      "updated_at": "2016-12-20T19:15:03.000+00:00",
+                      "resource_status": "new",
+                      "partner_id": 1,
+                      "practice_location": {
+                        "id": 36,
+                        "location_id": 50,
+                        "partner_id": 1,
+                        "rate": 0,
+                        "created_at": "2016-12-20T19:15:03.000+00:00",
+                        "updated_at": "2016-12-20T19:15:03.000+00:00",
+                        "resource_status": "new",
+                        "schedules": []
+                      }
+                  ],
+                  "per_page": 100,
+                  "current_page": 1,
+                  "total_pages": 1,
+                  "last_page": true
+                }
+                
+
+## Show Clinic Practicioner [/partners/clinic/practicioners/{id}]
+
+### Show clinic practicioner [GET]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+
+                {
+                  "id": 50,
+                  "name": "Name",
+                  "address": "Address",
+                  "city": "Bandung",
+                  "province": "Jawa Barat",
+                  "country": "Indonesia",
+                  "latitude": 41.40338,
+                  "longitude": 2.17403,
+                  "online": false,
+                  "attachments": [
+                    {
+                       "id": 1,
+                       "created_at": "2015-03-18T17:39:10.000+00:00",
+                       "updated_at": "2015-03-18T17:39:10.000+00:00",
+                       "resource_status": "new",
+                       "attachable_id": 1,
+                       "image_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "thumbnail_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "file_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "attachment_type": "image"
+                    }
+                  ]
+                  "created_at": "2016-12-20T19:15:03.000+00:00",
+                  "updated_at": "2016-12-20T19:15:03.000+00:00",
+                  "resource_status": "new",
+                  "partner_id": 1,
+                  "practice_location": {
+                    "id": 36,
+                    "location_id": 50,
+                    "partner_id": 1,
+                    "rate": 0,
+                    "created_at": "2016-12-20T19:15:03.000+00:00",
+                    "updated_at": "2016-12-20T19:15:03.000+00:00",
+                    "resource_status": "new",
+                    "schedules": []
+                  }
+                  
+
+# Group Partner Clinic Requested Service
+
+# Group Partner Clinic Requested Service Offline Consultation Appointments
+
+## Show Clinic Offline Consultation Appointment [/partners/clinic/requested_services/consultation_appointments/offline/{id}]
+
+### Show Clinic Offline Consultation Appointment [GET]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "id": 59,
+                  "profile_id": 1,
+                  "partner_id": 1,
+                  "location_id": 51,
+                  "service_id": 4,
+                  "datetime": "2017-01-11T12:00:00.000+00:00",
+                  "date": "2017-01-11",
+                  "time": "12:00",
+                  "type": "Offline",
+                  "notes": null,
+                  "state": "scheduled",
+                  "consultation": null,
+                  "resource_status": "new",
+                  "started_at": null,
+                  "completed_at": null,
+                  "valid": true,
+                  "updated_at": "2016-12-29T11:05:46.000+00:00",
+                  "created_at": "2016-12-29T11:05:21.000+00:00",
+                  "initial_appointment_id": null
+                }
+                        
+
+## Reschedule Clinic Offline Consultation Appointment [/partners/clinic/requested_services/consultation_appointments/offline/{id}/reschedule]
+        Reschedule appointment. Rescheduling proses berarti membuat schedule baru (berarti IDnya berbeda). Params `initial_appointment` merupakan ID appointment yang di reschedule
+        
+### Reschedule Clinic Offline Consultation Appointment [PUT]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+                
+    + Body
+
+               {
+                    "datetime": "2017-1-11 12:00",
+                    "notes": "Notes"
+                }  
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "id": 59,
+                  "profile_id": 1,
+                  "partner_id": 1,
+                  "location_id": 51,
+                  "service_id": 4,
+                  "datetime": "2017-01-11T12:00:00.000+00:00",
+                  "date": "2017-01-11",
+                  "time": "12:00",
+                  "type": "Offline",
+                  "notes": "Notes",
+                  "state": "scheduled",
+                  "consultation": null,
+                  "resource_status": "new",
+                  "started_at": null,
+                  "completed_at": null,
+                  "valid": true,
+                  "updated_at": "2016-12-29T11:05:46.000+00:00",
+                  "created_at": "2016-12-29T11:05:21.000+00:00",
+                  "initial_appointment_id": 58
+                }
+
+## Take Place Clinic Offline Consultation Appointment [/partners/clinic/requested_services/consultation_appointments/offline/{id}/take_place]
+        Set consultation appointment online object state ke `on_going`. offline consultation object digenerate ketika event `initiate` di patient API endpoint.
+        
+### Take Place Clinic Offline Consultation Appointment [PUT]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "id": 60,
+                  "profile_id": 1,
+                  "partner_id": 1,
+                  "location_id": 51,
+                  "service_id": 4,
+                  "datetime": "2017-01-11T12:00:00.000+00:00",
+                  "date": "2017-01-11",
+                  "time": "12:00",
+                  "type": "Offline",
+                  "notes": null,
+                  "state": "ongoing",
+                  "consultation": {
+                    "id": 16,
+                    "appointment_id": 60,
+                    "partner_id": 1,
+                    "service_id": 4,
+                    "profile_id": 1,
+                    "location_id": 51,
+                    "complain": null,
+                    "allergies": null,
+                    "vaccines": null,
+                    "notes": null,
+                    "state": "started",
+                    "type": "Offline",
+                    "health_statuses": [],
+                    "resource_status": "updated",
+                    "started_at": "2016-12-29T11:08:25.000+00:00",
+                    "completed_at": null,
+                    "created_at": "2016-12-29T11:07:26.000+00:00",
+                    "updated_at": "2016-12-29T11:08:25.000+00:00"
+                  },
+                  "resource_status": "updated",
+                  "started_at": "2016-12-29T11:07:26.000+00:00",
+                  "completed_at": null,
+                  "valid": true,
+                  "updated_at": "2016-12-29T11:07:26.000+00:00",
+                  "created_at": "2016-12-29T11:05:50.000+00:00",
+                  "initial_appointment_id": null
+                }
+
+# Group Partner Clinic Service
+
+# Group Partner Clinic Service Offline Consultation
+
+## Show Clinic Offline Consultation [/partners/clinic/requested_services/consultation/offline/{id}]
+
+### Show Clinic Offline Consultation [GET]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "id": 15,
+                  "appointment_id": 53,
+                  "partner_id": 1,
+                  "service_id": 5,
+                  "profile_id": 1,
+                  "location_id": 51,
+                  "complain": "Complain",
+                  "vaccines": "vaccines",
+                  "allergies": "allergies",
+                  "notes": "notes",
+                  "state": "initiated",
+                  "type": "Offline",
+                  "health_statuses": [],
+                  "resource_status": "updated",
+                  "started_at": null,
+                  "completed_at": null,
+                  "created_at": "2016-12-29T10:44:24.000+00:00",
+                  "updated_at": "2016-12-29T10:52:51.000+00:00",
+                }
+                
+
+## Update Clinic Offline Consultation [/partners/clinic/requested_services/consultation/offline/{id}]
+
+### Update Clinic Offline Consultation [PUT]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+                
+    + Body
+
+               {
+                    "complain": "Complain",
+                    "vaccines": "vaccines",
+                    "allergies": "allergies",
+                    "notes": "notes"
+                }  
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "id": 15,
+                  "appointment_id": 53,
+                  "partner_id": 1,
+                  "service_id": 5,
+                  "profile_id": 1,
+                  "location_id": 51,
+                  "complain": "Complain",
+                  "vaccines": "vaccines",
+                  "allergies": "allergies",
+                  "notes": "notes",
+                  "state": "initiated",
+                  "type": "Offline",
+                  "health_statuses": [],
+                  "resource_status": "updated",
+                  "started_at": null,
+                  "completed_at": null,
+                  "created_at": "2016-12-29T10:44:24.000+00:00",
+                  "updated_at": "2016-12-29T10:52:51.000+00:00",
+                }
+                
+
+## Start Clinic Offline Consultation [/partners/clinic/requested_services/consultation/offline/{id}/start]
+
+### Start Clinic Offline Consultation [PUT]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "id": 15,
+                  "appointment_id": 53,
+                  "partner_id": 1,
+                  "service_id": 5,
+                  "profile_id": 1,
+                  "location_id": 51,
+                  "complain": "Complain",
+                  "vaccines": "vaccines",
+                  "allergies": "allergies",
+                  "notes": "notes",
+                  "state": "started",
+                  "type": "Offline",
+                  "health_statuses": [],
+                  "resource_status": "updated",
+                  "started_at": "2017-1-1T10:44:24.000+00:00",
+                  "completed_at": null,
+                  "created_at": "2016-12-29T10:44:24.000+00:00",
+                  "updated_at": "2016-12-29T10:52:51.000+00:00",
+                }
+                
+
+## Complete Clinic Offline Consultation [/partners/clinic/requested_services/consultation/offline/{id}/complete]
+
+### Complete Clinic Offline Consultation [PUT]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "id": 15,
+                  "appointment_id": 53,
+                  "partner_id": 1,
+                  "service_id": 5,
+                  "profile_id": 1,
+                  "location_id": 51,
+                  "complain": "Complain",
+                  "vaccines": "vaccines",
+                  "allergies": "allergies",
+                  "notes": "notes",
+                  "state": "completed",
+                  "type": "Offline",
+                  "health_statuses": [],
+                  "resource_status": "updated",
+                  "started_at": "2017-1-1T10:44:24.000+00:00",
+                  "completed_at": "2017-1-1T10:59:24.000+00:00",
+                  "created_at": "2016-12-29T10:44:24.000+00:00",
+                  "updated_at": "2016-12-29T10:52:51.000+00:00",
+                }
+
+
+# Group Partner Clinic Service Consultation Health Status
+        
+## Show [/partners/clinic/requested_services/consultation/health_status/{id}]
+
+### show [GET]
+Digunakan untuk mendapatkan data terupdate dari health status yang dibuat.
+
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+
++ Response 200 (application/json)
+
+    + Attributes (object)
+        + doctor_id (number) - ID dari partner yang membuat health status
+        + profile_id (number) - ID dari pasien yang memiliki health status
+        + state (enum[string]) - untuk mengecek kondisi health status
+            + Members
+                + `closed` - health status sudah disubmit ke pasien dan tidak lagi bisa diedit oleh partner
+                + `open` - health status masih bisa diedit oleh partner
+        + soaps (array[object]) - berisi daftar object soap yang ada di dalam health status (pada prakteknya hanya akan ada maksimal 1 object soap)
+        + records (array[object]) - berisi daftar object records (health document) yang ada di dalam health status
+        + statistics (array[object]) - berisi daftar object statistics (health data) yang ada di dalam health status
+
+    + Body
+        
+            {
+              "id": 1,
+              "doctor_id": 1,
+              "profile_id": 1,
+              "consultation_id": 1,
+              "state": "closed",
+              "resource_status": "updated",
+              "soaps": [],
+              "records": [],
+              "statistics": [],
+              "created_at": "2016-08-16T07:45:21.000+00:00",
+              "updated_at": "2016-08-16T07:45:21.000+00:00"
+            }
+        
+# Submit [/partners/clinic/requested_services/consultation/health_status/{id}/submit]
+
+### submit [PUT]
+Digunakan untuk mengakhiri perubahan data di health status dan mengirim health status tersebut ke pasien.
+
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+
++ Response 200 (application/json)
+
+    + Body
+        
+            {
+              "id": 1,
+              "doctor_id": 1,
+              "profile_id": 1,
+              "consultation_id": 1,
+              "state": "closed",
+              "resource_status": "updated",
+              "soaps": [],
+              "records": [],
+              "statistics": [],
+              "created_at": "2016-08-16T07:45:21.000+00:00",
+              "updated_at": "2016-08-16T07:45:21.000+00:00"
+            }
+
+# Create [/partners/clinic/requested_services/consultation/health_status]
+
+### create [POST]
+Digunakan untuk mengenerate health status baru.
+
++ Request (application/json)
+    
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+    
+   + Body
+
+               {
+                    "doctor_id": 1,
+                    "profile_id": 1,
+               }
+
++ Response 200 (application/json)
+
+    + Body
+    
+                {
+                  "id": 1,
+                  "doctor_id": 1,
+                  "profile_id": 1,
+                  "state": "open",
+                  "resource_status": "new",
+                  "soap": [],
+                  "records": [],
+                  "statistics": [],
+                  "created_at": "2016-08-16T07:45:21.000+00:00",
+                  "updated_at": "2016-08-16T07:45:21.000+00:00"
+                }
+        
+# Create Soap [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/soaps]
+
+### create soap [POST]
+Digunakan untuk membuat SOAP di health status
+
++ Request (application/json)
+   
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+            
+   + Attributes (SOAP)
+
+   + Body
+
+            {
+                "date": "2016-02-09",
+                "objective": "dsa",
+                "subject": "dsa",
+                "doctor_appointment_id": 1,
+                "action": "dsa",
+                "profile_id": 1,
+                "event": {
+                    "title": "consultation",
+                    "description": "Sakit demam berdarah",
+                    "doctor_name": null,
+                    "location": "RS Gading Pluit",
+                    "location_id": null,
+                    "records": [
+                        {
+                          "mobile_id": 1,
+                          "type": "medication",
+                          "subtype": "medication",
+                          "date": "2016-02-09",
+                          "location_id": null,
+                          "result": "Example result",
+                          "notes": "Example notes",
+                          "direct_scan": false,
+                          "medication": [
+                              {
+                                "name": "Vitacemen",
+                                "duration": 12,
+                                "duration_unit": "days",
+                                "dosage": 1000,
+                                "dosage_unit": "mg",
+                                "frequency": 1,
+                                "frequency_times": 1,
+                                "ongoing": true,
+                                "drug_id": 1
+                              }
+                          ]
+                        }
+                    ]
+                }
+    
+            }
+        
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+              "id": 761,
+              "health_status_id": 1,
+              "date": "2016-02-09T00:00:00.000+00:00",
+              "objective": "dsa",
+              "subject": "dsa",
+              "doctor_appointment_id": 1,
+              "action": "dsa",
+              "profile_id": 1,
+              "doctor_id": 1,
+              "notes": null,
+              "events": [
+                {
+                  "id": 1540,
+                  "profile_id": 1,
+                  "title": "hospitalized",
+                  "date": "2016-02-09",
+                  "event_header": null,
+                  "doctor_name": null,
+                  "doctor_id": 1,
+                  "location": "RS Gading Pluit",
+                  "location_id": null,
+                  "resource_status": "new",
+                  "records": [
+                    {
+                      "id": 1628,
+                      "profile_id": 1,
+                      "mobile_id": null,
+                      "resource_status": "new",
+                      "subtype": "Medication",
+                      "date": "2016-02-09",
+                      "location": "RS Gading Pluit",
+                      "doctor_name": null,
+                      "doctor_id": 1
+                      "result": "Example result",
+                      "notes": "Example notes",
+                      "event_type": "hospitalized",
+                      "medication": {
+                        "id": 1475,
+                        "profile_id": 1,
+                        "created_at": "2016-05-17T09:22:47.000+00:00",
+                        "updated_at": "2016-05-17T09:22:47.000+00:00",
+                        "resource_status": "new",
+                        "medical_record_id": 1628,
+                        "name": "Vitacemen",
+                        "duration": 12,
+                        "duration_unit": "days",
+                        "dosage": 1000,
+                        "dosage_unit": "mg",
+                        "ongoing": true,
+                        "frequency": "1",
+                        "drug_id": null
+                      },
+                      "created_at": "2016-05-17T09:22:47.000+00:00",
+                      "updated_at": "2016-05-17T09:22:47.000+00:00",
+                      "type": "medication",
+                      "event_id": 1540,
+                      "extraction_status": "pending",
+                    }
+                  ],
+                  "created_at": "2016-05-17T09:22:46.000+00:00",
+                  "updated_at": "2016-05-17T09:22:46.000+00:00",
+                  "description": "Sakit demam berdarah"
+                }
+              ],
+              "created_at": "2016-05-17T09:22:46.000+00:00",
+              "updated_at": "2016-05-17T09:22:46.000+00:00"
+            }
+
+# Update Soap [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/soaps/{id}]
+
+### update soap [PUT]
+Digunakan untuk mengupdate SOAP di health status.
+
++ Request (application/json)
+
+   + Headers
+
+            X-MedicTrust-Token: 129j0asn0cn1
+            X-MedicTrust-Lang: en
+            
+   + Attributes (SOAP)
+
+   + Body
+
+            {
+                "date": "2016-02-09",
+                "objective": "dsa",
+                "subject": "dsa",
+                "doctor_appointment_id": 1,
+                "action": "dsa",
+                "profile_id": 1,
+                "event": {
+                    "id": 1540,
+                    "_destroy": false,
+                    "title": "hospitalized",
+                    "description": "Sakit demam berdarah",
+                    "doctor_name": null,
+                    "location": "RS Gading Pluit",
+                    "location_id": null,
+                    "records": [
+                        {
+                          "id":1628,
+                          "_destroy": true,
+                          "mobile_id": 1,
+                          "type": "medication",
+                          "subtype": "medication",
+                          "date": "2016-02-09",
+                          "location_id": null,
+                          "result": "Example result",
+                          "notes": "Example notes",
+                          "direct_scan": false,
+                          "medication": [
+                              {
+                                "id": 1475,
+                                "_destroy": true,
+                                "name": "Vitacemen",
+                                "duration": 12,
+                                "duration_unit": "days",
+                                "dosage": 1000,
+                                "dosage_unit": "mg",
+                                "frequency": 1,
+                                "frequency_times": 1,
+                                "ongoing": true,
+                                "drug_id": 1
+                              }
+                          ]
+                        },
+                        {
+                          "_destroy": false,
+                          "mobile_id": 1,
+                          "type": "medication",
+                          "subtype": "medication",
+                          "date": "2016-02-09",
+                          "location_id": null,
+                          "result": "Example result",
+                          "notes": "Example notes",
+                          "direct_scan": false,
+                          "medication": [
+                              {
+                                "_destroy": false,
+                                "name": "Bodrex",
+                                "duration": 12,
+                                "duration_unit": "days",
+                                "dosage": 1000,
+                                "dosage_unit": "mg",
+                                "frequency": 1,
+                                "frequency_times": 1,
+                                "ongoing": true,
+                                "drug_id": 1
+                              }
+                          ]
+                        }
+                    ]
+                }
+    
+            }
+        
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+              "id": 761,
+              "date": "2016-02-09T00:00:00.000+00:00",
+              "objective": "dsa",
+              "health_status_id": 1,
+              "subject": "dsa",
+              "doctor_appointment_id": 1,
+              "action": "dsa",
+              "profile_id": 1,
+              "doctor_id": 1,
+              "notes": null,
+              "events": [
+                {
+                  "id": 1540,
+                  "profile_id": 1,
+                  "title": "hospitalized",
+                  "date": "2016-02-09",
+                  "event_header": null,
+                  "doctor_name": null,
+                  "doctor_id": 1,
+                  "location": "RS Gading Pluit",
+                  "location_id": null,
+                  "resource_status": "updated",
+                  "records": [
+                    {
+                      "id": 1628,
+                      "profile_id": 1,
+                      "mobile_id": null,
+                      "resource_status": "deleted",
+                      "subtype": "Medication",
+                      "date": "2016-02-09",
+                      "location": "RS Gading Pluit",
+                      "doctor_name": null,
+                      "doctor_id": 1
+                      "result": "Example result",
+                      "notes": "Example notes",
+                      "event_type": "hospitalized",
+                      "medication": {
+                        "id": 1475,
+                        "profile_id": 1,
+                        "created_at": "2016-05-17T09:22:47.000+00:00",
+                        "updated_at": "2016-05-17T09:22:47.000+00:00",
+                        "resource_status": "new",
+                        "medical_record_id": 1628,
+                        "name": "Vitacemen",
+                        "duration": 12,
+                        "duration_unit": "days",
+                        "dosage": 1000,
+                        "dosage_unit": "mg",
+                        "ongoing": true,
+                        "frequency": "1",
+                        "drug_id": null
+                      },
+                      "created_at": "2016-05-17T09:22:47.000+00:00",
+                      "updated_at": "2016-05-17T09:22:47.000+00:00",
+                      "type": "medication",
+                      "event_id": 1540,
+                      "extraction_status": "pending",
+                    },
+                    {
+                      "id": 1629,
+                      "profile_id": 1,
+                      "mobile_id": null,
+                      "resource_status": "new",
+                      "subtype": "Medication",
+                      "date": "2016-02-09",
+                      "location": "RS Gading Pluit",
+                      "doctor_name": null,
+                      "doctor_id": 1
+                      "result": "Example result",
+                      "notes": "Example notes",
+                      "event_type": "hospitalized",
+                      "medication": {
+                        "id": 1475,
+                        "profile_id": 1,
+                        "created_at": "2016-05-17T09:22:47.000+00:00",
+                        "updated_at": "2016-05-17T09:22:47.000+00:00",
+                        "resource_status": "new",
+                        "medical_record_id": 1628,
+                        "name": "Bodrex",
+                        "duration": 12,
+                        "duration_unit": "days",
+                        "dosage": 1000,
+                        "dosage_unit": "mg",
+                        "ongoing": true,
+                        "frequency": "1",
+                        "drug_id": null
+                      },
+                      "created_at": "2016-05-17T09:22:47.000+00:00",
+                      "updated_at": "2016-05-17T09:22:47.000+00:00",
+                      "type": "medication",
+                      "event_id": 1540,
+                      "extraction_status": "pending",
+                    }
+                  ],
+                  "created_at": "2016-05-17T09:22:46.000+00:00",
+                  "updated_at": "2016-05-17T09:22:46.000+00:00",
+                  "description": "Sakit demam berdarah"
+                }
+              ],
+              "created_at": "2016-05-17T09:22:46.000+00:00",
+              "updated_at": "2016-05-17T09:22:46.000+00:00"
+            }
+            
+# Create Soap Medication [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/soaps/{soap_id}/medications]
+
+### create soap medication [POST]
+Digunakan untuk menambahkan satu buah object medication di SOAP health status.
+
++ Request (application/json)
+   
+   + Headers
+
+            X-MedicTrust-Token: 129j0asn0cn1
+            X-MedicTrust-Lang: en
+            
+   + Attributes (RecordMedication)
+
+   + Body
+
+            {
+                    {
+                      "mobile_id": 1,
+                      "type": "medication",
+                      "subtype": "medication",
+                      "date": "2016-02-09",
+                      "location_id": null,
+                      "result": "Example result",
+                      "notes": "Example notes",
+                      "direct_scan": false,
+                      "medication": [
+                          {
+                            "name": "Vitacemen",
+                            "duration": 12,
+                            "duration_unit": "days",
+                            "dosage": 1000,
+                            "dosage_unit": "mg",
+                            "frequency": 1,
+                            "frequency_times": 1,
+                            "ongoing": true,
+                            "drug_id": 1
+                          }
+                      ]
+                    }
+                }
+    
+            }
+        
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+              "id": 1628,
+              "profile_id": 1,
+              "mobile_id": null,
+              "resource_status": "new",
+              "subtype": "Medication",
+              "date": "2016-02-09",
+              "location": "RS Gading Pluit",
+              "doctor_name": null,
+              "doctor_id": 1
+              "result": "Example result",
+              "notes": "Example notes",
+              "event_type": "hospitalized",
+              "medication": {
+                "id": 1475,
+                "profile_id": 1,
+                "created_at": "2016-05-17T09:22:47.000+00:00",
+                "updated_at": "2016-05-17T09:22:47.000+00:00",
+                "resource_status": "new",
+                "medical_record_id": 1628,
+                "name": "Vitacemen",
+                "duration": 12,
+                "duration_unit": "days",
+                "dosage": 1000,
+                "dosage_unit": "mg",
+                "ongoing": true,
+                "frequency": "1",
+                "drug_id": null
+              },
+              "created_at": "2016-05-17T09:22:47.000+00:00",
+              "updated_at": "2016-05-17T09:22:47.000+00:00",
+              "type": "medication",
+              "event_id": 1540,
+              "extraction_status": "pending"
+            }
+
+# Edit Soap Medication [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/soaps/{soap_id}/medications/{id}]
+
+### edit soap medication [PUT]
+Digunakan untuk mengedit satu object medication di SOAP health status.
+
++ Request (application/json)
+
+    + Headers
+
+            X-MedicTrust-Token: 129j0asn0cn1
+            X-MedicTrust-Lang: en
+
+   + Body
+
+            {
+                    {
+                      "id": 1628,
+                      "mobile_id": 1,
+                      "type": "medication",
+                      "subtype": "medication",
+                      "date": "2016-02-09",
+                      "result": "Example result",
+                      "notes": "Example notes",
+                      "direct_scan": false,
+                      "medication": [
+                          {
+                            "name": "Bodrex",
+                            "duration": 12,
+                            "duration_unit": "days",
+                            "dosage": 1000,
+                            "dosage_unit": "mg",
+                            "frequency": 1,
+                            "frequency_times": 1,
+                            "ongoing": true,
+                            "drug_id": 1
+                          }
+                      ]
+                    }
+                }
+    
+            }
+        
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+              "id": 1628,
+              "profile_id": 1,
+              "mobile_id": null,
+              "resource_status": "updated",
+              "subtype": "Medication",
+              "date": "2016-02-09",
+              "location": "RS Gading Pluit",
+              "doctor_name": null,
+              "doctor_id": 1
+              "result": "Example result",
+              "notes": "Example notes",
+              "event_type": "hospitalized",
+              "medication": {
+                "id": 1475,
+                "profile_id": 1,
+                "created_at": "2016-05-17T09:22:47.000+00:00",
+                "updated_at": "2016-05-17T09:22:47.000+00:00",
+                "resource_status": "new",
+                "medical_record_id": 1628,
+                "name": "Vitacemen",
+                "duration": 12,
+                "duration_unit": "days",
+                "dosage": 1000,
+                "dosage_unit": "mg",
+                "ongoing": true,
+                "frequency": "1",
+                "drug_id": null
+              },
+              "created_at": "2016-05-17T09:22:47.000+00:00",
+              "updated_at": "2016-05-17T09:22:47.000+00:00",
+              "type": "medication",
+              "event_id": 1540,
+              "extraction_status": "pending"
+            }
+            
+# Delete Soap Medication [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/soaps/{soap_id}/medications/{id}]
+
+### delete soap medication [DELETE]
+Digunakan untuk menghapus satu buah object medication di SOAP health status
+        
++ Response 200 (application/json)
+
+    + Headers
+
+            X-MedicTrust-Token: 129j0asn0cn1
+            X-MedicTrust-Lang: en
+
+    + Body
+    
+            {
+              "id": 1628,
+              "profile_id": 1,
+              "mobile_id": null,
+              "resource_status": "deleted",
+              "subtype": "Medication",
+              "date": "2016-02-09",
+              "location": "RS Gading Pluit",
+              "doctor_name": null,
+              "doctor_id": 1
+              "result": "Example result",
+              "notes": "Example notes",
+              "event_type": "hospitalized",
+              "medication": {
+                "id": 1475,
+                "profile_id": 1,
+                "created_at": "2016-05-17T09:22:47.000+00:00",
+                "updated_at": "2016-05-17T09:22:47.000+00:00",
+                "resource_status": "new",
+                "medical_record_id": 1628,
+                "name": "Vitacemen",
+                "duration": 12,
+                "duration_unit": "days",
+                "dosage": 1000,
+                "dosage_unit": "mg",
+                "ongoing": true,
+                "frequency": "1",
+                "drug_id": null
+              },
+              "created_at": "2016-05-17T09:22:47.000+00:00",
+              "updated_at": "2016-05-17T09:22:47.000+00:00",
+              "type": "medication",
+              "event_id": 1540,
+              "extraction_status": "pending"
+            }
+
+# Create Record [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/records]
+
+### create record [POST]
+Digunakan untuk membuat satu object record (health document) baru di health status
+
++ Request (application/json)
+
+    + Headers
+
+            X-MedicTrust-Token: 129j0asn0cn1
+            X-MedicTrust-Lang: en
+
+   + Attributes (Record)
+
+   + Body
+
+            {
+              "mobile_id": 1,
+              "type": "imaging",
+              "subtype": "ct scan",
+              "date": "2016-02-09",
+              "location": "RS Gading Pluit",
+              "location_id": null,
+              "doctor_id": 1,
+              "result": "Example result",
+              "notes": "Example notes",
+              "direct_scan": false,
+              "attachments": [
+                  { "attachment": "<file:image1234.png>" }
+                  ]
+            }
+        
++ Response 200 (application/json)
+
+    + Body
+    
+                {
+                  "id": 1628,
+                  "health_status_id": 1,
+                  "profile_id": 1,
+                  "mobile_id": null,
+                  "resource_status": "new",
+                  "subtype": "ct scan",
+                  "date": "2016-02-09",
+                  "location": "RS Gading Pluit",
+                  "result": "Example result",
+                  "notes": "Example notes",
+                  "event_type": "hospitalized",
+                  "created_at": "2016-05-17T09:22:47.000+00:00",
+                  "updated_at": "2016-05-17T09:22:47.000+00:00",
+                  "type": "imaging",
+                  "event_id": 1540,
+                  "doctor_id": 1,
+                  "extraction_status": "pending",
+                  "attachments": [
+                    {
+                       "id": 19,
+                       "medical_record_id": 1628,
+                       "image_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "thumbnail_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "file_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "attachment_type": "image",
+                       "created_at": "2016-02-09T06:39:10.431+00:00",
+                       "updated_at": "2016-02-09T06:39:10.431+00:00",
+                       "resource_status": "new"
+                   }
+                  ]
+                }
+            
+# Edit Record [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/records/{id}]
+
+### edit record [PUT]
+Digunakan untuk mengedit satu buah object record (health document) di health status
+
++ Request (application/json)
+
+    + Headers
+
+            X-MedicTrust-Token: 129j0asn0cn1
+            X-MedicTrust-Lang: en
+
+   + Attributes (Record)
+
+   + Body
+
+                {
+                  "mobile_id": 1,
+                  "type": "imaging",
+                  "subtype": "usg",
+                  "date": "2016-02-09",
+                  "location": "RS Gading Pluit",
+                  "location_id": null,
+                  "doctor_id": 1,
+                  "result": "Example result",
+                  "notes": "Example notes",
+                  "direct_scan": false,
+                  "attachments": [
+                      { 
+                        "id": 19,
+                        "attachment": "<file:image1234.png>", 
+                        "_destroy": true,
+                      },
+                      { 
+                        "attachment": "<file:image1234.png>", 
+                        "_destroy": false,
+                      }
+                    ]
+                }
+        
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                  "id": 1628,
+                  "health_status_id": 1,
+                  "profile_id": 1,
+                  "mobile_id": null,
+                  "resource_status": "updated",
+                  "subtype": "usg",
+                  "date": "2016-02-09",
+                  "location": "RS Gading Pluit",
+                  "result": "Example result",
+                  "notes": "Example notes",
+                  "event_type": "hospitalized",
+                  "created_at": "2016-05-17T09:22:47.000+00:00",
+                  "updated_at": "2016-05-17T09:22:47.000+00:00",
+                  "type": "imaging",
+                  "event_id": 1540,
+                  "doctor_id": 1,
+                  "extraction_status": "pending",
+                  "attachments": [
+                    {
+                       "id": 19,
+                       "medical_record_id": 1628,
+                       "image_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "thumbnail_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "file_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "attachment_type": "image",
+                       "created_at": "2016-02-09T06:39:10.431+00:00",
+                       "updated_at": "2016-02-09T06:39:10.431+00:00",
+                       "resource_status": "deleted"
+                   },
+                   {
+                       "id": 20,
+                       "medical_record_id": 1628,
+                       "image_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "thumbnail_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "file_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "attachment_type": "image",
+                       "created_at": "2016-02-09T06:39:10.431+00:00",
+                       "updated_at": "2016-02-09T06:39:10.431+00:00",
+                       "resource_status": "new"
+                   }
+                  ]
+                }
+
+# Delete Record [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/records/{id}]
+
+### delete record [DELETE]
+Digunakan untuk menghapus satu buah object record (health document) di health status
+
++ Request (application/json)
+
+    + Headers
+
+            X-MedicTrust-Token: 129j0asn0cn1
+            X-MedicTrust-Lang: en
+        
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                  "id": 1628,
+                  "profile_id": 1,
+                  "health_status_id": 1,
+                  "mobile_id": null,
+                  "resource_status": "deleted",
+                  "subtype": "ct scan",
+                  "date": "2016-02-09",
+                  "location": "RS Gading Pluit",
+                  "result": "Example result",
+                  "notes": "Example notes",
+                  "event_type": "hospitalized",
+                  "created_at": "2016-05-17T09:22:47.000+00:00",
+                  "updated_at": "2016-05-17T09:22:47.000+00:00",
+                  "type": "imaging",
+                  "event_id": 1540,
+                  "doctor_id": 1,
+                  "extraction_status": "pending",
+                  "attachments": [
+                    {
+                       "id": 19,
+                       "medical_record_id": 1628,
+                       "image_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "thumbnail_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "file_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "attachment_type": "image",
+                       "created_at": "2016-02-09T06:39:10.431+00:00",
+                       "updated_at": "2016-02-09T06:39:10.431+00:00",
+                       "resource_status": "deleted"
+                   }
+                  ]
+                }
+            
+# Batch Record [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/records/batch]
+
+### batch record [POST]
+Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu object record (health document) di health status. Untuk menambahkan data tidak perlu mengirim param `id` pada object record atau mengirim param `id` dengan value = 0. Untuk mengedit data, param `id` harus diisi dan tidak boleh bernilai 0. Untuk menghapus data juga harus ada param `id` yang tidak bernilai 0 dan param `_destroy` di-set true. 
+
++ Request (application/json)
+
+    + Headers
+
+            X-MedicTrust-Token: 129j0asn0cn1
+            X-MedicTrust-Lang: en
+
+   + Attributes (object)
+        + records (array[Record]) - daftar record yang ingin ditambah/diedit/dihapus
+
+   + Body
+
+                {
+                    "records":
+                    [
+                        {
+                          "mobile_id": 1,
+                          "_destroy": false,
+                          "type": "imaging",
+                          "subtype": "ct scan",
+                          "date": "2016-02-09",
+                          "location": "RS Gading Pluit",
+                          "location_id": null,
+                          "doctor_id": 1,
+                          "result": "Example result",
+                          "notes": "Example notes",
+                          "direct_scan": false,
+                          "attachments": [
+                              { "attachment": "<file:image1234.png>" }
+                              ]
+                        },
+                        {
+                          "id": 1628,
+                          "mobile_id": 1,
+                          "_destroy": true,
+                          "type": "imaging",
+                          "subtype": "ct scan",
+                          "date": "2016-02-09",
+                          "location": "RS Gading Pluit",
+                          "location_id": null,
+                          "doctor_id": 1,
+                          "result": "Example result",
+                          "notes": "Example notes",
+                          "direct_scan": false
+                        }
+                    ]
+                }
+        
++ Response 200 (application/json)
+
+    + Body
+    
+                {
+                    "records": [
+                        {
+                          "id": 1629,
+                          "health_status_id": 1,
+                          "profile_id": 1,
+                          "mobile_id": null,
+                          "resource_status": "new",
+                          "subtype": "ct scan",
+                          "date": "2016-02-09",
+                          "location": "RS Gading Pluit",
+                          "result": "Example result",
+                          "notes": "Example notes",
+                          "event_type": "hospitalized",
+                          "created_at": "2016-05-17T09:22:47.000+00:00",
+                          "updated_at": "2016-05-17T09:22:47.000+00:00",
+                          "type": "imaging",
+                          "event_id": 1540,
+                          "doctor_id": 1,
+                          "extraction_status": "pending",
+                          "attachments": [
+                            {
+                               "id": 19,
+                               "medical_record_id": 1629,
+                               "image_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                               "thumbnail_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                               "file_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                               "attachment_type": "image",
+                               "created_at": "2016-02-09T06:39:10.431+00:00",
+                               "updated_at": "2016-02-09T06:39:10.431+00:00",
+                               "resource_status": "new"
+                           }
+                          ]
+                            
+                        },
+                        {
+                          "id": 1628,
+                          "health_status_id": 1,
+                          "profile_id": 1,
+                          "mobile_id": null,
+                          "resource_status": "deleted",
+                          "subtype": "ct scan",
+                          "date": "2016-02-09",
+                          "location": "RS Gading Pluit",
+                          "result": "Example result",
+                          "notes": "Example notes",
+                          "event_type": "hospitalized",
+                          "created_at": "2016-05-17T09:22:47.000+00:00",
+                          "updated_at": "2016-05-17T09:22:47.000+00:00",
+                          "type": "imaging",
+                          "event_id": 1540,
+                          "doctor_id": 1,
+                          "extraction_status": "pending",
+                          "attachments": [
+                            {
+                               "id": 19,
+                               "medical_record_id": 1628,
+                               "image_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                               "thumbnail_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                               "file_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                               "attachment_type": "image",
+                               "created_at": "2016-02-09T06:39:10.431+00:00",
+                               "updated_at": "2016-02-09T06:39:10.431+00:00",
+                               "resource_status": "deleted"
+                           }
+                          ]
+                            
+                        }
+                    ]
+                    
+                }
+       
+# Create Record Attachment [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/records/{record_id}/attachments]
+
+### create record attachment [POST]
+Digunakan jika ingin menambahkan satu buah attachment di satu record (health document) pada health status.
+
++ Request (multipart/form-data)
+
+    + Headers
+
+            X-MedicTrust-Token: 129j0asn0cn1
+            X-MedicTrust-Lang: en
+
+   + Attributes (object)
+            + attachment (string) - File lokal yang akan diupload
+
+   + Body
+
+            { 
+                "attachment": "<file:image1234.png>" 
+            }
+        
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+               "id": 19,
+               "medical_record_id": 1628,
+               "image_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+               "thumbnail_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+               "file_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+               "attachment_type": "image",
+               "created_at": "2016-02-09T06:39:10.431+00:00",
+               "updated_at": "2016-02-09T06:39:10.431+00:00",
+               "resource_status": "new"
+            }
+        
+# Delete Record Attachment [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/records/{record_id}/attachments/{id}]
+
+### delete record attachment [DELETE]
+Digunakan untuk menghapus satu buah attachment di record (health document) pada health status.
+
++ Request (application/json)
+
+    + Headers
+
+            X-MedicTrust-Token: 129j0asn0cn1
+            X-MedicTrust-Lang: en
+        
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+               "id": 19,
+               "medical_record_id": 1628,
+               "image_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+               "thumbnail_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+               "file_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+               "attachment_type": "image",
+               "created_at": "2016-02-09T06:39:10.431+00:00",
+               "updated_at": "2016-02-09T06:39:10.431+00:00",
+               "resource_status": "deleted"
+            }
+        
+# Batch Record Attachment [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/records/{record_id}/attachments/batch]
+
+### batch record attachment [POST]
+Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu object atatchment di record (health document) pada health status. Untuk menambahkan data tidak perlu mengirim param `id` pada object attachment atau mengirim param `id` dengan value = 0. Untuk mengedit data, param `id` harus diisi dan tidak boleh bernilai 0. Untuk menghapus data juga harus ada param `id` yang tidak bernilai 0 dan param `_destroy` di-set true. 
+
++ Request (application/json)
+
+    + Headers
+
+            X-MedicTrust-Token: 129j0asn0cn1
+            X-MedicTrust-Lang: en
+
+   + Attributes (object)
+
+   + Body
+
+            { "attachments": [
+                    { 
+                        "attachment": "<file:image1234.png>", 
+                        "_destroy": false
+                    },
+                    {
+                        "id": 20,
+                        "_destroy": true
+                    }
+                ]
+            }
+        
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+               "attachments": [
+                    {
+                        "id": 19,
+                       "medical_record_id": 1628,
+                       "image_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "thumbnail_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "file_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "attachment_type": "image",
+                       "created_at": "2016-02-09T06:39:10.431+00:00",
+                       "updated_at": "2016-02-09T06:39:10.431+00:00",
+                       "resource_status": "new"
+                    },
+                    {
+                        "id": 20,
+                       "medical_record_id": 1628,
+                       "image_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "thumbnail_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "file_url": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                       "attachment_type": "image",
+                       "created_at": "2016-02-09T06:39:10.431+00:00",
+                       "updated_at": "2016-02-09T06:39:10.431+00:00",
+                       "resource_status": "deleted"
+                    }
+                ]
+            }
+    
+
+# Create Statistic [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/statistics]
+<b>Catatan</b>: 1 buah object statistics bisa memiliki beberapa child yang juga adalah object statistics juga. Contohnya: statistics `BMI` bisa memiliki child statistics `weight` dan `height`. Jika client mengirimkan statistics yang memiliki child, nilai `value` pada parent tidak perlu diisi karena akan otomatis terisi beradasarkan nilai `value` pada `child_statistics` yang ada.
+
+### create statistic [POST]
+Digunakan untuk menambahkan satu object statistics (health data) pada health status.
+
++ Request (application/json)
+
+    + Headers
+
+            X-MedicTrust-Token: 129j0asn0cn1
+            X-MedicTrust-Lang: en
+        
+    + Body
+    
+            {
+                "profile_id": 1,
+                "chart_info_id": 1,
+                "time": "2016-01-18T15:48:12.000+00:00",
+                "classification": "blood_test",
+                "name_en": "",
+                "name_id": "Trombosit",
+                "value": "120",
+                "value_unit": "",
+                "notes": "Sebelum sarapan pagi",
+                "child_statistics": [
+                  {
+                    "profile_id": 1,
+                    "_destroy": false,
+                    "chart_info_id": 1,
+                    "time": "2016-01-18T15:48:12.000+00:00",
+                    "classification": "blood_test",
+                    "name_en": "",
+                    "name_id": "Trombosit",
+                    "value": "120",
+                    "value_unit": "",
+                    "notes": "Sebelum saradasdaspan pagi",
+                  }
+            }
+
+
++ Response 200 (application/json)
+    
+    + Body
+    
+            {
+              "id": 1,
+              "profile_id": 1,
+              "health_status_id": 1,
+              "chart_info_id": 1,
+              "time": "2016-01-18T22:48:12+07:00",
+              "classification": "blood_test",
+              "name_en": "",
+              "name_id": "Trombosit",
+              "value": "120",
+              "value_unit": "",
+              "notes": "Sebelum sarapan pagi",
+              "state": "pending",
+              "resource_status": "new"
+              "child_statistics": [
+                {
+                    "id": 2,
+                    "profile_id": 1,
+                    "health_status_id": 1,
+                    "chart_info_id": 1,
+                    "time": "2016-01-18T22:48:12+07:00",
+                    "classification": "blood_test",
+                    "name_en": "",
+                    "name_id": "Trombosit",
+                    "value": "120",
+                    "value_unit": "",
+                    "notes": "Sebelum sarapan pagi",
+                    "state": "pending"
+                    "resource_status": "new"
+                }
+              ]
+            }
+
++ Response 404 (application/json)
+
+        {
+            "message": "Route not found",
+            "verbose": "Route not found"
+        }
+
++ Response 422 (application/json)
+
+        {
+            "message": "Unprocessable entity",
+            "errors": {}
+        }
+
+# Edit Statistic [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/statistics/{id}]
+
+### edit statistic [PUT]
+Digunakan untuk mengedit satu object statistic (health data) pada health status.
+
++ Request (application/json)
+
+    + Headers
+
+            X-MedicTrust-Token: 129j0asn0cn1
+            X-MedicTrust-Lang: en
+    
+    + Body
+    
+            {
+                "profile_id": 1,
+                "chart_info_id": 1,
+                "time": "2016-01-18T15:48:12.000+00:00",
+                "classification": "blood_test",
+                "name_en": "",
+                "name_id": "Trombosit",
+                "value": "120",
+                "value_unit": "",
+                "notes": "Sebelum sarapan pagi",
+                "child_statistics": [
+                  {
+                    "profile_id": 1,
+                    "_destroy": true,
+                    "chart_info_id": 1,
+                    "time": "2016-01-18T15:48:12.000+00:00",
+                    "classification": "blood_test",
+                    "name_en": "",
+                    "name_id": "Trombosit",
+                    "value": "120",
+                    "value_unit": "",
+                    "notes": "Sebelum saradasdaspan pagi",
+                  }
+                ]
+            }
+
+
++ Response 200 (application/json)
+        
+    + Body
+        
+            {
+                  "id": 1,
+                  "profile_id": 1,
+                  "health_status_id": 1,
+                  "chart_info_id": 1,
+                  "time": "2016-01-18T22:48:12+07:00",
+                  "classification": "blood_test",
+                  "name_en": "",
+                  "name_id": "Trombosit",
+                  "value": "120",
+                  "value_unit": "",
+                  "notes": "Sebelum sarapan pagi",
+                  "state": "pending",
+                  "resource_status": "updated"
+                  "child_statistics": [
+                    {
+                        "id": 2,
+                        "profile_id": 1,
+                        "health_status_id": 1,
+                        "chart_info_id": 1,
+                        "time": "2016-01-18T22:48:12+07:00",
+                        "classification": "blood_test",
+                        "name_en": "",
+                        "name_id": "Trombosit",
+                        "value": "120",
+                        "value_unit": "",
+                        "notes": "Sebelum sarapan pagi",
+                        "state": "pending"
+                        "resource_status": "deleted"
+                    }
+                  ]
+            }
+
++ Response 404 (application/json)
+
+        {
+            "message": "Route not found",
+            "verbose": "Route not found"
+        }
+
++ Response 422 (application/json)
+
+        {
+            "message": "Unprocessable entity",
+            "errors": {}
+        }
+
+# Delete Statistic [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/statistics/{id}]
+
+### delete statistic [DELETE]
+Digunakan untuk menghapus satu object statistics (health data) pada health status.
+
++ Request (application/json)
+
+    + Headers
+
+            X-MedicTrust-Token: 129j0asn0cn1
+            X-MedicTrust-Lang: en
+            
++ Response 200 (application/json)
+        
+    + Body
+        
+            {
+                  "id": 1,
+                  "profile_id": 1,
+                  "health_status_id": 1,
+                  "chart_info_id": 1,
+                  "time": "2016-01-18T22:48:12+07:00",
+                  "classification": "blood_test",
+                  "name_en": "",
+                  "name_id": "Trombosit",
+                  "value": "120",
+                  "value_unit": "",
+                  "notes": "Sebelum sarapan pagi",
+                  "state": "pending",
+                  "resource_status": "deleted"
+                  "child_statistics": [
+                    {
+                        "id": 2,
+                        "profile_id": 1,
+                        "health_status_id": 1,
+                        "chart_info_id": 1,
+                        "time": "2016-01-18T22:48:12+07:00",
+                        "classification": "blood_test",
+                        "name_en": "",
+                        "name_id": "Trombosit",
+                        "value": "120",
+                        "value_unit": "",
+                        "notes": "Sebelum sarapan pagi",
+                        "state": "pending"
+                        "resource_status": "deleted"
+                    }
+                  ]
+            }
+
++ Response 404 (application/json)
+
+        {
+            "message": "Route not found",
+            "verbose": "Route not found"
+        }
+
++ Response 422 (application/json)
+
+        {
+            "message": "Unprocessable entity",
+            "errors": {}
+        }
+        
+# Batch Statistic [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/statistics/batch]
+
+### batch statistic [POST]
+Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu object statistics (health data) pada health status. Untuk menambahkan data tidak perlu mengirim param `id` pada object statistics atau mengirim param `id` dengan value = 0. Untuk mengedit data, param `id` harus diisi dan tidak boleh bernilai 0. Untuk menghapus data juga harus ada param `id` yang tidak bernilai 0 dan param `_destroy` di-set true. 
+
++ Request (application/json)
+
+    + Headers
+
+            X-MedicTrust-Token: 129j0asn0cn1
+            X-MedicTrust-Lang: en
+
+    + Body
+    
         {
             "statistics": [
                 {
@@ -5986,6 +9800,7 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
             "message": "Unprocessable entity",
             "errors": {}
         }
+
 
 # Data Structures
 
