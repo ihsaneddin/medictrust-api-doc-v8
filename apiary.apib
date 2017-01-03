@@ -1299,6 +1299,131 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                    ]
                }
                
+               
+# Group Patient Partner Consultation Appointments
+
+# Group Patient Partner Consultation Appointment Online
+
+## Index [/patient/partners/consultation_appointments/online]
+    List online appointments dengan filter. 
+        
+### Index [GET]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+                
+    + Body
+
+               { 
+                 "filter": { 
+                                "partner_id": 1, 
+                                "location_id": 1,
+                                "start_datetime": "2017-1-12 2:00",
+                                "end_datetime": "2017-1-17 2:00"
+                            }
+               }  
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "collection": [
+                    {
+                      "id": 61,
+                      "profile_id": 1,
+                      "partner_id": 1,
+                      "location_id": 50,
+                      "service_id": 5,
+                      "datetime": "2017-11-12T12:00:00.000+00:00",
+                      "date": "2017-11-12",
+                      "time": "12:00",
+                      "type": "Online",
+                      "notes": null,
+                      "state": "rescheduled",
+                      "consultation": null,
+                      "resource_status": "updated",
+                      "started_at": null,
+                      "completed_at": null,
+                      "valid": false,
+                      "queue": false,
+                      "queue_number": null,
+                      "updated_at": "2017-01-03T09:33:02.000+00:00",
+                      "created_at": "2017-01-03T09:32:35.000+00:00",
+                      "initial_appointment_id": null
+                    }
+                  ],
+                  "page": 1,
+                  "per_page": 50,
+                  "total_pages": 1,
+                  "last_page": true
+                }
+
+# Group Patient Partner Consultation Appointment Offline
+
+## Index [/patient/partners/consultation_appointments/offline]
+    List offline appointments dengan filter. 
+        
+### Index [GET]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+                
+    + Body
+
+               { 
+                 "filter": { 
+                                "partner_id": 1, 
+                                "location_id": 1,
+                                "start_datetime": "2017-1-11 2:00",
+                                "end_datetime": "2017-1-17 2:00"
+                            }
+               }  
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+            {
+              "collection": [
+                {
+                  "id": 60,
+                  "profile_id": 1,
+                  "partner_id": 1,
+                  "location_id": 51,
+                  "service_id": 4,
+                  "datetime": "2017-01-11T12:00:00.000+00:00",
+                  "date": "2017-01-11",
+                  "time": "12:00",
+                  "type": "Offline",
+                  "notes": null,
+                  "state": "ongoing",
+                  "consultation": null,
+                  "resource_status": "updated",
+                  "started_at": "2016-12-29T11:07:26.000+00:00",
+                  "completed_at": null,
+                  "valid": true,
+                  "queue": false,
+                  "queue_number": null,
+                  "updated_at": "2016-12-29T11:07:26.000+00:00",
+                  "created_at": "2016-12-29T11:05:50.000+00:00",
+                  "initial_appointment_id": null
+                }
+              ],
+              "page": 1,
+              "per_page": 50,
+              "total_pages": 1,
+              "last_page": true
+            }
+               
 # Group Patient Partner Locations
 
 ## Index [/patient/partners/locations]
