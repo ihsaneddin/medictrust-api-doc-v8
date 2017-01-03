@@ -1836,6 +1836,216 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                   "initial_appointment_id": null
                 }
                 
+
+# Group Patient Offline Consultation Appointment
+
+## Create [/patient/service_requests/consultation_appointments/offline]
+    Create offline consultation appointment object. parameter `date` dan `time` menjadi mandatory jika parameter `datetime` kosong. 
+        
+### Create [POST]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+                
+    + Body
+
+               { 
+                 "date": "2015-11-12", 
+                 "time": "12:00",
+                 "datetime": "2015-11-12 12:00",
+                 "profile_id": 1, 
+                 "partner_id": 1, 
+                 "location_id": 36,
+                 "notes": "Notes"
+               }  
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "id": 51,
+                  "profile_id": 1,
+                  "partner_id": 1,
+                  "location_id": 51,
+                  "service_id": 5,
+                  "datetime": "2017-01-11T12:00:00.000+00:00",
+                  "date": "2017-01-11",
+                  "time": "12:00",
+                  "type": "Offline",
+                  "notes": "Notes",
+                  "state": "scheduled",
+                  "consultation": null,
+                  "resource_status": "new",
+                  "started_at": null,
+                  "completed_at": null,
+                  "valid": true,
+                  "updated_at": "2016-12-29T10:33:03.000+00:00",
+                  "created_at": "2016-12-27T16:39:39.000+00:00",
+                  "initial_appointment_id": null
+                }
+                
+
+## Update [/patient/service_requests/consultation_appointments/offline/{id}]
+    Endpoint ini hanya menerima `notes` parameter sebagai update attribute untuk object online consultation appointment
+        
+### Update [PUT]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+                
+    + Body
+
+               { 
+                 "date": "2015-11-12", 
+                 "time": "12:00",
+                 "datetime": "2015-11-12 12:00",
+                 "profile_id": 1, 
+                 "partner_id": 1, 
+                 "location_id": 36,
+                 "notes": "Notes"
+               }  
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "id": 62,
+                  "profile_id": 1,
+                  "partner_id": 1,
+                  "location_id": 50,
+                  "service_id": 5,
+                  "datetime": "2017-01-11T12:00:00.000+00:00",
+                  "date": "2017-01-11",
+                  "time": "12:00",
+                  "type": "Offline",
+                  "notes": null,
+                  "state": "rescheduled",
+                  "consultation": null,
+                  "resource_status": "new",
+                  "started_at": null,
+                  "completed_at": null,
+                  "valid": true,
+                  "updated_at": "2017-01-03T09:33:02.000+00:00",
+                  "created_at": "2017-01-03T09:33:02.000+00:00",
+                  "initial_appointment_id": null
+                }
+                
+
+## Reschedule [/patient/service_requests/consultation_appointments/offline/{id}/reschedule]
+    Endpoint ini digunakan untuk merubah `state` untuk consultation appointment object dari `scheduled` atau `rescheduled` ke `rescheduled`. Parameter yang mandatory adalah `datetime` atau `date` dan `time`.
+        
+### Update [PUT]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+                
+    + Body
+
+               { 
+                 "date": "2015-11-12", 
+                 "time": "12:00",
+                 "datetime": "2015-11-12 12:00",
+                 "notes": "Notes"
+               }  
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "id": 52,
+                  "profile_id": 1,
+                  "partner_id": 1,
+                  "location_id": 50,
+                  "service_id": 5,
+                  "datetime": "2017-01-11T12:00:00.000+00:00",
+                  "date": "2017-01-11",
+                  "time": "12:00",
+                  "type": "Offline",
+                  "notes": null,
+                  "state": "rescheduled",
+                  "consultation": null,
+                  "resource_status": "new",
+                  "started_at": null,
+                  "completed_at": null,
+                  "valid": true,
+                  "updated_at": "2017-01-03T09:33:02.000+00:00",
+                  "created_at": "2017-01-03T09:33:02.000+00:00",
+                  "initial_appointment_id": 51
+                }
+                
+
+## Initiate [/patient/service_requests/consultation_appointments/offline/{id}/initiate]
+    Set consultation appointment online object state ke `initiated`. online consultation dan conversation object digenerate ketika event `initiate`.
+        
+### Initiate [PUT]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "id": 53,
+                  "profile_id": 1,
+                  "partner_id": 1,
+                  "location_id": 51,
+                  "service_id": 5,
+                  "datetime": "2017-01-12T12:00:00.000+00:00",
+                  "date": "2017-01-12",
+                  "time": "12:00",
+                  "type": "Online",
+                  "notes": null,
+                  "state": "on_going",
+                  "consultation": {
+                    "id": 15,
+                    "appointment_id": 53,
+                    "partner_id": 1,
+                    "service_id": 5,
+                    "profile_id": 1,
+                    "location_id": 51,
+                    "complain": null,
+                    "allergies": null,
+                    "vaccines": null,
+                    "notes": null,
+                    "state": "initiated",
+                    "type": "Online",
+                    "health_statuses": [],
+                    "resource_status": "new",
+                    "started_at": null,
+                    "completed_at": null,
+                    "created_at": "2016-12-29T10:44:24.000+00:00",
+                    "updated_at": "2016-12-29T10:52:51.000+00:00",
+                  },
+                  "resource_status": "updated",
+                  "started_at": "2016-12-29T10:44:24.000+00:00",
+                  "completed_at": null,
+                  "valid": true,
+                  "updated_at": "2016-12-29T10:52:51.000+00:00",
+                  "created_at": "2016-12-29T10:39:31.000+00:00",
+                  "initial_appointment_id": null
+                }
+                
                 
 /* end of patient group */
 
