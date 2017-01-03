@@ -1323,10 +1323,12 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                                 "address": "address", 
                                 "city": "Bandung", 
                                 "province": "Jawa Barat",
-                                "near": {
-                                    "query": { "distance": 10 },
-                                    "query": [40.71, -100.23],
-                                    "query": "Bandung"
+                                "near": 
+                                    {
+                                        "query": { "distance": 10 },
+                                        "query": [40.71, -100.23],
+                                        "query": "Bandung"
+                                    }
                             }
                }  
            
@@ -1415,6 +1417,201 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                   "practiced_doctors": []
                 }
 
+# Group Patient Partner Practice Locations
+
+## Index [/patient/partners/practice_locations]
+    List partner practice locations dengan filter. 
+        
+### Index [GET]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+                
+    + Body
+
+               { 
+                 "filter": { 
+                                "location_id": 1, 
+                                "partner_id": 1
+                            }
+               }  
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "collection": [
+                    {
+                      "id": 37,
+                      "location_id": 51,
+                      "rate": 10000,
+                      "created_at": "2016-12-21T15:29:10.000+00:00",
+                      "updated_at": "2016-12-29T13:41:45.000+00:00",
+                      "resource_status": "updated",
+                      "schedules": [
+                        {
+                          "id": 1,
+                          "partner_id": 37,
+                          "schedulable_type": "PracticeLocation",
+                          "day": 1,
+                          "name_of_the_day": "Monday",
+                          "start": null,
+                          "end": null,
+                          "created_at": "2016-12-21T15:29:10.000+00:00",
+                          "updated_at": "2016-12-21T15:29:10.000+00:00",
+                          "resource_status": "new"
+                        },
+                        {
+                          "id": 2,
+                          "partner_id": 37,
+                          "schedulable_type": "PracticeLocation",
+                          "day": 2,
+                          "name_of_the_day": "Tuesday",
+                          "start": null,
+                          "end": null,
+                          "created_at": "2016-12-21T15:29:10.000+00:00",
+                          "updated_at": "2016-12-21T15:29:10.000+00:00",
+                          "resource_status": "new"
+                        },
+                        {
+                          "id": 3,
+                          "partner_id": 37,
+                          "schedulable_type": "PracticeLocation",
+                          "day": 3,
+                          "name_of_the_day": "Wednesday",
+                          "start": null,
+                          "end": null,
+                          "created_at": "2016-12-21T15:29:10.000+00:00",
+                          "updated_at": "2016-12-21T15:29:10.000+00:00",
+                          "resource_status": "new"
+                        },
+                        {
+                          "id": 4,
+                          "partner_id": 37,
+                          "schedulable_type": "PracticeLocation",
+                          "day": 4,
+                          "name_of_the_day": "Thursday",
+                          "start": null,
+                          "end": null,
+                          "created_at": "2016-12-21T15:29:10.000+00:00",
+                          "updated_at": "2016-12-21T15:29:10.000+00:00",
+                          "resource_status": "new"
+                        },
+                        {
+                          "id": 5,
+                          "partner_id": 37,
+                          "schedulable_type": "PracticeLocation",
+                          "day": 5,
+                          "name_of_the_day": "Friday",
+                          "start": null,
+                          "end": null,
+                          "created_at": "2016-12-21T15:29:10.000+00:00",
+                          "updated_at": "2016-12-21T15:29:10.000+00:00",
+                          "resource_status": "new"
+                        }
+                      ],
+                      "partner": null
+                    }
+                  ],
+                  "page": 1,
+                  "per_page": 20,
+                  "total_pages": 1,
+                  "last_page": true
+                }
+                
+
+## Show [/patient/partners/practice_locations/{id}]
+    Show partner practice location. 
+        
+### Show [GET]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+               {
+                  "id": 37,
+                  "location_id": 51,
+                  "rate": 10000,
+                  "created_at": "2016-12-21T15:29:10.000+00:00",
+                  "updated_at": "2016-12-29T13:41:45.000+00:00",
+                  "resource_status": "updated",
+                  "schedules": [
+                    {
+                      "id": 1,
+                      "partner_id": 37,
+                      "schedulable_type": "PracticeLocation",
+                      "day": 1,
+                      "name_of_the_day": "Monday",
+                      "start": null,
+                      "end": null,
+                      "created_at": "2016-12-21T15:29:10.000+00:00",
+                      "updated_at": "2016-12-21T15:29:10.000+00:00",
+                      "resource_status": "new"
+                    },
+                    {
+                      "id": 2,
+                      "partner_id": 37,
+                      "schedulable_type": "PracticeLocation",
+                      "day": 2,
+                      "name_of_the_day": "Tuesday",
+                      "start": null,
+                      "end": null,
+                      "created_at": "2016-12-21T15:29:10.000+00:00",
+                      "updated_at": "2016-12-21T15:29:10.000+00:00",
+                      "resource_status": "new"
+                    },
+                    {
+                      "id": 3,
+                      "partner_id": 37,
+                      "schedulable_type": "PracticeLocation",
+                      "day": 3,
+                      "name_of_the_day": "Wednesday",
+                      "start": null,
+                      "end": null,
+                      "created_at": "2016-12-21T15:29:10.000+00:00",
+                      "updated_at": "2016-12-21T15:29:10.000+00:00",
+                      "resource_status": "new"
+                    },
+                    {
+                      "id": 4,
+                      "partner_id": 37,
+                      "schedulable_type": "PracticeLocation",
+                      "day": 4,
+                      "name_of_the_day": "Thursday",
+                      "start": null,
+                      "end": null,
+                      "created_at": "2016-12-21T15:29:10.000+00:00",
+                      "updated_at": "2016-12-21T15:29:10.000+00:00",
+                      "resource_status": "new"
+                    },
+                    {
+                      "id": 5,
+                      "partner_id": 37,
+                      "schedulable_type": "PracticeLocation",
+                      "day": 5,
+                      "name_of_the_day": "Friday",
+                      "start": null,
+                      "end": null,
+                      "created_at": "2016-12-21T15:29:10.000+00:00",
+                      "updated_at": "2016-12-21T15:29:10.000+00:00",
+                      "resource_status": "new"
+                    }
+                  ],
+                  "partner": null
+                }
 
 
 # Group Patient Service Requests
