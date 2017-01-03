@@ -1065,7 +1065,8 @@ New Payment API
     Endpoints API untuk query atau request partner (doctor dan clinic)
     
 # Group Patient Doctors
-
+    Kumpulan Endpoint digroup ini merupakan endpoint dari API untuk pasien app di V7.
+    
 ## Browse [/patient/partners/doctors]
 
 ### GET /doctors{?profile_id,name,speciality,speciality_id}
@@ -1099,7 +1100,9 @@ Parameter yang dapat dikirim (semuanya opsional):
                + count: 1 (number) - Jumlah data dokter di request ini.
                + doctors (array[SimpleDoctor]) - Array isi data dokter-dokter.
 
-## GET /doctors/{id}{?profile_id}
+## GET [/patient/partners/doctors/{id}{?profile_id}]
+
+### GET /doctors/{id}{?profile_id}
 Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat mengirim parameter `profile_id` untuk mendapatkan nilai `is_bookmark` dan `is_private`. Bila `profile_id` tidak dikirim, maka defaultnya selalu bernilai false. (Tinggal di override oleh `bookmark_list` – response dari sinkron profiles.)
 
     + Parameter
@@ -1119,211 +1122,117 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
 
    + Body
 
-           {
-               "id": 1,
-               "created_at": "2015-05-12T09:45:12.473+00:00",
-               "updated_at": "2015-05-12T09:45:12.473+00:00",
-               "resource_status": "new",
-               "first_name": "Mirna",
-               "last_name": "Asmiranti",
-               "avatar": "http://images.kpopstarz.com/data/images/full/321946/yuri-beautiful-doctor.jpg",
-               "blurred_avatar": "http://images.kpopstarz.com/data/images/full/321946/yuri-beautiful-doctor.jpg",
-               "speciality": "General Practitioner",
-               "speciality_id": 1,
-               "location": "RS Mitra Keluarga",
-               "about_me": null,
-               "work_email": null,
-               "work_phone": null,
-               "wa_phone": null,
-               "is_bookmark": true,
-               "is_private": false,
-               "schedules": [
-                   {
-                       "days": [0, 1, 2],
-                       "start_hour": "09:00",
-                       "end_hour": "15:00",
-                       "location": "RS Mitra Keluarga",
-                       "address": "Kelapa Gading",
-                       "city": "Jakarta",
-                       "country": "Indonesia",
-                       "zipcode": "12345",
-                       "location_id": null,
-                       "doctor_name": "Lionel",
-                       "contact": [
-                           {
-                               "contact_number": "12345678",
-                               "name": "Work"
-                           }
-                       ]
-                   }
-               ],
-               "bookings": [
-                   {
-                       "date": "2016-03-02",
-                       "offset": "+00:00",
-                       "time": [
-                           "15:00",
-                           "16:00",
-                           "17:00"
-                       ]
-                   },
-                   {
-                       "date": "2016-03-03",
-                       "offset": "+00:00",
-                       "time": [
-                           "16:00",
-                           "17:00"
-                       ]
-                   }
-               ]
-           }
+               {
+                   "id": 1,
+                   "created_at": "2015-05-12T09:45:12.473+00:00",
+                   "updated_at": "2015-05-12T09:45:12.473+00:00",
+                   "resource_status": "new",
+                   "first_name": "Mirna",
+                   "last_name": "Asmiranti",
+                   "avatar": "http://images.kpopstarz.com/data/images/full/321946/yuri-beautiful-doctor.jpg",
+                   "blurred_avatar": "http://images.kpopstarz.com/data/images/full/321946/yuri-beautiful-doctor.jpg",
+                   "speciality": "General Practitioner",
+                   "speciality_id": 1,
+                   "location": "RS Mitra Keluarga",
+                   "about_me": null,
+                   "work_email": null,
+                   "work_phone": null,
+                   "wa_phone": null,
+                   "is_bookmark": true,
+                   "is_private": false,
+                   "schedules": [
+                       {
+                           "days": [0, 1, 2],
+                           "start_hour": "09:00",
+                           "end_hour": "15:00",
+                           "location": "RS Mitra Keluarga",
+                           "address": "Kelapa Gading",
+                           "city": "Jakarta",
+                           "country": "Indonesia",
+                           "zipcode": "12345",
+                           "location_id": null,
+                           "doctor_name": "Lionel",
+                           "contact": [
+                               {
+                                   "contact_number": "12345678",
+                                   "name": "Work"
+                               }
+                           ]
+                       }
+                   ],
+                   "bookings": [
+                       {
+                           "date": "2016-03-02",
+                           "offset": "+00:00",
+                           "time": [
+                               "15:00",
+                               "16:00",
+                               "17:00"
+                           ]
+                       },
+                       {
+                           "date": "2016-03-03",
+                           "offset": "+00:00",
+                           "time": [
+                               "16:00",
+                               "17:00"
+                           ]
+                       }
+                   ]
+               }
 
-### POST /doctors/{id}/book
-Buat booking / appointment baru
+
+# Group Patient Partners Clinics
+    Kumpulan Endpoint digroup ini merupakan endpoint dari API untuk pasien app di V7 diubah kelas untuk querynya menggunakan Clinic.
+    
+## Browse [/patient/partners/clinics]
+
+### GET /doctors{?profile_id,name,speciality,speciality_id}
+Cari dokter berdasarkan nama dan/atau specialitynya. Contoh, untuk mendapatkan list seluruh dokter yang specialitynya General Practicioner, bisa melakukan request seperti ini: `/doctors?speciality=General Practitioner`
+
+Untuk mendapatkan list clinic untuk profile tertentu, bisa juga mengirim parameter seperti ini:
+`/doctors?profile_id=142&speciality=General Practitioner`. Respon dari sini nantinya akan ditambahkan dengan status `is_bookmark` dan `is_private` ke profile_id yang dikirim. **Perlu diperhatikan**, bila `profile_id` tidak dikirim maka di setiap dokter, parameter `is_bookmark` dan `is_private` akan selalu bernilai `false`.
+
+Parameter yang dapat dikirim (semuanya opsional):
+- `profile_id`
+- `name`
+- `speciality`
+- `speciality_id`
 
 + Parameter
-   + id (number, required) - Server id dari provider yang mau di booking.
+   + profile_id (number, optional) - Server id dari profile. Bila dikirim, respon akan include status bookmarknya.
+   + name (string, optional) - Nama dokter.
+   + speciality (string, optional) - Speciality dari dokter.
+   + speciality_id (number, optional) - Server ID untuk speciality dari `/doctors/specialities`.
 
 + Request (application/json)
 
    + Headers
 
-           X-MedicTrust-Token: 129j0asn0cn1
-           X-MedicTrust-Lang: en
-
-   + Attributes (BookingRequest)
-
-+ Response 201 (application/json)
-
-       { "message": "Appointment created" }
-
-+ Response 400 (application/json)
-
-       { "message": "Please supply profile id and booking date." }
-
-+ Response 404 (application/json)
-
-       { "message": "Location not found" }
-
-+ Response 404 (application/json)
-
-       { "message": "Invalid time requested for location" }
-
-+ Response 404 (application/json)
-
-       { "message": "Time has already been taken." }
-
-## /profiles/{profile_id}/doctors
-
-### GET - List My Doctors [GET]
-Digunakan untuk mendapatkan list dokter-dokter yang di-bookmark atau dibuat oleh `profile_id`.
-
-+ Parameter
-   + profile_id (number, required) - Server id dari profile pemilik private doctor
-
-+ Request (application/json)
-
-   + Headers
-
-           X-MedicTrust-Token: 129j0asn0cn1
-           X-MedicTrust-Lang: en
+               X-MedicTrust-Token: 129j0asn0cn1
+               X-MedicTrust-Lang: en
 
 + Response 200 (application/json)
 
    + Attributes (object)
-       + doctors (array[Doctor])
+               + count: 1 (number) - Jumlah data dokter di request ini.
+               + doctors (array[SimpleDoctor]) - Array isi data dokter-dokter.
 
-### POST - New private doctor [POST]
-**Endpoint ini menggunakan `multipart/form-data`**, dan digunakan untuk membuat private doctor.
+## GET [/patient/partners/clinic/{id}{?profile_id}]
 
-+ Parameter
-   + profile_id (number, required) - Server id dari profile pemilik private doctor
+### GET /doctors/{id}{?profile_id}
+Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat mengirim parameter `profile_id` untuk mendapatkan nilai `is_bookmark` dan `is_private`. Bila `profile_id` tidak dikirim, maka defaultnya selalu bernilai false. (Tinggal di override oleh `bookmark_list` – response dari sinkron profiles.)
 
-+ Request (multipart/form-data)
+    + Parameter
+                + id (number, required) - Server ID dari dokter yang di request informasi detailnya.
+                + profile_id (number, optional) - Kalo ini dikirim, respon akan include status bookmark dan private.
 
-   + Headers
++ Request (application/json)
 
-           X-MedicTrust-Token: 129j0asn0cn1
-           X-MedicTrust-Lang: en
+    + Headers
 
-   + Attributes (DoctorRequest)
-
-   + Body
-
-           {
-               "first_name": "Maruli",
-               "last_name": "Tampubolon",
-               "avatar": "<file:http://kayuagungradio.com/wp-content/uploads/2015/09/MARULI.jpg>",
-               "speciality": "General Practitioner",
-               "speciality_id": 1,
-               "location": "RS Mitra Keluarga",
-               "about_me": `Maruli is a doctor and also a singer`,
-               "work_email": null,
-               "work_phone": null,
-               "wa_phone": null
-           }
-
-+ Response 201 (application/json)
-
-   + Attributes (Doctor)
-
-   + Body
-
-           {
-               "id": 3,
-               "created_at": "2016-02-12T09:45:12.473+00:00",
-               "updated_at": "2015-02-12T09:45:12.473+00:00",
-               "resource_status": "new",
-               "first_name": "Maruli",
-               "last_name": "Tampubolon",
-               "avatar": "http://kayuagungradio.com/wp-content/uploads/2015/09/MARULI.jpg",
-               "blurred_avatar": "http://kayuagungradio.com/wp-content/uploads/2015/09/MARULI.jpg",
-               "speciality": "General Practitioner",
-               "speciality_id": 1,
-               "location": "RS Mitra Keluarga",
-               "about_me": "Maruli is a doctor and also a singer",
-               "work_email": null,
-               "work_phone": null,
-               "wa_phone": null,
-               "is_bookmark": true,
-               "is_private": true,
-               "offset": "+07:00",
-               "schedules": [],
-               "bookings": []
-           }
-
-## /profiles/{profile_id}/doctors/{id}
-
-### PUT - Update private doctor [PUT]
-**Endpoint ini menggunakan `multipart/form-data`**, digunakan untuk edit private doctor.
-
-+ Parameter
-   + profile_id (number, required) - Server ID dari profile pembuat private doctor.
-   + id (number, required) - Server ID dari private doctor yang mau di update.
-
-+ Request (multipart/form-data)
-
-   + Headers
-
-           X-MedicTrust-Token: 129j0asn0cn1
-           X-MedicTrust-Lang: en
-
-   + Attributes (DoctorRequest)
-
-   + Body
-
-           {
-               "first_name": "Maruli",
-               "last_name": "Tampubolon",
-               "avatar": "<file:http://kayuagungradio.com/wp-content/uploads/2015/09/MARULI.jpg>",
-               "speciality": "General Practitioner",
-               "speciality_id": 1,
-               "location": "RS Mitra Keluarga",
-               "about_me": `Maruli is a doctor and also a singer`,
-               "work_email": null,
-               "work_phone": null,
-               "wa_phone": null
-           }
+               X-MedicTrust-Token: 129j0asn0cn1
+               X-MedicTrust-Lang: en
 
 + Response 200 (application/json)
 
@@ -1331,79 +1240,182 @@ Digunakan untuk mendapatkan list dokter-dokter yang di-bookmark atau dibuat oleh
 
    + Body
 
-           {
-               "id": 3,
-               "created_at": "2016-02-12T09:45:12.473+00:00",
-               "updated_at": "2015-02-12T09:45:12.473+00:00",
-               "resource_status": "new",
-               "first_name": "Maruli",
-               "last_name": "Tampubolon",
-               "avatar": "http://kayuagungradio.com/wp-content/uploads/2015/09/MARULI.jpg",
-               "blurred_avatar": "http://kayuagungradio.com/wp-content/uploads/2015/09/MARULI.jpg",
-               "speciality": "General Practitioner",
-               "speciality_id": 1,
-               "location": "RS Mitra Keluarga",
-               "about_me": "Maruli is a doctor and also a singer",
-               "work_email": null,
-               "work_phone": null,
-               "wa_phone": null,
-               "is_bookmark": true,
-               "is_private": true,
-               "offset": "+07:00",
-               "schedules": [],
-               "bookings": []
-           }
+               {
+                   "id": 1,
+                   "created_at": "2015-05-12T09:45:12.473+00:00",
+                   "updated_at": "2015-05-12T09:45:12.473+00:00",
+                   "resource_status": "new",
+                   "first_name": "Mirna",
+                   "last_name": "Asmiranti",
+                   "avatar": "http://images.kpopstarz.com/data/images/full/321946/yuri-beautiful-doctor.jpg",
+                   "blurred_avatar": "http://images.kpopstarz.com/data/images/full/321946/yuri-beautiful-doctor.jpg",
+                   "speciality": "General Practitioner",
+                   "speciality_id": 1,
+                   "location": "RS Mitra Keluarga",
+                   "about_me": null,
+                   "work_email": null,
+                   "work_phone": null,
+                   "wa_phone": null,
+                   "is_bookmark": true,
+                   "is_private": false,
+                   "schedules": [
+                       {
+                           "days": [0, 1, 2],
+                           "start_hour": "09:00",
+                           "end_hour": "15:00",
+                           "location": "RS Mitra Keluarga",
+                           "address": "Kelapa Gading",
+                           "city": "Jakarta",
+                           "country": "Indonesia",
+                           "zipcode": "12345",
+                           "location_id": null,
+                           "doctor_name": "Lionel",
+                           "contact": [
+                               {
+                                   "contact_number": "12345678",
+                                   "name": "Work"
+                               }
+                           ]
+                       }
+                   ],
+                   "bookings": [
+                       {
+                           "date": "2016-03-02",
+                           "offset": "+00:00",
+                           "time": [
+                               "15:00",
+                               "16:00",
+                               "17:00"
+                           ]
+                       },
+                       {
+                           "date": "2016-03-03",
+                           "offset": "+00:00",
+                           "time": [
+                               "16:00",
+                               "17:00"
+                           ]
+                       }
+                   ]
+               }
+               
+# Group Patient Partner Locations
 
-### DELETE - Delete private doctor [DELETE]
-Delete private doctor
+## Index [/patient/partners/locations]
+    List partner locations dengan filter. 
+        
+### Index [GET]
+            
++ Request (application/json)
 
-+ Parameter
-   + profile_id (number, required) - Server ID dari profile yang mau bookmark dokter.
-   + id (number, required) - Server ID dari doctor yang mau di delete.
+    + Headers
 
-+ Request (multipart/form-data)
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+                
+    + Body
 
-   + Headers
-
-           X-MedicTrust-Token: 129j0asn0cn1
-           X-MedicTrust-Lang: en
-
-+ Response 200 (application_json)
-
-       {
-           "id": 3,
-           "resource_status": "deleted"
-       }
-
-### POST /profiles/{profile_id}/doctors/{id}/bookmark
-Bookmark / unbookmark dokter.
-
-+ Parameter
-   + profile_id (number, required) - Server ID dari profile yang mau bookmark dokter.
-   + id (number, required) - Server ID dari doctor yang mau di update.
-
-+ Request (multipart/form-data)
-
-   + Headers
-
-           X-MedicTrust-Token: 129j0asn0cn1
-           X-MedicTrust-Lang: en
-
-   + Body
-
-           {
-               "is_bookmark": true
-           }
-
+               { 
+                 "filter": { 
+                                "partner_name": "Doctor", 
+                                "partner_id": 1, 
+                                "name": "Location", 
+                                "address": "address", 
+                                "city": "Bandung", 
+                                "province": "Jawa Barat",
+                                "near": {
+                                    "query": { "distance": 10 },
+                                    "query": [40.71, -100.23],
+                                    "query": "Bandung"
+                            }
+               }  
+           
 + Response 200 (application/json)
-
-   + Attributes (Doctor)
-
+   
    + Body
+                
+                {
+                  "collection": [
+                    {
+                      "id": 50,
+                      "name": null,
+                      "address": null,
+                      "city": null,
+                      "province": null,
+                      "country": null,
+                      "latitude": null,
+                      "longitude": null,
+                      "online": true,
+                      "attachments": [],
+                      "created_at": "2016-12-20T19:15:03.000+00:00",
+                      "updated_at": "2016-12-20T19:15:03.000+00:00",
+                      "resource_status": "new",
+                      "partner_id": 1,
+                      "owner": null,
+                      "practiced_doctors": []
+                    },
+                    {
+                      "id": 51,
+                      "name": null,
+                      "address": "Another",
+                      "city": "Bandung",
+                      "province": "Jawa Barat",
+                      "country": "Indonesia",
+                      "latitude": null,
+                      "longitude": null,
+                      "online": false,
+                      "attachments": [],
+                      "created_at": "2016-12-21T15:29:10.000+00:00",
+                      "updated_at": "2016-12-21T15:29:10.000+00:00",
+                      "resource_status": "new",
+                      "partner_id": 1,
+                      "owner": null,
+                      "practiced_doctors": []
+                    }
+                  ],
+                  "page": 1,
+                  "per_page": 20,
+                  "total_pages": 1,
+                  "last_page": true
+                }
+                
 
-           {
+## Show [/patient/partners/locations/{id}]
+    Show partner location. 
+        
+### Show [GET]
+            
++ Request (application/json)
 
-           }
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "id": 50,
+                  "name": null,
+                  "address": null,
+                  "city": null,
+                  "province": null,
+                  "country": null,
+                  "latitude": null,
+                  "longitude": null,
+                  "online": true,
+                  "attachments": [],
+                  "created_at": "2016-12-20T19:15:03.000+00:00",
+                  "updated_at": "2016-12-20T19:15:03.000+00:00",
+                  "resource_status": "new",
+                  "partner_id": 1,
+                  "owner": null,
+                  "practiced_doctors": []
+                }
+
+
 
 # Group Patient Service Requests
     Endpoints API untuk service request objects, seperti consultation appointment, consultation dan emergency requests
