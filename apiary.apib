@@ -2047,6 +2047,702 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
                 
+
+# Group Patient Online Consultation
+
+## Show[/service_requests/consultations/online/{id}]
+
+### Show [GET]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "id": 15,
+                  "appointment_id": 53,
+                  "partner_id": 1,
+                  "service_id": 5,
+                  "profile_id": 1,
+                  "location_id": 51,
+                  "complain": "Complain",
+                  "vaccines": "vaccines",
+                  "allergies": "allergies",
+                  "notes": "notes",
+                  "state": "initiated",
+                  "type": "Online",
+                  "health_statuses": [],
+                  "resource_status": "updated",
+                  "started_at": null,
+                  "completed_at": null,
+                  "created_at": "2016-12-29T10:44:24.000+00:00",
+                  "updated_at": "2016-12-29T10:52:51.000+00:00",
+                  "conversation": null
+                }
+
+## Update [/patient/service_requests/consultations/online/{id}]
+        
+### Update [PUT]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+                
+    + Body
+
+                {
+                    "complain": "Complain",
+                    "vaccines": "vaccines",
+                    "allergies": "allergies",
+                    "notes": "notes"
+                }  
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "id": 15,
+                  "appointment_id": 53,
+                  "partner_id": 1,
+                  "service_id": 5,
+                  "profile_id": 1,
+                  "location_id": 51,
+                  "complain": "Complain",
+                  "vaccines": "vaccines",
+                  "allergies": "allergies",
+                  "notes": "notes",
+                  "state": "initiated",
+                  "type": "Online",
+                  "health_statuses": [],
+                  "resource_status": "updated",
+                  "started_at": null,
+                  "completed_at": null,
+                  "created_at": "2016-12-29T10:44:24.000+00:00",
+                  "updated_at": "2016-12-29T10:52:51.000+00:00",
+                  "conversation": null
+                }
+                
+
+## Complete [/patient/service_requests/consultations/online/{id}/complete]
+
+### Complete [PUT]
+    To start online consultation. The `completed_at` response params will be timestamped.
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "id": 15,
+                  "appointment_id": 53,
+                  "partner_id": 1,
+                  "service_id": 5,
+                  "profile_id": 1,
+                  "location_id": 51,
+                  "complain": "Complain",
+                  "vaccines": "vaccines",
+                  "allergies": "allergies",
+                  "notes": "notes",
+                  "state": "completed",
+                  "type": "Online",
+                  "health_statuses": [],
+                  "resource_status": "updated",
+                  "started_at": "2017-1-1T10:44:24.000+00:00",
+                  "completed_at": "2017-1-1T10:55:24.000+00:00",
+                  "created_at": "2016-12-29T10:44:24.000+00:00",
+                  "updated_at": "2016-12-29T10:52:51.000+00:00",
+                  "conversation": null
+                }
+
+# Group Patient Consultation Conversation
+
+## Show [/patient/service_requests/consultations/online/{consultation_id}/conversations/{id}]
+
+### Show Doctor Online Consultation Conversation [GET]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                { 
+                    "id": 1,
+                    "context_type": "Online",
+                    "context_id": 15,
+                    "subject": "Online Consultation",
+                    "type": "Conversation",
+                    "messages": [],
+                    "created_at": "2016-12-29T10:44:24.000+00:00",
+                    "updated_at": "2016-12-29T10:52:51.000+00:00"
+                }
+                
+
+## Update [/patient/service_requests/consultations/online/{consultation_id}/conversations/{id}]
+
+### Update [PUT]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+    
+    + Body
+
+               {
+                    "subject": "Subject"
+                } 
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                { 
+                    "id": 1,
+                    "context_type": "Online",
+                    "context_id": 15,
+                    "subject": "Subject",
+                    "type": "Conversation",
+                    "messages": [],
+                    "created_at": "2016-12-29T10:44:24.000+00:00",
+                    "updated_at": "2016-12-29T10:52:51.000+00:00"
+                }
+                
+
+## List Activities [/patient/service_requests/consultations/online/{consultation_id}/conversations/{id}/activities]
+
+### List Activities [GET]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                    "collection": [
+                            {
+                              "id": 1,
+                              "conversation_id": 1,
+                              "sender": {
+                                "sender": {
+                                  "id": 148,
+                                  "name": "Doctor",
+                                  "unread": true
+                                }
+                              },
+                              "recipients": [
+                                {
+                                  "id": 147,
+                                  "name": "Roger Federer",
+                                  "unread": true
+                                },
+                                {
+                                  "id": 148,
+                                  "name": "Doctor",
+                                  "unread": true
+                                }
+                              ],
+                              "body": "Message",
+                              "subject": "Online Consultation",
+                              "attachment": null,
+                              "type": "Message",
+                              "created_at": "2016-12-29T10:36:10.000+00:00",
+                              "updated_at": "2016-12-29T10:36:10.000+00:00"
+                            },
+                            {
+                              "id": 2,
+                              "conversation_id": 1,
+                              "sender": {
+                                "sender": {
+                                  "id": 148,
+                                  "name": "Doctor",
+                                  "unread": true
+                                }
+                              },
+                              "recipients": [
+                                {
+                                  "id": 147,
+                                  "name": "Roger Federer",
+                                  "unread": true
+                                },
+                                {
+                                  "id": 148,
+                                  "name": "Doctor",
+                                  "unread": true
+                                }
+                              ],
+                              "body": "is calling",
+                              "subject": "Online Consultation",
+                              "attachment": null,
+                              "type": "Call",
+                              "created_at": "2016-12-29T10:36:10.000+00:00",
+                              "updated_at": "2016-12-29T10:36:10.000+00:00"
+                            }
+                          ],
+                    "per_page": 10,
+                    "current_page": 1,
+                    "total_pages": 1,
+                    "last_page": true,
+                }
+                
+
+## List Messages [/patient/service_requests/consultations/online/{consultation_id}/conversations/{id}/messages]
+
+### List Messages [GET]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                    "collection": [
+                            {
+                              "id": 1,
+                              "conversation_id": 1,
+                              "sender": {
+                                "sender": {
+                                  "id": 148,
+                                  "name": "Doctor",
+                                  "unread": true
+                                }
+                              },
+                              "recipients": [
+                                {
+                                  "id": 147,
+                                  "name": "Roger Federer",
+                                  "unread": true
+                                },
+                                {
+                                  "id": 148,
+                                  "name": "Doctor",
+                                  "unread": true
+                                }
+                              ],
+                              "body": "Message",
+                              "subject": "Online Consultation",
+                              "attachment": null,
+                              "type": "Message",
+                              "created_at": "2016-12-29T10:36:10.000+00:00",
+                              "updated_at": "2016-12-29T10:36:10.000+00:00"
+                            }
+                          ],
+                    "per_page": 10,
+                    "current_page": 1,
+                    "total_pages": 1,
+                    "last_page": true,
+                }
+                
+
+## Create Message [/patient/service_requests/consultations/online/{consultation_id}/conversations/{conversation_id}/messages]
+
+### Create  [POST]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+                
+    + Body
+
+               {
+                    "reply": "message reply",
+                    "attachment": `<file:/image.png>`
+                } 
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "id": 1,
+                  "conversation_id": 1,
+                  "sender": {
+                    "sender": {
+                      "id": 148,
+                      "name": "Doctor",
+                      "unread": true
+                    }
+                  },
+                  "recipients": [
+                    {
+                      "id": 147,
+                      "name": "Roger Federer",
+                      "unread": true
+                    },
+                    {
+                      "id": 148,
+                      "name": "Doctor",
+                      "unread": true
+                    }
+                  ],
+                  "body": "Message",
+                  "subject": "Online Consultation",
+                  "attachment": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                  "type": "Message",
+                  "created_at": "2016-12-29T10:36:10.000+00:00",
+                  "updated_at": "2016-12-29T10:36:10.000+00:00"
+                }
+                
+
+## Read Message [/patient/service_requests/consultations/online/{consultation_id}/conversations/{conversation_id}/messages/{id}/read]
+
+### Read Message Online Consultation Conversation [PUT]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "id": 1,
+                  "conversation_id": 1,
+                  "sender": {
+                    "sender": {
+                      "id": 148,
+                      "name": "Doctor",
+                      "unread": false
+                    }
+                  },
+                  "recipients": [
+                    {
+                      "id": 147,
+                      "name": "Roger Federer",
+                      "unread": true
+                    },
+                    {
+                      "id": 148,
+                      "name": "Doctor",
+                      "unread": false
+                    }
+                  ],
+                  "body": "Message",
+                  "subject": "Online Consultation",
+                  "attachment": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                  "type": "Message",
+                  "created_at": "2016-12-29T10:36:10.000+00:00",
+                  "updated_at": "2016-12-29T10:36:10.000+00:00"
+                }
+                
+
+## List Calls [/patient/service_requests/consultations/online/{consultation_id}/conversations/{conversation_id}/calls]
+
+### List Calls [GET]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                    "collection": [
+                            {
+                              "id": 1,
+                              "conversation_id": 1,
+                              "sender": {
+                                "sender": {
+                                  "id": 148,
+                                  "name": "Doctor",
+                                  "unread": true
+                                }
+                              },
+                              "recipients": [
+                                {
+                                  "id": 147,
+                                  "name": "Roger Federer",
+                                  "unread": true
+                                },
+                                {
+                                  "id": 148,
+                                  "name": "Doctor",
+                                  "unread": true
+                                }
+                              ],
+                              "body": "Call",
+                              "subject": "Online Consultation",
+                              "attachment": null,
+                              "type": "Message",
+                              "created_at": "2016-12-29T10:36:10.000+00:00",
+                              "updated_at": "2016-12-29T10:36:10.000+00:00"
+                            }
+                          ],
+                    "per_page": 10,
+                    "current_page": 1,
+                    "total_pages": 1,
+                    "last_page": true,
+                }
+                
+
+## Create Call [/patient/service_requests/consultations/online/{consultation_id}/conversations/{conversation_id}/calls]
+
+### Calss Message Online Consultation Conversation [POST]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+                
+    + Body
+
+               {
+                    "reply": "message reply",
+                } 
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "id": 1,
+                  "conversation_id": 1,
+                  "sender": {
+                    "sender": {
+                      "id": 148,
+                      "name": "Doctor",
+                      "unread": true
+                    }
+                  },
+                  "recipients": [
+                    {
+                      "id": 147,
+                      "name": "Roger Federer",
+                      "unread": true
+                    },
+                    {
+                      "id": 148,
+                      "name": "Doctor",
+                      "unread": true
+                    }
+                  ],
+                  "body": "Message",
+                  "subject": "Online Consultation",
+                  "attachment": null,
+                  "type": "Message",
+                  "created_at": "2016-12-29T10:36:10.000+00:00",
+                  "updated_at": "2016-12-29T10:36:10.000+00:00"
+                }
+                
+
+## Receive Call [/patient/service_requests/consultations/online/{consultation_id}/conversations/{conversation_id}/messages/{id}/receive]
+
+### Receive Call Online Consultation Conversation [PUT]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "id": 1,
+                  "conversation_id": 1,
+                  "sender": {
+                    "sender": {
+                      "id": 148,
+                      "name": "Doctor",
+                      "unread": false
+                    }
+                  },
+                  "recipients": [
+                    {
+                      "id": 147,
+                      "name": "Roger Federer",
+                      "unread": true
+                    },
+                    {
+                      "id": 148,
+                      "name": "Doctor",
+                      "unread": false
+                    }
+                  ],
+                  "body": "Call",
+                  "subject": "Online Consultation",
+                  "attachment": "http://www.mediresource.com/HealthNews/images/English/LT1_14.jpg",
+                  "type": "Message",
+                  "created_at": "2016-12-29T10:36:10.000+00:00",
+                  "updated_at": "2016-12-29T10:36:10.000+00:00"
+                }
+
+
+# Group Patient Offline Consultation
+
+## Show [patient/service_requests/consultations/offline/{id}]
+
+### Show [GET]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "id": 15,
+                  "appointment_id": 53,
+                  "partner_id": 1,
+                  "service_id": 5,
+                  "profile_id": 1,
+                  "location_id": 51,
+                  "complain": "Complain",
+                  "vaccines": "vaccines",
+                  "allergies": "allergies",
+                  "notes": "notes",
+                  "state": "initiated",
+                  "type": "Offline",
+                  "health_statuses": [],
+                  "resource_status": "updated",
+                  "started_at": null,
+                  "completed_at": null,
+                  "created_at": "2016-12-29T10:44:24.000+00:00",
+                  "updated_at": "2016-12-29T10:52:51.000+00:00",
+                }
+                
+
+## Update [/patient/service_requests/consultations/offline/{id}]
+
+### Update [PUT]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+                
+    + Body
+
+               {
+                    "complain": "Complain",
+                    "vaccines": "vaccines",
+                    "allergies": "allergies",
+                    "notes": "notes"
+                }  
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "id": 15,
+                  "appointment_id": 53,
+                  "partner_id": 1,
+                  "service_id": 5,
+                  "profile_id": 1,
+                  "location_id": 51,
+                  "complain": "Complain",
+                  "vaccines": "vaccines",
+                  "allergies": "allergies",
+                  "notes": "notes",
+                  "state": "initiated",
+                  "type": "Offline",
+                  "health_statuses": [],
+                  "resource_status": "updated",
+                  "started_at": null,
+                  "completed_at": null,
+                  "created_at": "2016-12-29T10:44:24.000+00:00",
+                  "updated_at": "2016-12-29T10:52:51.000+00:00",
+                }
+
+## Complete [patient/service_requests/consultations/offline/{id}/complete]
+
+### Complete [PUT]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "id": 15,
+                  "appointment_id": 53,
+                  "partner_id": 1,
+                  "service_id": 5,
+                  "profile_id": 1,
+                  "location_id": 51,
+                  "complain": "Complain",
+                  "vaccines": "vaccines",
+                  "allergies": "allergies",
+                  "notes": "notes",
+                  "state": "completed",
+                  "type": "Offline",
+                  "health_statuses": [],
+                  "resource_status": "updated",
+                  "started_at": "2017-1-1T10:44:24.000+00:00",
+                  "completed_at": "2017-1-1T10:59:24.000+00:00",
+                  "created_at": "2016-12-29T10:44:24.000+00:00",
+                  "updated_at": "2016-12-29T10:52:51.000+00:00",
+                }
+                
+                
 /* end of patient group */
 
 # Group Synchronization Doctor
@@ -3958,9 +4654,9 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                   "last_page": true
                 }
 
-## Create Doctor Location [/partners/doctor/locations]
+## Create [/partners/doctor/locations]
 
-### Create partner doctor location [POST]
+### Create [POST]
             
 + Request (application/json)
 
@@ -4026,9 +4722,9 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Update Doctor Location [/partners/doctor/locations/{id}]
+## Update [/partners/doctor/locations/{id}]
 
-### Update partner doctor location [PUT]
+### Update [PUT]
             
 + Request (application/json)
 
@@ -4106,9 +4802,9 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 
 
 
-## Delete Doctor Location [/partners/doctor/locations/{id}]
+## Delete [/partners/doctor/locations/{id}]
 
-### Delete partner doctor location [DELETE]
+### Delete [DELETE]
             
 + Request (application/json)
 
@@ -4171,9 +4867,11 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Create Doctor Location Attachment [/partners/doctor/locations/:location_id/attachments]
+# Group Partner Doctor Location Attachment
 
-### Create partner doctor location attachment [POST]
+## Create [/partners/doctor/locations/:location_id/attachments]
+
+### Create [POST]
             
 + Request (application/json)
 
@@ -4202,9 +4900,9 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                    "attachment_type": "image"
                 }
 
-## Delete Doctor Location Attachment [/partners/doctor/locations/:location_id/attachments/{id}]
+## Delete [/partners/doctor/locations/:location_id/attachments/{id}]
 
-### Delete partner doctor location attachment [DELETE]
+### Delete [DELETE]
             
 + Request (application/json)
 
@@ -4230,9 +4928,9 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                     
 
-## Batch Doctor Location Attachment [/partners/doctor/locations/:location_id/attachments/batch]
+## Batch [/partners/doctor/locations/:location_id/attachments/batch]
 
-### Batch partner doctor location attachment [POST]
+### Batch [POST]
             
 + Request (application/json)
 
@@ -4281,11 +4979,11 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
 
 # Group Partner Doctor Practice Location 
 
-## Create Doctor Practice Location [/partners/doctor/locations/practices]
+## Create [/partners/doctor/locations/practices]
   Create doctor practice location.
   Perlu diperhatikan untuk parameter `day` di `schedules_attributes` mengikuti standar value dari Date::DAYNAMES di ruby. Hari dimulai dari hari minggu dengan index 0 dan sabtu dengan index 6. Dan untuk params `day_name` memakai bahasa inggris
 
-### Create partner doctor practice location [POST]
+### Create [POST]
             
 + Request (application/json)
 
@@ -4331,11 +5029,11 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Update Doctor Practice Location [/partners/doctor/locations/practices/{id}]
+## Update [/partners/doctor/locations/practices/{id}]
   Update doctor practice location.
   Perlu diperhatikan untuk parameter `day` di `schedules_attributes` mengikuti standar value dari Date::DAYNAMES di ruby. Hari dimulai dari hari minggu dengan index 0 dan sabtu dengan index 6. Dan untuk params `day_name` memakai bahasa inggris
 
-### Update partner doctor practice location [PUT]
+### Update [PUT]
             
 + Request (application/json)
 
@@ -4379,9 +5077,9 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                   ]
                 }
 
-## Delete Doctor Practice Location [/partners/doctor/locations/practices/{id}]
+## Delete [/partners/doctor/locations/practices/{id}]
   
-### Delete partner doctor practice location [DELETE]
+### Delete [DELETE]
             
 + Request (application/json)
 
@@ -4408,11 +5106,11 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
 
 # Group Partner Doctor Practice Location Schedules
 
-## Create Partner Doctor Practice Location Schedules [/partners/doctor/locations/practices/{practice_id}/schedules]
+## Create [/partners/doctor/locations/practices/{practice_id}/schedules]
   Create partner doctor practice location schedule.
   Perlu diperhatikan untuk parameter `day` di `schedules_attributes` mengikuti standar value dari Date::DAYNAMES di ruby. Hari dimulai dari hari minggu dengan index 0 dan sabtu dengan index 6. Dan untuk params `day_name` memakai bahasa inggris
 
-### Create partner doctor practice location [POST]
+### Create[POST]
             
 + Request (application/json)
 
@@ -4448,7 +5146,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Update Partner Doctor Practice Location Schedules [/partners/doctor/locations/practices/{practice_id}/schedules/{id}]
+## Update [/partners/doctor/locations/practices/{practice_id}/schedules/{id}]
   Update partner doctor practice location schedule.
   Perlu diperhatikan untuk parameter `day` di `schedules_attributes` mengikuti standar value dari Date::DAYNAMES di ruby. Hari dimulai dari hari minggu dengan index 0 dan sabtu dengan index 6. Dan untuk params `day_name` memakai bahasa inggris
 
@@ -4488,11 +5186,11 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Batch Partner Doctor Practice Location Schedules [/partners/doctor/locations/practices/{practice_id}/schedules/batch]
+## Batch [/partners/doctor/locations/practices/{practice_id}/schedules/batch]
   Btach partner doctor practice location schedule.
   Perlu diperhatikan untuk parameter `day` di `schedules_attributes` mengikuti standar value dari Date::DAYNAMES di ruby. Hari dimulai dari hari minggu dengan index 0 dan sabtu dengan index 6. Dan untuk params `day_name` memakai bahasa inggris
 
-### Batch partner doctor practice location [POST]
+### Batch [POST]
             
 + Request (application/json)
 
@@ -4551,9 +5249,9 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                     ]
                 }
 
-## Delete Partner Doctor Practice Location Schedules [/partners/doctor/locations/practices/{practice_id}/schedules/{id}]
+## Delete [/partners/doctor/locations/practices/{practice_id}/schedules/{id}]
   
-### Delete partner doctor practice location [DELETE]
+### Delete [DELETE]
             
 + Request (application/json)
 
@@ -4584,9 +5282,9 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
 
 # Group Partner Doctor Requested Service Online Consultation Appointments
 
-## Show Doctor Online Consultation Appointment [/partners/doctor/requested_services/consultation_appointments/online/{id}]
+## Show [/partners/doctor/requested_services/consultation_appointments/online/{id}]
 
-### Show Doctor Online Consultation Appointment [GET]
+### Show [GET]
             
 + Request (application/json)
 
@@ -4621,10 +5319,10 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                   "initial_appointment_id": null
                 }
 
-## Reschedule Doctor Online Consultation Appointment [/partners/doctor/requested_services/consultation_appointments/online/{id}/reschedule]
+## Reschedule [/partners/doctor/requested_services/consultation_appointments/online/{id}/reschedule]
         Reschedule appointment. Rescheduling proses berarti membuat schedule baru (berarti IDnya berbeda). Params `initial_appointment` merupakan ID appointment yang di reschedule
         
-### Reschedule Doctor Online Consultation Appointment [PUT]
+### Reschedule [PUT]
             
 + Request (application/json)
 
@@ -4667,10 +5365,10 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Take Place Doctor Online Consultation Appointment [/partners/doctor/requested_services/consultation_appointments/online/{id}/take_place]
+## Take Place[/partners/doctor/requested_services/consultation_appointments/online/{id}/take_place]
         Set consultation appointment online object state ke `on_going`. online consultation dan conversation object digenerate ketika event `initiate` di patient API endpoint.
         
-### Take Place Doctor Online Consultation Appointment [PUT]
+### Take Place [PUT]
             
 + Request (application/json)
 
@@ -4737,9 +5435,9 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
 
 # Group Partner Doctor Requested Service Offline Consultation Appointments
 
-## Show Doctor Offline Consultation Appointment [/partners/doctor/requested_services/consultation_appointments/offline/{id}]
+## Show [/partners/doctor/requested_services/consultation_appointments/offline/{id}]
 
-### Show Doctor Offline Consultation Appointment [GET]
+### Show [GET]
             
 + Request (application/json)
 
@@ -4775,10 +5473,10 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                         
 
-## Reschedule Doctor Offline Consultation Appointment [/partners/doctor/requested_services/consultation_appointments/offline/{id}/reschedule]
+## Reschedule [/partners/doctor/requested_services/consultation_appointments/offline/{id}/reschedule]
         Reschedule appointment. Rescheduling proses berarti membuat schedule baru (berarti IDnya berbeda). Params `initial_appointment` merupakan ID appointment yang di reschedule
         
-### Reschedule Doctor Offline Consultation Appointment [PUT]
+### Reschedule [PUT]
             
 + Request (application/json)
 
@@ -4820,10 +5518,10 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                   "initial_appointment_id": 58
                 }
 
-## Take Place Doctor Offline Consultation Appointment [/partners/doctor/requested_services/consultation_appointments/offline/{id}/take_place]
+## Take Place [/partners/doctor/requested_services/consultation_appointments/offline/{id}/take_place]
         Set consultation appointment online object state ke `on_going`. offline consultation object digenerate ketika event `initiate` di patient API endpoint.
         
-### Take Place Doctor Offline Consultation Appointment [PUT]
+### Take Place [PUT]
             
 + Request (application/json)
 
@@ -4881,9 +5579,9 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
 
 # Group Partner Doctor Service Online Consultation
 
-## Show Doctor Online Consultation [/partners/doctor/requested_services/consultation/online/{id}]
+## Show [/partners/doctor/requested_services/consultation/online/{id}]
 
-### Show Doctor Online Consultation [GET]
+### Show [GET]
             
 + Request (application/json)
 
@@ -4919,9 +5617,9 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Update Doctor Online Consultation [/partners/doctor/requested_services/consultation/online/{id}]
+## Update [/partners/doctor/requested_services/consultation/online/{id}]
 
-### Update Doctor Online Consultation [PUT]
+### Update [PUT]
             
 + Request (application/json)
 
@@ -4966,9 +5664,9 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
 
                 
-## Start Doctor Online Consultation [/partners/doctor/requested_services/consultation/online/{id}/start]
+## Start [/partners/doctor/requested_services/consultation/online/{id}/start]
 
-### Start Doctor Online Consultation [PUT]
+### Start [PUT]
     To start online consultation. The `started_at` response params will be timestamped.
             
 + Request (application/json)
@@ -5005,9 +5703,9 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Complete Doctor Online Consultation [/partners/doctor/requested_services/consultation/online/{id}/complete]
+## Complete [/partners/doctor/requested_services/consultation/online/{id}/complete]
 
-### Complete Doctor Online Consultation [PUT]
+### Complete [PUT]
     To start online consultation. The `completed_at` response params will be timestamped.
             
 + Request (application/json)
@@ -5043,9 +5741,9 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                   "conversation": null
                 }
 
-## Show Doctor Online Consultation Conversation [/partners/doctor/requested_services/consultation/online/{online_id}/conversations/{id}]
+## Show [/partners/doctor/requested_services/consultation/online/{online_id}/conversations/{id}]
 
-### Show Doctor Online Consultation Conversation [GET]
+### Show [GET]
             
 + Request (application/json)
 
@@ -5070,9 +5768,9 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Update Doctor Online Consultation Conversation [/partners/doctor/requested_services/consultation/online/{online_id}/conversations/{id}]
+## Update [/partners/doctor/requested_services/consultation/online/{online_id}/conversations/{id}]
 
-### Update Doctor Online Consultation Conversation [PUT]
+### Update [PUT]
             
 + Request (application/json)
 
@@ -5101,11 +5799,13 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                     "created_at": "2016-12-29T10:44:24.000+00:00",
                     "updated_at": "2016-12-29T10:52:51.000+00:00"
                 }
-                
+ 
 
-## List Activities Doctor Online Consultation Conversation [/partners/doctor/requested_services/consultation/online/{online_id}/conversations/{id}/activities]
+# Group Partner Doctor Online Consultation Conversation               
 
-### List Activities Online Consultation Conversation [GET]
+## List Activities [/partners/doctor/requested_services/consultation/online/{online_id}/conversations/{id}/activities]
+
+### List Activities [GET]
             
 + Request (application/json)
 
@@ -5184,11 +5884,12 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                     "total_pages": 1,
                     "last_page": true,
                 }
-                
 
-## List Messages Doctor Online Consultation Conversation [/partners/doctor/requested_services/consultation/online/{online_id}/conversations/{conversation_id}/messages]
+# Group Partner Doctor Online Consultation Conversation Messages                
 
-### List Messages Online Consultation Conversation [GET]
+## List Messages [/partners/doctor/requested_services/consultation/online/{online_id}/conversations/{conversation_id}/messages]
+
+### List Messages [GET]
             
 + Request (application/json)
 
@@ -5240,9 +5941,10 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Create Message Doctor Online Consultation Conversation [/partners/doctor/requested_services/consultation/online/{online_id}/conversations/{conversation_id}/messages]
 
-### Create Message Online Consultation Conversation [POST]
+## Create Message [/partners/doctor/requested_services/consultation/online/{online_id}/conversations/{conversation_id}/messages]
+
+### Create [POST]
     Selain untuk membuat message, endpoint ini juga untuk trigger start consultation object event
             
 + Request (application/json)
@@ -5294,9 +5996,9 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Read Message Doctor Online Consultation Conversation [/partners/doctor/requested_services/consultation/online/{online_id}/conversations/{conversation_id}/messages{id}]
+## Read Message [/partners/doctor/requested_services/consultation/online/{online_id}/conversations/{conversation_id}/messages/{id}/read]
 
-### Read Message Online Consultation Conversation [PUT]
+### Read Message [PUT]
             
 + Request (application/json)
 
@@ -5340,9 +6042,11 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## List Calls Doctor Online Consultation Conversation [/partners/doctor/requested_services/consultation/online/{online_id}/conversations/{conversation_id}/calls]
+# Group Partner Doctor Online Consultation Conversation Call      
 
-### List Calls Online Consultation Conversation [GET]
+## List Calls [/partners/doctor/requested_services/consultation/online/{online_id}/conversations/{conversation_id}/calls]
+
+### List Calls [GET]
             
 + Request (application/json)
 
@@ -5394,7 +6098,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Create Call Doctor Online Consultation Conversation [/partners/doctor/requested_services/consultation/online/{online_id}/conversations/{conversation_id}/calls]
+## Create [/partners/doctor/requested_services/consultation/online/{online_id}/conversations/{conversation_id}/calls]
 
 ### Calss Message Online Consultation Conversation [POST]
     Selain untuk membuat call, endpoint ini juga untuk trigger start consultation object event
@@ -5447,9 +6151,9 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Receive Call Doctor Online Consultation Conversation [/partners/doctor/requested_services/consultation/online/{online_id}/conversations/{conversation_id}/messages{id}]
+## Receive Call [/partners/doctor/requested_services/consultation/online/{online_id}/conversations/{conversation_id}/messages/{id}/read]
 
-### Receive Call Online Consultation Conversation [PUT]
+### Receive Call [PUT]
             
 + Request (application/json)
 
@@ -5495,7 +6199,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
 
 # Group Partner Doctor Service Offline Consultation
 
-## Show Doctor Offline Consultation [/partners/doctor/requested_services/consultation/offline/{id}]
+## Show [/partners/doctor/requested_services/consultation/offline/{id}]
 
 ### Show Doctor Offline Consultation [GET]
             
@@ -5532,9 +6236,9 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Update Doctor Offline Consultation [/partners/doctor/requested_services/consultation/offline/{id}]
+## Update [/partners/doctor/requested_services/consultation/offline/{id}]
 
-### Update Doctor Offline Consultation [PUT]
+### Update [PUT]
             
 + Request (application/json)
 
@@ -5578,9 +6282,9 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Start Doctor Offline Consultation [/partners/doctor/requested_services/consultation/offline/{id}/start]
+## Start [/partners/doctor/requested_services/consultation/offline/{id}/start]
 
-### Start Doctor Offline Consultation [PUT]
+### Start [PUT]
             
 + Request (application/json)
 
@@ -5615,9 +6319,9 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Complete Doctor Offline Consultation [/partners/doctor/requested_services/consultation/offline/{id}/complete]
+## Complete [/partners/doctor/requested_services/consultation/offline/{id}/complete]
 
-### Complete Doctor Offline Consultation [PUT]
+### Complete [PUT]
             
 + Request (application/json)
 
@@ -8417,7 +9121,7 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
                 }
                 
 
-## Create Clinic Location [/partners/clinic/locations]
+## Create [/partners/clinic/locations]
 
 ### Create partner clinic location [POST]
             
@@ -8485,9 +9189,9 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
                 }
                 
 
-## Update Clinic Location [/partners/clinic/locations/{id}]
+## Update [/partners/clinic/locations/{id}]
 
-### Update partner clinic location [PUT]
+### Update [PUT]
             
 + Request (application/json)
 
@@ -8564,9 +9268,9 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
                 }
                 
 
-## Delete Clinic Location [/partners/clinic/locations/{id}]
+## Delete [/partners/clinic/locations/{id}]
 
-### Delete partner clinic location [DELETE]
+### Delete [DELETE]
             
 + Request (application/json)
 
@@ -8629,9 +9333,11 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
                 }
                 
 
-## Create Clinic Location Attachment [/partners/clinic/locations/:location_id/attachments]
+# Group Partner Clinic Location Attachment
 
-### Create partner clinic location attachment [POST]
+## Create [/partners/clinic/locations/:location_id/attachments]
+
+### Create [POST]
             
 + Request (application/json)
 
@@ -8660,9 +9366,9 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
                    "attachment_type": "image"
                 }
 
-## Delete Clinic Location Attachment [/partners/clinic/locations/:location_id/attachments/{id}]
+## Delete [/partners/clinic/locations/:location_id/attachments/{id}]
 
-### Delete partner clinic location attachment [DELETE]
+### Delete [DELETE]
             
 + Request (application/json)
 
@@ -8688,9 +9394,9 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
                 }
                     
 
-## Batch Clinic Location Attachment [/partners/clinic/locations/:location_id/attachments/batch]
+## Batch [/partners/clinic/locations/:location_id/attachments/batch]
 
-### Batch partner clinic location attachment [POST]
+### Batch [POST]
             
 + Request (application/json)
 
@@ -8738,11 +9444,11 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
                 
 # Group Partner Clinic Practice Location 
 
-## Create Clinic Practice Location [/partners/clinic/locations/practices]
+## Create [/partners/clinic/locations/practices]
   Create clinic practice location.
   Perlu diperhatikan untuk parameter `day` di `schedules_attributes` mengikuti standar value dari Date::DAYNAMES di ruby. Hari dimulai dari hari minggu dengan index 0 dan sabtu dengan index 6. Dan untuk params `day_name` memakai bahasa inggris
 
-### Create partner clinic practice location [POST]
+### Create [POST]
             
 + Request (application/json)
 
@@ -8788,11 +9494,11 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
                 }
                 
 
-## Update Clinic Practice Location [/partners/clinic/locations/practices/{id}]
+## Update [/partners/clinic/locations/practices/{id}]
   Update clinic practice location.
   Perlu diperhatikan untuk parameter `day` di `schedules_attributes` mengikuti standar value dari Date::DAYNAMES di ruby. Hari dimulai dari hari minggu dengan index 0 dan sabtu dengan index 6. Dan untuk params `day_name` memakai bahasa inggris
 
-### Update partner clinic practice location [PUT]
+### Update [PUT]
             
 + Request (application/json)
 
@@ -8836,9 +9542,9 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
                   ]
                 }
 
-## Delete Clinic Practice Location [/partners/clinic/locations/practices/{id}]
+## Delete [/partners/clinic/locations/practices/{id}]
   
-### Delete partner clinic practice location [DELETE]
+### Delete [DELETE]
             
 + Request (application/json)
 
@@ -8865,11 +9571,11 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
 
 # Group Partner Clinic Practice Location Schedules
 
-## Create Partner Clinic Practice Location Schedules [/partners/clinic/locations/practices/{practice_id}/schedules]
+## Create [/partners/clinic/locations/practices/{practice_id}/schedules]
   Create partner clinic practice location schedule.
   Perlu diperhatikan untuk parameter `day` di `schedules_attributes` mengikuti standar value dari Date::DAYNAMES di ruby. Hari dimulai dari hari minggu dengan index 0 dan sabtu dengan index 6. Dan untuk params `day_name` memakai bahasa inggris
 
-### Create partner clinic practice location [POST]
+### Create [POST]
             
 + Request (application/json)
 
@@ -8905,7 +9611,7 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
                 }
                 
 
-## Update Partner clinic Practice Location Schedules [/partners/clinic/locations/practices/{practice_id}/schedules/{id}]
+## Update [/partners/clinic/locations/practices/{practice_id}/schedules/{id}]
   Update partner clinic practice location schedule.
   Perlu diperhatikan untuk parameter `day` di `schedules_attributes` mengikuti standar value dari Date::DAYNAMES di ruby. Hari dimulai dari hari minggu dengan index 0 dan sabtu dengan index 6. Dan untuk params `day_name` memakai bahasa inggris
 
@@ -8945,7 +9651,7 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
                 }
                 
 
-## Batch Partner Clinic Practice Location Schedules [/partners/clinic/locations/practices/{practice_id}/schedules/batch]
+## Batch [/partners/clinic/locations/practices/{practice_id}/schedules/batch]
   Btach partner clinic practice location schedule.
   Perlu diperhatikan untuk parameter `day` di `schedules_attributes` mengikuti standar value dari Date::DAYNAMES di ruby. Hari dimulai dari hari minggu dengan index 0 dan sabtu dengan index 6. Dan untuk params `day_name` memakai bahasa inggris
 
@@ -9008,9 +9714,9 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
                     ]
                 }
 
-## Delete Partner Clinic Practice Location Schedules [/partners/clinic/locations/practices/{practice_id}/schedules/{id}]
+## Delete [/partners/clinic/locations/practices/{practice_id}/schedules/{id}]
   
-### Delete partner clinic practice location [DELETE]
+### Delete [DELETE]
             
 + Request (application/json)
 
@@ -9039,7 +9745,7 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
 
 # Group Clinic Practicioners
 
-## List Clinic Practicioners [/partners/clinic/practicioners]
+## List [/partners/clinic/practicioners]
 
 ### List clinic practicioners [GET]
             
@@ -9101,7 +9807,7 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
                 }
                 
 
-## Show Clinic Practicioner [/partners/clinic/practicioners/{id}]
+## Show [/partners/clinic/practicioners/{id}]
 
 ### Show clinic practicioner [GET]
             
@@ -9160,9 +9866,9 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
 
 # Group Partner Clinic Requested Service Offline Consultation Appointments
 
-## Show Clinic Offline Consultation Appointment [/partners/clinic/requested_services/consultation_appointments/offline/{id}]
+## Show [/partners/clinic/requested_services/consultation_appointments/offline/{id}]
 
-### Show Clinic Offline Consultation Appointment [GET]
+### Show [GET]
             
 + Request (application/json)
 
@@ -9198,7 +9904,7 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
                 }
                         
 
-## Reschedule Clinic Offline Consultation Appointment [/partners/clinic/requested_services/consultation_appointments/offline/{id}/reschedule]
+## Reschedule [/partners/clinic/requested_services/consultation_appointments/offline/{id}/reschedule]
         Reschedule appointment. Rescheduling proses berarti membuat schedule baru (berarti IDnya berbeda). Params `initial_appointment` merupakan ID appointment yang di reschedule
         
 ### Reschedule Clinic Offline Consultation Appointment [PUT]
@@ -9243,7 +9949,7 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
                   "initial_appointment_id": 58
                 }
 
-## Take Place Clinic Offline Consultation Appointment [/partners/clinic/requested_services/consultation_appointments/offline/{id}/take_place]
+## Take Place [/partners/clinic/requested_services/consultation_appointments/offline/{id}/take_place]
         Set consultation appointment online object state ke `on_going`. offline consultation object digenerate ketika event `initiate` di patient API endpoint.
         
 ### Take Place Clinic Offline Consultation Appointment [PUT]
@@ -9304,9 +10010,9 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
 
 # Group Partner Clinic Service Offline Consultation
 
-## Show Clinic Offline Consultation [/partners/clinic/requested_services/consultation/offline/{id}]
+## Show [/partners/clinic/requested_services/consultation/offline/{id}]
 
-### Show Clinic Offline Consultation [GET]
+### Show [GET]
             
 + Request (application/json)
 
@@ -9341,9 +10047,9 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
                 }
                 
 
-## Update Clinic Offline Consultation [/partners/clinic/requested_services/consultation/offline/{id}]
+## Update [/partners/clinic/requested_services/consultation/offline/{id}]
 
-### Update Clinic Offline Consultation [PUT]
+### Update [PUT]
             
 + Request (application/json)
 
@@ -9387,9 +10093,9 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
                 }
                 
 
-## Start Clinic Offline Consultation [/partners/clinic/requested_services/consultation/offline/{id}/start]
+## Start [/partners/clinic/requested_services/consultation/offline/{id}/start]
 
-### Start Clinic Offline Consultation [PUT]
+### Start [PUT]
             
 + Request (application/json)
 
@@ -9424,9 +10130,9 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
                 }
                 
 
-## Complete Clinic Offline Consultation [/partners/clinic/requested_services/consultation/offline/{id}/complete]
+## Complete [/partners/clinic/requested_services/consultation/offline/{id}/complete]
 
-### Complete Clinic Offline Consultation [PUT]
+### Complete [PUT]
             
 + Request (application/json)
 
