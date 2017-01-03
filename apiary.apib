@@ -1,7 +1,7 @@
 FORMAT: 1A
 HOST: https://medic-trust.com/api/v8
 
-# Medictrust API Docs (Versi 8)
+# Medictrust API Docs Versi 8 (Under Development)
 
 Improvement dari API Versi 7 terutama pada proses sinkronisasi
 New Clinic and Doctor API
@@ -10,8 +10,10 @@ New Consultation API
 New Payment API
 
 # Group Patient
+    Endpoints API yang digunakan untuk patient app, meliputi sync, appointment, dan consultation. 
 
 # Group Synchronization Patient
+    Endpoints API untuk proses sinkronisasi
 
 ## Status [/patient/synchronize/status]
 
@@ -958,6 +960,99 @@ New Payment API
                   "updated_at": "2016-12-29T11:05:17.000+00:00",
                   "created_at": "2016-12-29T11:04:41.000+00:00",
                   "initial_appointment_id": null
+                }
+              ],
+              "per_page": 50,
+              "current_page": 1,
+              "total_pages": 1,
+              "last_page": true
+            }
+            
+## Online Consultation [/patient/synchronize/online_consultations]
+
+### Online Consultation [POST]
+
++ Request (application/json)
+
+   + Headers
+
+            X-MedicTrust-Token: 129j0asn0cn1
+            X-MedicTrust-Lang: en
+
+   + Attributes (SyncResourceRequest)
+
++ Response 200 (application/json)
+       
+   + Body
+
+            {
+              "collection": [
+                {
+                  "id": 1,
+                  "appointment_id": 20,
+                  "partner_id": 1,
+                  "service_id": 5,
+                  "profile_id": 1,
+                  "location_id": 50,
+                  "complain": null,
+                  "allergies": null,
+                  "vaccines": null,
+                  "notes": null,
+                  "state": "initiated",
+                  "type": "Online",
+                  "health_statuses": [],
+                  "resource_status": "updated",
+                  "started_at": null,
+                  "completed_at": null,
+                  "created_at": "2016-12-21T15:18:21.000+00:00",
+                  "updated_at": "2016-12-29T10:31:41.000+00:00",
+                  "conversation": null
+                }
+              ],
+              "per_page": 50,
+              "current_page": 1,
+              "total_pages": 1,
+              "last_page": true
+            }
+            
+## Offline Consultation [/patient/synchronize/offline_consultations]
+
+### Offline Consultation [POST]
+
++ Request (application/json)
+
+   + Headers
+
+            X-MedicTrust-Token: 129j0asn0cn1
+            X-MedicTrust-Lang: en
+
+   + Attributes (SyncResourceRequest)
+
++ Response 200 (application/json)
+       
+   + Body
+
+            {
+              "collection": [
+                 {
+                  "id": 16,
+                  "appointment_id": 60,
+                  "partner_id": 1,
+                  "service_id": 4,
+                  "profile_id": 1,
+                  "location_id": 51,
+                  "complain": null,
+                  "allergies": null,
+                  "vaccines": null,
+                  "notes": null,
+                  "state": "started",
+                  "type": "Offline",
+                  "health_statuses": [],
+                  "resource_status": "updated",
+                  "started_at": "2016-12-29T11:08:25.000+00:00",
+                  "completed_at": null,
+                  "created_at": "2016-12-29T11:07:26.000+00:00",
+                  "updated_at": "2016-12-29T11:08:25.000+00:00"
                 }
               ],
               "per_page": 50,
