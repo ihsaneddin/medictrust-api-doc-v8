@@ -5579,7 +5579,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
 
 # Group Partner Doctor Service Online Consultation
 
-## Show [/partners/doctor/requested_services/consultation/online/{id}]
+## Show [/partners/doctor/requested_services/consultations/online/{id}]
 
 ### Show [GET]
             
@@ -5617,7 +5617,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Update [/partners/doctor/requested_services/consultation/online/{id}]
+## Update [/partners/doctor/requested_services/consultations/online/{id}]
 
 ### Update [PUT]
             
@@ -5664,7 +5664,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
 
                 
-## Start [/partners/doctor/requested_services/consultation/online/{id}/start]
+## Start [/partners/doctor/requested_services/consultations/online/{id}/start]
 
 ### Start [PUT]
     To start online consultation. The `started_at` response params will be timestamped.
@@ -5703,7 +5703,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Complete [/partners/doctor/requested_services/consultation/online/{id}/complete]
+## Complete [/partners/doctor/requested_services/consultations/online/{id}/complete]
 
 ### Complete [PUT]
     To start online consultation. The `completed_at` response params will be timestamped.
@@ -5741,7 +5741,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                   "conversation": null
                 }
 
-## Show [/partners/doctor/requested_services/consultation/online/{online_id}/conversations/{id}]
+## Show [/partners/doctor/requested_services/consultations/online/{online_id}/conversations/{id}]
 
 ### Show [GET]
             
@@ -5768,7 +5768,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Update [/partners/doctor/requested_services/consultation/online/{online_id}/conversations/{id}]
+## Update [/partners/doctor/requested_services/consultations/online/{online_id}/conversations/{id}]
 
 ### Update [PUT]
             
@@ -5803,7 +5803,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
 
 # Group Partner Doctor Online Consultation Conversation               
 
-## List Activities [/partners/doctor/requested_services/consultation/online/{online_id}/conversations/{id}/activities]
+## List Activities [/partners/doctor/requested_services/consultations/online/{online_id}/conversations/{id}/activities]
 
 ### List Activities [GET]
             
@@ -5887,7 +5887,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
 
 # Group Partner Doctor Online Consultation Conversation Messages                
 
-## List Messages [/partners/doctor/requested_services/consultation/online/{online_id}/conversations/{conversation_id}/messages]
+## List Messages [/partners/doctor/requested_services/consultations/online/{online_id}/conversations/{conversation_id}/messages]
 
 ### List Messages [GET]
             
@@ -5942,7 +5942,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 
 
 
-## Create Message [/partners/doctor/requested_services/consultation/online/{online_id}/conversations/{conversation_id}/messages]
+## Create Message [/partners/doctor/requested_services/consultations/online/{online_id}/conversations/{conversation_id}/messages]
 
 ### Create [POST]
     Selain untuk membuat message, endpoint ini juga untuk trigger start consultation object event
@@ -5996,7 +5996,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Read Message [/partners/doctor/requested_services/consultation/online/{online_id}/conversations/{conversation_id}/messages/{id}/read]
+## Read Message [/partners/doctor/requested_services/consultations/online/{online_id}/conversations/{conversation_id}/messages/{id}/read]
 
 ### Read Message [PUT]
             
@@ -6044,7 +6044,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
 
 # Group Partner Doctor Online Consultation Conversation Call      
 
-## List Calls [/partners/doctor/requested_services/consultation/online/{online_id}/conversations/{conversation_id}/calls]
+## List Calls [/partners/doctor/requested_services/consultations/online/{online_id}/conversations/{conversation_id}/calls]
 
 ### List Calls [GET]
             
@@ -6098,7 +6098,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Create [/partners/doctor/requested_services/consultation/online/{online_id}/conversations/{conversation_id}/calls]
+## Create [/partners/doctor/requested_services/consultations/online/{online_id}/conversations/{conversation_id}/calls]
 
 ### Calss Message Online Consultation Conversation [POST]
     Selain untuk membuat call, endpoint ini juga untuk trigger start consultation object event
@@ -6151,7 +6151,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Receive Call [/partners/doctor/requested_services/consultation/online/{online_id}/conversations/{conversation_id}/messages/{id}/read]
+## Receive Call [/partners/doctor/requested_services/consultations/online/{online_id}/conversations/{conversation_id}/messages/{id}/read]
 
 ### Receive Call [PUT]
             
@@ -6199,7 +6199,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
 
 # Group Partner Doctor Service Offline Consultation
 
-## Show [/partners/doctor/requested_services/consultation/offline/{id}]
+## Show [/partners/doctor/requested_services/consultations/offline/{id}]
 
 ### Show Doctor Offline Consultation [GET]
             
@@ -6236,7 +6236,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Update [/partners/doctor/requested_services/consultation/offline/{id}]
+## Update [/partners/doctor/requested_services/consultations/offline/{id}]
 
 ### Update [PUT]
             
@@ -6282,7 +6282,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Start [/partners/doctor/requested_services/consultation/offline/{id}/start]
+## Start [/partners/doctor/requested_services/consultations/offline/{id}/start]
 
 ### Start [PUT]
             
@@ -6319,7 +6319,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Complete [/partners/doctor/requested_services/consultation/offline/{id}/complete]
+## Complete [/partners/doctor/requested_services/consultations/offline/{id}/complete]
 
 ### Complete [PUT]
             
@@ -6358,7 +6358,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
 
 # Group Partner Doctor Service Consultation Health Status
         
-## Show [/partners/doctor/requested_services/consultation/health_status/{id}]
+## Show [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{id}]
 
 ### show [GET]
 Digunakan untuk mendapatkan data terupdate dari health status yang dibuat.
@@ -6399,7 +6399,7 @@ Digunakan untuk mendapatkan data terupdate dari health status yang dibuat.
               "updated_at": "2016-08-16T07:45:21.000+00:00"
             }
         
-# Submit [/partners/doctor/requested_services/consultation/health_status/{id}/submit]
+# Submit [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{id}/submit]
 
 ### submit [PUT]
 Digunakan untuk mengakhiri perubahan data di health status dan mengirim health status tersebut ke pasien.
@@ -6429,7 +6429,7 @@ Digunakan untuk mengakhiri perubahan data di health status dan mengirim health s
               "updated_at": "2016-08-16T07:45:21.000+00:00"
             }
 
-# Create [/partners/doctor/requested_services/consultation/health_status]
+# Create [/partners/doctor/requested_services/consultations/{consultation_id}/health_status]
 
 ### create [POST]
 Digunakan untuk mengenerate health status baru.
@@ -6465,7 +6465,7 @@ Digunakan untuk mengenerate health status baru.
                   "updated_at": "2016-08-16T07:45:21.000+00:00"
                 }
         
-# Create Soap [/partners/doctor/requested_services/consultation/health_status/{health_status_id}/soaps]
+# Create Soap [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/soaps]
 
 ### create soap [POST]
 Digunakan untuk membuat SOAP di health status
@@ -6596,7 +6596,7 @@ Digunakan untuk membuat SOAP di health status
               "updated_at": "2016-05-17T09:22:46.000+00:00"
             }
 
-# Update Soap [/partners/doctor/requested_services/consultation/health_status/{health_status_id}/soaps/{id}]
+# Update Soap [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/soaps/{id}]
 
 ### update soap [PUT]
 Digunakan untuk mengupdate SOAP di health status.
@@ -6793,7 +6793,7 @@ Digunakan untuk mengupdate SOAP di health status.
               "updated_at": "2016-05-17T09:22:46.000+00:00"
             }
             
-# Create Soap Medication [/partners/doctor/requested_services/consultation/health_status/{health_status_id}/soaps/{soap_id}/medications]
+# Create Soap Medication [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/soaps/{soap_id}/medications]
 
 ### create soap medication [POST]
 Digunakan untuk menambahkan satu buah object medication di SOAP health status.
@@ -6877,7 +6877,7 @@ Digunakan untuk menambahkan satu buah object medication di SOAP health status.
               "extraction_status": "pending"
             }
 
-# Edit Soap Medication [/partners/doctor/requested_services/consultation/health_status/{health_status_id}/soaps/{soap_id}/medications/{id}]
+# Edit Soap Medication [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/soaps/{soap_id}/medications/{id}]
 
 ### edit soap medication [PUT]
 Digunakan untuk mengedit satu object medication di SOAP health status.
@@ -6959,7 +6959,7 @@ Digunakan untuk mengedit satu object medication di SOAP health status.
               "extraction_status": "pending"
             }
             
-# Delete Soap Medication [/partners/doctor/requested_services/consultation/health_status/{health_status_id}/soaps/{soap_id}/medications/{id}]
+# Delete Soap Medication [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/soaps/{soap_id}/medications/{id}]
 
 ### delete soap medication [DELETE]
 Digunakan untuk menghapus satu buah object medication di SOAP health status
@@ -7009,7 +7009,7 @@ Digunakan untuk menghapus satu buah object medication di SOAP health status
               "extraction_status": "pending"
             }
 
-# Create Record [/partners/doctor/requested_services/consultation/health_status/{health_status_id}/records]
+# Create Record [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/records]
 
 ### create record [POST]
 Digunakan untuk membuat satu object record (health document) baru di health status
@@ -7078,7 +7078,7 @@ Digunakan untuk membuat satu object record (health document) baru di health stat
                   ]
                 }
             
-# Edit Record [/partners/doctor/requested_services/consultation/health_status/{health_status_id}/records/{id}]
+# Edit Record [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/records/{id}]
 
 ### edit record [PUT]
 Digunakan untuk mengedit satu buah object record (health document) di health status
@@ -7166,7 +7166,7 @@ Digunakan untuk mengedit satu buah object record (health document) di health sta
                   ]
                 }
 
-# Delete Record [/partners/doctor/requested_services/consultation/health_status/{health_status_id}/records/{id}]
+# Delete Record [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/records/{id}]
 
 ### delete record [DELETE]
 Digunakan untuk menghapus satu buah object record (health document) di health status
@@ -7215,7 +7215,7 @@ Digunakan untuk menghapus satu buah object record (health document) di health st
                   ]
                 }
             
-# Batch Record [/partners/doctor/requested_services/consultation/health_status/{health_status_id}/records/batch]
+# Batch Record [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/records/batch]
 
 ### batch record [POST]
 Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu object record (health document) di health status. Untuk menambahkan data tidak perlu mengirim param `id` pada object record atau mengirim param `id` dengan value = 0. Untuk mengedit data, param `id` harus diisi dan tidak boleh bernilai 0. Untuk menghapus data juga harus ada param `id` yang tidak bernilai 0 dan param `_destroy` di-set true. 
@@ -7344,7 +7344,7 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
                     
                 }
        
-# Create Record Attachment [/partners/doctor/requested_services/consultation/health_status/{health_status_id}/records/{record_id}/attachments]
+# Create Record Attachment [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/records/{record_id}/attachments]
 
 ### create record attachment [POST]
 Digunakan jika ingin menambahkan satu buah attachment di satu record (health document) pada health status.
@@ -7381,7 +7381,7 @@ Digunakan jika ingin menambahkan satu buah attachment di satu record (health doc
                "resource_status": "new"
             }
         
-# Delete Record Attachment [/partners/doctor/requested_services/consultation/health_status/{health_status_id}/records/{record_id}/attachments/{id}]
+# Delete Record Attachment [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/records/{record_id}/attachments/{id}]
 
 ### delete record attachment [DELETE]
 Digunakan untuk menghapus satu buah attachment di record (health document) pada health status.
@@ -7409,7 +7409,7 @@ Digunakan untuk menghapus satu buah attachment di record (health document) pada 
                "resource_status": "deleted"
             }
         
-# Batch Record Attachment [/partners/doctor/requested_services/consultation/health_status/{health_status_id}/records/{record_id}/attachments/batch]
+# Batch Record Attachment [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/records/{record_id}/attachments/batch]
 
 ### batch record attachment [POST]
 Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu object atatchment di record (health document) pada health status. Untuk menambahkan data tidak perlu mengirim param `id` pada object attachment atau mengirim param `id` dengan value = 0. Untuk mengedit data, param `id` harus diisi dan tidak boleh bernilai 0. Untuk menghapus data juga harus ada param `id` yang tidak bernilai 0 dan param `_destroy` di-set true. 
@@ -7469,7 +7469,7 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
             }
     
 
-# Create Statistic [/partners/doctor/requested_services/consultation/health_status/{health_status_id}/statistics]
+# Create Statistic [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/statistics]
 <b>Catatan</b>: 1 buah object statistics bisa memiliki beberapa child yang juga adalah object statistics juga. Contohnya: statistics `BMI` bisa memiliki child statistics `weight` dan `height`. Jika client mengirimkan statistics yang memiliki child, nilai `value` pada parent tidak perlu diisi karena akan otomatis terisi beradasarkan nilai `value` pada `child_statistics` yang ada.
 
 ### create statistic [POST]
@@ -7561,7 +7561,7 @@ Digunakan untuk menambahkan satu object statistics (health data) pada health sta
             "errors": {}
         }
 
-# Edit Statistic [/partners/doctor/requested_services/consultation/health_status/{health_status_id}/statistics/{id}]
+# Edit Statistic [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/statistics/{id}]
 
 ### edit statistic [PUT]
 Digunakan untuk mengedit satu object statistic (health data) pada health status.
@@ -7653,7 +7653,7 @@ Digunakan untuk mengedit satu object statistic (health data) pada health status.
             "errors": {}
         }
 
-# Delete Statistic [/partners/doctor/requested_services/consultation/health_status/{health_status_id}/statistics/{id}]
+# Delete Statistic [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/statistics/{id}]
 
 ### delete statistic [DELETE]
 Digunakan untuk menghapus satu object statistics (health data) pada health status.
@@ -7716,7 +7716,7 @@ Digunakan untuk menghapus satu object statistics (health data) pada health statu
             "errors": {}
         }
         
-# Batch Statistic [/partners/doctor/requested_services/consultation/health_status/{health_status_id}/statistics/batch]
+# Batch Statistic [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/statistics/batch]
 
 ### batch statistic [POST]
 Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu object statistics (health data) pada health status. Untuk menambahkan data tidak perlu mengirim param `id` pada object statistics atau mengirim param `id` dengan value = 0. Untuk mengedit data, param `id` harus diisi dan tidak boleh bernilai 0. Untuk menghapus data juga harus ada param `id` yang tidak bernilai 0 dan param `_destroy` di-set true. 
@@ -10010,7 +10010,7 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
 
 # Group Partner Clinic Service Offline Consultation
 
-## Show [/partners/clinic/requested_services/consultation/offline/{id}]
+## Show [/partners/clinic/requested_services/consultations/offline/{id}]
 
 ### Show [GET]
             
@@ -10047,7 +10047,7 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
                 }
                 
 
-## Update [/partners/clinic/requested_services/consultation/offline/{id}]
+## Update [/partners/clinic/requested_services/consultations/offline/{id}]
 
 ### Update [PUT]
             
@@ -10093,7 +10093,7 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
                 }
                 
 
-## Start [/partners/clinic/requested_services/consultation/offline/{id}/start]
+## Start [/partners/clinic/requested_services/consultations/offline/{id}/start]
 
 ### Start [PUT]
             
@@ -10130,7 +10130,7 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
                 }
                 
 
-## Complete [/partners/clinic/requested_services/consultation/offline/{id}/complete]
+## Complete [/partners/clinic/requested_services/consultations/offline/{id}/complete]
 
 ### Complete [PUT]
             
@@ -10169,7 +10169,7 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
 
 # Group Partner Clinic Service Consultation Health Status
         
-## Show [/partners/clinic/requested_services/consultation/health_status/{id}]
+## Show [/partners/clinic/requested_services/consultations/{consultation_id}/health_status/{id}]
 
 ### show [GET]
 Digunakan untuk mendapatkan data terupdate dari health status yang dibuat.
@@ -10210,7 +10210,7 @@ Digunakan untuk mendapatkan data terupdate dari health status yang dibuat.
               "updated_at": "2016-08-16T07:45:21.000+00:00"
             }
         
-# Submit [/partners/clinic/requested_services/consultation/health_status/{id}/submit]
+# Submit [/partners/clinic/requested_services/consultations/{consultation_id}/health_status/{id}/submit]
 
 ### submit [PUT]
 Digunakan untuk mengakhiri perubahan data di health status dan mengirim health status tersebut ke pasien.
@@ -10240,7 +10240,7 @@ Digunakan untuk mengakhiri perubahan data di health status dan mengirim health s
               "updated_at": "2016-08-16T07:45:21.000+00:00"
             }
 
-# Create [/partners/clinic/requested_services/consultation/health_status]
+# Create [/partners/clinic/requested_services/consultations/{consultation_id}/health_status]
 
 ### create [POST]
 Digunakan untuk mengenerate health status baru.
@@ -10276,7 +10276,7 @@ Digunakan untuk mengenerate health status baru.
                   "updated_at": "2016-08-16T07:45:21.000+00:00"
                 }
         
-# Create Soap [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/soaps]
+# Create Soap [/partners/clinic/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/soaps]
 
 ### create soap [POST]
 Digunakan untuk membuat SOAP di health status
@@ -10407,7 +10407,7 @@ Digunakan untuk membuat SOAP di health status
               "updated_at": "2016-05-17T09:22:46.000+00:00"
             }
 
-# Update Soap [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/soaps/{id}]
+# Update Soap [/partners/clinic/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/soaps/{id}]
 
 ### update soap [PUT]
 Digunakan untuk mengupdate SOAP di health status.
@@ -10604,7 +10604,7 @@ Digunakan untuk mengupdate SOAP di health status.
               "updated_at": "2016-05-17T09:22:46.000+00:00"
             }
             
-# Create Soap Medication [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/soaps/{soap_id}/medications]
+# Create Soap Medication [/partners/clinic/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/soaps/{soap_id}/medications]
 
 ### create soap medication [POST]
 Digunakan untuk menambahkan satu buah object medication di SOAP health status.
@@ -10688,7 +10688,7 @@ Digunakan untuk menambahkan satu buah object medication di SOAP health status.
               "extraction_status": "pending"
             }
 
-# Edit Soap Medication [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/soaps/{soap_id}/medications/{id}]
+# Edit Soap Medication [/partners/clinic/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/soaps/{soap_id}/medications/{id}]
 
 ### edit soap medication [PUT]
 Digunakan untuk mengedit satu object medication di SOAP health status.
@@ -10770,7 +10770,7 @@ Digunakan untuk mengedit satu object medication di SOAP health status.
               "extraction_status": "pending"
             }
             
-# Delete Soap Medication [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/soaps/{soap_id}/medications/{id}]
+# Delete Soap Medication [/partners/clinic/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/soaps/{soap_id}/medications/{id}]
 
 ### delete soap medication [DELETE]
 Digunakan untuk menghapus satu buah object medication di SOAP health status
@@ -10820,7 +10820,7 @@ Digunakan untuk menghapus satu buah object medication di SOAP health status
               "extraction_status": "pending"
             }
 
-# Create Record [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/records]
+# Create Record [/partners/clinic/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/records]
 
 ### create record [POST]
 Digunakan untuk membuat satu object record (health document) baru di health status
@@ -10889,7 +10889,7 @@ Digunakan untuk membuat satu object record (health document) baru di health stat
                   ]
                 }
             
-# Edit Record [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/records/{id}]
+# Edit Record [/partners/clinic/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/records/{id}]
 
 ### edit record [PUT]
 Digunakan untuk mengedit satu buah object record (health document) di health status
@@ -10977,7 +10977,7 @@ Digunakan untuk mengedit satu buah object record (health document) di health sta
                   ]
                 }
 
-# Delete Record [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/records/{id}]
+# Delete Record [/partners/clinic/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/records/{id}]
 
 ### delete record [DELETE]
 Digunakan untuk menghapus satu buah object record (health document) di health status
@@ -11026,7 +11026,7 @@ Digunakan untuk menghapus satu buah object record (health document) di health st
                   ]
                 }
             
-# Batch Record [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/records/batch]
+# Batch Record [/partners/clinic/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/records/batch]
 
 ### batch record [POST]
 Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu object record (health document) di health status. Untuk menambahkan data tidak perlu mengirim param `id` pada object record atau mengirim param `id` dengan value = 0. Untuk mengedit data, param `id` harus diisi dan tidak boleh bernilai 0. Untuk menghapus data juga harus ada param `id` yang tidak bernilai 0 dan param `_destroy` di-set true. 
@@ -11155,7 +11155,7 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
                     
                 }
        
-# Create Record Attachment [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/records/{record_id}/attachments]
+# Create Record Attachment [/partners/clinic/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/records/{record_id}/attachments]
 
 ### create record attachment [POST]
 Digunakan jika ingin menambahkan satu buah attachment di satu record (health document) pada health status.
@@ -11192,7 +11192,7 @@ Digunakan jika ingin menambahkan satu buah attachment di satu record (health doc
                "resource_status": "new"
             }
         
-# Delete Record Attachment [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/records/{record_id}/attachments/{id}]
+# Delete Record Attachment [/partners/clinic/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/records/{record_id}/attachments/{id}]
 
 ### delete record attachment [DELETE]
 Digunakan untuk menghapus satu buah attachment di record (health document) pada health status.
@@ -11220,7 +11220,7 @@ Digunakan untuk menghapus satu buah attachment di record (health document) pada 
                "resource_status": "deleted"
             }
         
-# Batch Record Attachment [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/records/{record_id}/attachments/batch]
+# Batch Record Attachment [/partners/clinic/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/records/{record_id}/attachments/batch]
 
 ### batch record attachment [POST]
 Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu object atatchment di record (health document) pada health status. Untuk menambahkan data tidak perlu mengirim param `id` pada object attachment atau mengirim param `id` dengan value = 0. Untuk mengedit data, param `id` harus diisi dan tidak boleh bernilai 0. Untuk menghapus data juga harus ada param `id` yang tidak bernilai 0 dan param `_destroy` di-set true. 
@@ -11280,7 +11280,7 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
             }
     
 
-# Create Statistic [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/statistics]
+# Create Statistic [/partners/clinic/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/statistics]
 <b>Catatan</b>: 1 buah object statistics bisa memiliki beberapa child yang juga adalah object statistics juga. Contohnya: statistics `BMI` bisa memiliki child statistics `weight` dan `height`. Jika client mengirimkan statistics yang memiliki child, nilai `value` pada parent tidak perlu diisi karena akan otomatis terisi beradasarkan nilai `value` pada `child_statistics` yang ada.
 
 ### create statistic [POST]
@@ -11372,7 +11372,7 @@ Digunakan untuk menambahkan satu object statistics (health data) pada health sta
             "errors": {}
         }
 
-# Edit Statistic [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/statistics/{id}]
+# Edit Statistic [/partners/clinic/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/statistics/{id}]
 
 ### edit statistic [PUT]
 Digunakan untuk mengedit satu object statistic (health data) pada health status.
@@ -11464,7 +11464,7 @@ Digunakan untuk mengedit satu object statistic (health data) pada health status.
             "errors": {}
         }
 
-# Delete Statistic [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/statistics/{id}]
+# Delete Statistic [/partners/clinic/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/statistics/{id}]
 
 ### delete statistic [DELETE]
 Digunakan untuk menghapus satu object statistics (health data) pada health status.
@@ -11527,7 +11527,7 @@ Digunakan untuk menghapus satu object statistics (health data) pada health statu
             "errors": {}
         }
         
-# Batch Statistic [/partners/clinic/requested_services/consultation/health_status/{health_status_id}/statistics/batch]
+# Batch Statistic [/partners/clinic/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/statistics/batch]
 
 ### batch statistic [POST]
 Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu object statistics (health data) pada health status. Untuk menambahkan data tidak perlu mengirim param `id` pada object statistics atau mengirim param `id` dengan value = 0. Untuk mengedit data, param `id` harus diisi dan tidak boleh bernilai 0. Untuk menghapus data juga harus ada param `id` yang tidak bernilai 0 dan param `_destroy` di-set true. 
