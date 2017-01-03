@@ -1060,6 +1060,575 @@ New Payment API
               "total_pages": 1,
               "last_page": true
             }
+            
+# Group Patient Partners
+    Endpoints API untuk query atau request partner (doctor dan clinic)
+    
+# Group Patient Doctors
+
+## Browse [/patient/partners/doctors]
+
+### GET /doctors{?profile_id,name,speciality,speciality_id}
+Cari dokter berdasarkan nama dan/atau specialitynya. Contoh, untuk mendapatkan list seluruh dokter yang specialitynya General Practicioner, bisa melakukan request seperti ini: `/doctors?speciality=General Practitioner`
+
+Untuk mendapatkan list dokter untuk profile tertentu, bisa juga mengirim parameter seperti ini:
+`/doctors?profile_id=142&speciality=General Practitioner`. Respon dari sini nantinya akan ditambahkan dengan status `is_bookmark` dan `is_private` ke profile_id yang dikirim. **Perlu diperhatikan**, bila `profile_id` tidak dikirim maka di setiap dokter, parameter `is_bookmark` dan `is_private` akan selalu bernilai `false`.
+
+Parameter yang dapat dikirim (semuanya opsional):
+- `profile_id`
+- `name`
+- `speciality`
+- `speciality_id`
+
++ Parameter
+   + profile_id (number, optional) - Server id dari profile. Bila dikirim, respon akan include status bookmarknya.
+   + name (string, optional) - Nama dokter.
+   + speciality (string, optional) - Speciality dari dokter.
+   + speciality_id (number, optional) - Server ID untuk speciality dari `/doctors/specialities`.
+
++ Request (application/json)
+
+   + Headers
+
+               X-MedicTrust-Token: 129j0asn0cn1
+               X-MedicTrust-Lang: en
+
++ Response 200 (application/json)
+
+   + Attributes (object)
+               + count: 1 (number) - Jumlah data dokter di request ini.
+               + doctors (array[SimpleDoctor]) - Array isi data dokter-dokter.
+
+## GET /doctors/{id}{?profile_id}
+Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat mengirim parameter `profile_id` untuk mendapatkan nilai `is_bookmark` dan `is_private`. Bila `profile_id` tidak dikirim, maka defaultnya selalu bernilai false. (Tinggal di override oleh `bookmark_list` – response dari sinkron profiles.)
+
+    + Parameter
+                + id (number, required) - Server ID dari dokter yang di request informasi detailnya.
+                + profile_id (number, optional) - Kalo ini dikirim, respon akan include status bookmark dan private.
+
++ Request (application/json)
+
+    + Headers
+
+               X-MedicTrust-Token: 129j0asn0cn1
+               X-MedicTrust-Lang: en
+
++ Response 200 (application/json)
+
+   + Attributes (Doctor)
+
+   + Body
+
+           {
+               "id": 1,
+               "created_at": "2015-05-12T09:45:12.473+00:00",
+               "updated_at": "2015-05-12T09:45:12.473+00:00",
+               "resource_status": "new",
+               "first_name": "Mirna",
+               "last_name": "Asmiranti",
+               "avatar": "http://images.kpopstarz.com/data/images/full/321946/yuri-beautiful-doctor.jpg",
+               "blurred_avatar": "http://images.kpopstarz.com/data/images/full/321946/yuri-beautiful-doctor.jpg",
+               "speciality": "General Practitioner",
+               "speciality_id": 1,
+               "location": "RS Mitra Keluarga",
+               "about_me": null,
+               "work_email": null,
+               "work_phone": null,
+               "wa_phone": null,
+               "is_bookmark": true,
+               "is_private": false,
+               "schedules": [
+                   {
+                       "days": [0, 1, 2],
+                       "start_hour": "09:00",
+                       "end_hour": "15:00",
+                       "location": "RS Mitra Keluarga",
+                       "address": "Kelapa Gading",
+                       "city": "Jakarta",
+                       "country": "Indonesia",
+                       "zipcode": "12345",
+                       "location_id": null,
+                       "doctor_name": "Lionel",
+                       "contact": [
+                           {
+                               "contact_number": "12345678",
+                               "name": "Work"
+                           }
+                       ]
+                   }
+               ],
+               "bookings": [
+                   {
+                       "date": "2016-03-02",
+                       "offset": "+00:00",
+                       "time": [
+                           "15:00",
+                           "16:00",
+                           "17:00"
+                       ]
+                   },
+                   {
+                       "date": "2016-03-03",
+                       "offset": "+00:00",
+                       "time": [
+                           "16:00",
+                           "17:00"
+                       ]
+                   }
+               ]
+           }
+
+### POST /doctors/{id}/book
+Buat booking / appointment baru
+
++ Parameter
+   + id (number, required) - Server id dari provider yang mau di booking.
+
++ Request (application/json)
+
+   + Headers
+
+           X-MedicTrust-Token: 129j0asn0cn1
+           X-MedicTrust-Lang: en
+
+   + Attributes (BookingRequest)
+
++ Response 201 (application/json)
+
+       { "message": "Appointment created" }
+
++ Response 400 (application/json)
+
+       { "message": "Please supply profile id and booking date." }
+
++ Response 404 (application/json)
+
+       { "message": "Location not found" }
+
++ Response 404 (application/json)
+
+       { "message": "Invalid time requested for location" }
+
++ Response 404 (application/json)
+
+       { "message": "Time has already been taken." }
+
+## /profiles/{profile_id}/doctors
+
+### GET - List My Doctors [GET]
+Digunakan untuk mendapatkan list dokter-dokter yang di-bookmark atau dibuat oleh `profile_id`.
+
++ Parameter
+   + profile_id (number, required) - Server id dari profile pemilik private doctor
+
++ Request (application/json)
+
+   + Headers
+
+           X-MedicTrust-Token: 129j0asn0cn1
+           X-MedicTrust-Lang: en
+
++ Response 200 (application/json)
+
+   + Attributes (object)
+       + doctors (array[Doctor])
+
+### POST - New private doctor [POST]
+**Endpoint ini menggunakan `multipart/form-data`**, dan digunakan untuk membuat private doctor.
+
++ Parameter
+   + profile_id (number, required) - Server id dari profile pemilik private doctor
+
++ Request (multipart/form-data)
+
+   + Headers
+
+           X-MedicTrust-Token: 129j0asn0cn1
+           X-MedicTrust-Lang: en
+
+   + Attributes (DoctorRequest)
+
+   + Body
+
+           {
+               "first_name": "Maruli",
+               "last_name": "Tampubolon",
+               "avatar": "<file:http://kayuagungradio.com/wp-content/uploads/2015/09/MARULI.jpg>",
+               "speciality": "General Practitioner",
+               "speciality_id": 1,
+               "location": "RS Mitra Keluarga",
+               "about_me": `Maruli is a doctor and also a singer`,
+               "work_email": null,
+               "work_phone": null,
+               "wa_phone": null
+           }
+
++ Response 201 (application/json)
+
+   + Attributes (Doctor)
+
+   + Body
+
+           {
+               "id": 3,
+               "created_at": "2016-02-12T09:45:12.473+00:00",
+               "updated_at": "2015-02-12T09:45:12.473+00:00",
+               "resource_status": "new",
+               "first_name": "Maruli",
+               "last_name": "Tampubolon",
+               "avatar": "http://kayuagungradio.com/wp-content/uploads/2015/09/MARULI.jpg",
+               "blurred_avatar": "http://kayuagungradio.com/wp-content/uploads/2015/09/MARULI.jpg",
+               "speciality": "General Practitioner",
+               "speciality_id": 1,
+               "location": "RS Mitra Keluarga",
+               "about_me": "Maruli is a doctor and also a singer",
+               "work_email": null,
+               "work_phone": null,
+               "wa_phone": null,
+               "is_bookmark": true,
+               "is_private": true,
+               "offset": "+07:00",
+               "schedules": [],
+               "bookings": []
+           }
+
+## /profiles/{profile_id}/doctors/{id}
+
+### PUT - Update private doctor [PUT]
+**Endpoint ini menggunakan `multipart/form-data`**, digunakan untuk edit private doctor.
+
++ Parameter
+   + profile_id (number, required) - Server ID dari profile pembuat private doctor.
+   + id (number, required) - Server ID dari private doctor yang mau di update.
+
++ Request (multipart/form-data)
+
+   + Headers
+
+           X-MedicTrust-Token: 129j0asn0cn1
+           X-MedicTrust-Lang: en
+
+   + Attributes (DoctorRequest)
+
+   + Body
+
+           {
+               "first_name": "Maruli",
+               "last_name": "Tampubolon",
+               "avatar": "<file:http://kayuagungradio.com/wp-content/uploads/2015/09/MARULI.jpg>",
+               "speciality": "General Practitioner",
+               "speciality_id": 1,
+               "location": "RS Mitra Keluarga",
+               "about_me": `Maruli is a doctor and also a singer`,
+               "work_email": null,
+               "work_phone": null,
+               "wa_phone": null
+           }
+
++ Response 200 (application/json)
+
+   + Attributes (Doctor)
+
+   + Body
+
+           {
+               "id": 3,
+               "created_at": "2016-02-12T09:45:12.473+00:00",
+               "updated_at": "2015-02-12T09:45:12.473+00:00",
+               "resource_status": "new",
+               "first_name": "Maruli",
+               "last_name": "Tampubolon",
+               "avatar": "http://kayuagungradio.com/wp-content/uploads/2015/09/MARULI.jpg",
+               "blurred_avatar": "http://kayuagungradio.com/wp-content/uploads/2015/09/MARULI.jpg",
+               "speciality": "General Practitioner",
+               "speciality_id": 1,
+               "location": "RS Mitra Keluarga",
+               "about_me": "Maruli is a doctor and also a singer",
+               "work_email": null,
+               "work_phone": null,
+               "wa_phone": null,
+               "is_bookmark": true,
+               "is_private": true,
+               "offset": "+07:00",
+               "schedules": [],
+               "bookings": []
+           }
+
+### DELETE - Delete private doctor [DELETE]
+Delete private doctor
+
++ Parameter
+   + profile_id (number, required) - Server ID dari profile yang mau bookmark dokter.
+   + id (number, required) - Server ID dari doctor yang mau di delete.
+
++ Request (multipart/form-data)
+
+   + Headers
+
+           X-MedicTrust-Token: 129j0asn0cn1
+           X-MedicTrust-Lang: en
+
++ Response 200 (application_json)
+
+       {
+           "id": 3,
+           "resource_status": "deleted"
+       }
+
+### POST /profiles/{profile_id}/doctors/{id}/bookmark
+Bookmark / unbookmark dokter.
+
++ Parameter
+   + profile_id (number, required) - Server ID dari profile yang mau bookmark dokter.
+   + id (number, required) - Server ID dari doctor yang mau di update.
+
++ Request (multipart/form-data)
+
+   + Headers
+
+           X-MedicTrust-Token: 129j0asn0cn1
+           X-MedicTrust-Lang: en
+
+   + Body
+
+           {
+               "is_bookmark": true
+           }
+
++ Response 200 (application/json)
+
+   + Attributes (Doctor)
+
+   + Body
+
+           {
+
+           }
+
+# Group Patient Service Requests
+    Endpoints API untuk service request objects, seperti consultation appointment, consultation dan emergency requests
+
+# Group Patient Online Consultation Appointment
+
+## Create [/patient/service_requests/consultation_appointments/online]
+    Create online consultation appointment object. parameter `date` dan `time` menjadi mandatory jika parameter `datetime` kosong. 
+        
+### Create [POST]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+                
+    + Body
+
+               { 
+                 "date": "2015-11-12", 
+                 "time": "12:00",
+                 "datetime": "2015-11-12 12:00",
+                 "profile_id": 1, 
+                 "partner_id": 1, 
+                 "location_id": 36,
+                 "notes": "Notes"
+               }  
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "id": 51,
+                  "profile_id": 1,
+                  "partner_id": 1,
+                  "location_id": 51,
+                  "service_id": 5,
+                  "datetime": "2017-01-11T12:00:00.000+00:00",
+                  "date": "2017-01-11",
+                  "time": "12:00",
+                  "type": "Online",
+                  "notes": "Notes",
+                  "state": "scheduled",
+                  "consultation": null,
+                  "resource_status": "new",
+                  "started_at": null,
+                  "completed_at": null,
+                  "valid": true,
+                  "updated_at": "2016-12-29T10:33:03.000+00:00",
+                  "created_at": "2016-12-27T16:39:39.000+00:00",
+                  "initial_appointment_id": null
+                }
+                
+
+## Update [/patient/service_requests/consultation_appointments/online/{id}]
+    Endpoint ini hanya menerima `notes` parameter sebagai update attribute untuk object online consultation appointment
+        
+### Update [PUT]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+                
+    + Body
+
+               { 
+                 "date": "2015-11-12", 
+                 "time": "12:00",
+                 "datetime": "2015-11-12 12:00",
+                 "profile_id": 1, 
+                 "partner_id": 1, 
+                 "location_id": 36,
+                 "notes": "Notes"
+               }  
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "id": 62,
+                  "profile_id": 1,
+                  "partner_id": 1,
+                  "location_id": 50,
+                  "service_id": 5,
+                  "datetime": "2017-01-11T12:00:00.000+00:00",
+                  "date": "2017-01-11",
+                  "time": "12:00",
+                  "type": "Online",
+                  "notes": null,
+                  "state": "rescheduled",
+                  "consultation": null,
+                  "resource_status": "new",
+                  "started_at": null,
+                  "completed_at": null,
+                  "valid": true,
+                  "updated_at": "2017-01-03T09:33:02.000+00:00",
+                  "created_at": "2017-01-03T09:33:02.000+00:00",
+                  "initial_appointment_id": null
+                }
+                
+
+## Reschedule [/patient/service_requests/consultation_appointments/online/{id}/reschedule]
+    Endpoint ini digunakan untuk merubah `state` untuk consultation appointment object dari `scheduled` atau `rescheduled` ke `rescheduled`. Parameter yang mandatory adalah `datetime` atau `date` dan `time`.
+        
+### Update [PUT]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+                
+    + Body
+
+               { 
+                 "date": "2015-11-12", 
+                 "time": "12:00",
+                 "datetime": "2015-11-12 12:00",
+                 "notes": "Notes"
+               }  
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "id": 52,
+                  "profile_id": 1,
+                  "partner_id": 1,
+                  "location_id": 50,
+                  "service_id": 5,
+                  "datetime": "2017-01-11T12:00:00.000+00:00",
+                  "date": "2017-01-11",
+                  "time": "12:00",
+                  "type": "Online",
+                  "notes": null,
+                  "state": "rescheduled",
+                  "consultation": null,
+                  "resource_status": "new",
+                  "started_at": null,
+                  "completed_at": null,
+                  "valid": true,
+                  "updated_at": "2017-01-03T09:33:02.000+00:00",
+                  "created_at": "2017-01-03T09:33:02.000+00:00",
+                  "initial_appointment_id": 51
+                }
+                
+
+## Initiate [/patient/service_requests/consultation_appointments/online/{id}/initiate]
+    Set consultation appointment online object state ke `initiated`. online consultation dan conversation object digenerate ketika event `initiate`.
+        
+### Initiate [PUT]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "id": 53,
+                  "profile_id": 1,
+                  "partner_id": 1,
+                  "location_id": 51,
+                  "service_id": 5,
+                  "datetime": "2017-01-12T12:00:00.000+00:00",
+                  "date": "2017-01-12",
+                  "time": "12:00",
+                  "type": "Online",
+                  "notes": null,
+                  "state": "on_going",
+                  "consultation": {
+                    "id": 15,
+                    "appointment_id": 53,
+                    "partner_id": 1,
+                    "service_id": 5,
+                    "profile_id": 1,
+                    "location_id": 51,
+                    "complain": null,
+                    "allergies": null,
+                    "vaccines": null,
+                    "notes": null,
+                    "state": "initiated",
+                    "type": "Online",
+                    "health_statuses": [],
+                    "resource_status": "new",
+                    "started_at": null,
+                    "completed_at": null,
+                    "created_at": "2016-12-29T10:44:24.000+00:00",
+                    "updated_at": "2016-12-29T10:52:51.000+00:00",
+                    "conversation": { 
+                            "id": 1,
+                            "context_type": "Online",
+                            "context_id": 15,
+                            "subject": "Online Consultation",
+                            "type": "Conversation",
+                            "messages": [],
+                            "created_at": "2016-12-29T10:44:24.000+00:00",
+                            "updated_at": "2016-12-29T10:52:51.000+00:00"
+                        }
+                  },
+                  "resource_status": "updated",
+                  "started_at": "2016-12-29T10:44:24.000+00:00",
+                  "completed_at": null,
+                  "valid": true,
+                  "updated_at": "2016-12-29T10:52:51.000+00:00",
+                  "created_at": "2016-12-29T10:39:31.000+00:00",
+                  "initial_appointment_id": null
+                }
+                
+                
+/* end of patient group */
 
 # Group Synchronization Doctor
 
@@ -10499,3 +11068,22 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
 + value (string) - nilai dari statistics. jika statistics memiliki child, kirimkan parameter ini dengan nilai `null`
 + value_unit (string) - nilai satuan dari statistics
 + notes (string) - catatan tambahan dokter terkait statistics
+
+## DoctorRequest (object)
++ first_name: Maruli (required)
++ last_name: Tampubolon
++ avatar: `<file:http://kayuagungradio.com/wp-content/uploads/2015/09/MARULI.jpg>`
++ speciality: `General Practitioner`
++ speciality_id: 1 (number)
++ location: `RS Mitra Keluarga`
++ about_me: `Maruli is a doctor and also a singer`
++ work_email
++ work_phone
++ wa_phone
+
+## BookingRequest (object)
++ profile_id: 1 (number, required) - Server ID dari profile yang mau booking.
++ doctor_location_id: 1 (number, required) - Server ID dari lokasi praktek provider.
++ booking_date: `2016-03-10T17:00+07:00` (string, required) - Datetime dengan format ISO8601.
++ doctor_name (optional) - Opsional
++ description (optional) - Opsional
