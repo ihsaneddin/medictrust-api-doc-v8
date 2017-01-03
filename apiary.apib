@@ -6810,31 +6810,29 @@ Digunakan untuk menambahkan satu buah object medication di SOAP health status.
    + Body
 
             {
-                    {
-                      "mobile_id": 1,
-                      "type": "medication",
-                      "subtype": "medication",
-                      "date": "2016-02-09",
-                      "location_id": null,
-                      "result": "Example result",
-                      "notes": "Example notes",
-                      "direct_scan": false,
-                      "medication": [
-                          {
-                            "name": "Vitacemen",
-                            "duration": 12,
-                            "duration_unit": "days",
-                            "dosage": 1000,
-                            "dosage_unit": "mg",
-                            "frequency": 1,
-                            "frequency_times": 1,
-                            "ongoing": true,
-                            "drug_id": 1
-                          }
-                      ]
-                    }
-                }
-    
+                   
+                "mobile_id": 1,
+                "type": "medication",
+                "subtype": "medication",
+                "date": "2016-02-09",
+                "location_id": null,
+                "result": "Example result",
+                "notes": "Example notes",
+                "direct_scan": false,
+                "medication": [
+                  {
+                    "name": "Vitacemen",
+                    "duration": 12,
+                    "duration_unit": "days",
+                    "dosage": 1000,
+                    "dosage_unit": "mg",
+                    "frequency": 1,
+                    "frequency_times": 1,
+                    "ongoing": true,
+                    "drug_id": 1
+                  }
+                ]
+                
             }
         
 + Response 200 (application/json)
@@ -6850,7 +6848,7 @@ Digunakan untuk menambahkan satu buah object medication di SOAP health status.
               "date": "2016-02-09",
               "location": "RS Gading Pluit",
               "doctor_name": null,
-              "doctor_id": 1
+              "doctor_id": 1,
               "result": "Example result",
               "notes": "Example notes",
               "event_type": "hospitalized",
@@ -6892,31 +6890,27 @@ Digunakan untuk mengedit satu object medication di SOAP health status.
    + Body
 
             {
-                    {
-                      "id": 1628,
-                      "mobile_id": 1,
-                      "type": "medication",
-                      "subtype": "medication",
-                      "date": "2016-02-09",
-                      "result": "Example result",
-                      "notes": "Example notes",
-                      "direct_scan": false,
-                      "medication": [
-                          {
-                            "name": "Bodrex",
-                            "duration": 12,
-                            "duration_unit": "days",
-                            "dosage": 1000,
-                            "dosage_unit": "mg",
-                            "frequency": 1,
-                            "frequency_times": 1,
-                            "ongoing": true,
-                            "drug_id": 1
-                          }
-                      ]
-                    }
-                }
-    
+                "id": 1628,
+                "mobile_id": 1,
+                "type": "medication",
+                "subtype": "medication",
+                "date": "2016-02-09",
+                "result": "Example result",
+                "notes": "Example notes",
+                "direct_scan": false,
+                "medication": [
+                  {
+                    "name": "Bodrex",
+                    "duration": 12,
+                    "duration_unit": "days",
+                    "dosage": 1000,
+                    "dosage_unit": "mg",
+                    "frequency": 1,
+                    "frequency_times": 1,
+                    "ongoing": true,
+                    "drug_id": 1
+                  }
+                ]
             }
         
 + Response 200 (application/json)
@@ -6932,7 +6926,7 @@ Digunakan untuk mengedit satu object medication di SOAP health status.
               "date": "2016-02-09",
               "location": "RS Gading Pluit",
               "doctor_name": null,
-              "doctor_id": 1
+              "doctor_id": 1,
               "result": "Example result",
               "notes": "Example notes",
               "event_type": "hospitalized",
@@ -6982,7 +6976,7 @@ Digunakan untuk menghapus satu buah object medication di SOAP health status
               "date": "2016-02-09",
               "location": "RS Gading Pluit",
               "doctor_name": null,
-              "doctor_id": 1
+              "doctor_id": 1,
               "result": "Example result",
               "notes": "Example notes",
               "event_type": "hospitalized",
