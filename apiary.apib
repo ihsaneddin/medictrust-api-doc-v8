@@ -5408,6 +5408,110 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
 
 # Group Partner Doctor Requested Service Online Consultation Appointments
 
+## Index [/partners/doctor/requested_services/consultation_appointments/online]
+
+### Index [GET]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+                
+    + Body
+
+                { 
+                 "filter": { 
+                                "partner_id": 1, 
+                                "location_id": 1,
+                                "profile_id": 1,
+                                "start_datetime": "2017-1-12 2:00",
+                                "end_datetime": "2017-1-17 2:00"
+                            }
+                }  
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+               {
+                  "collection": [
+                    {
+                      "id": 50,
+                      "profile_id": 1,
+                      "partner_id": 1,
+                      "location_id": 51,
+                      "service_id": 5,
+                      "datetime": "2017-01-11T12:00:00.000+00:00",
+                      "date": "2017-01-11",
+                      "time": "12:00",
+                      "type": "Online",
+                      "notes": null,
+                      "state": "rescheduled",
+                      "consultation": null,
+                      "resource_status": "deleted",
+                      "started_at": null,
+                      "completed_at": null,
+                      "valid": true,
+                      "updated_at": "2016-12-29T10:33:03.000+00:00",
+                      "created_at": "2016-12-27T16:39:21.000+00:00",
+                      "initial_appointment_id": null
+                    }
+                  ],
+                  "per_page": 50,
+                  "current_page": 1,
+                  "total_pages": 1,
+                  "last_page": true
+                }
+
+## Create [/partners/doctor/requested_services/consultation_appointments/online]
+
+### Create [POST]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+                
+    + Body
+
+               {
+                    "datetime": "2017-1-11 12:00",
+                    "notes": "Notes",
+                    "location_id": 1,
+                    "profile_id": 1,
+                    "partner_id": 1
+                }  
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "id": 50,
+                  "profile_id": 1,
+                  "partner_id": 1,
+                  "location_id": 51,
+                  "service_id": 5,
+                  "datetime": "2017-01-11T12:00:00.000+00:00",
+                  "date": "2017-01-11",
+                  "time": "12:00",
+                  "type": "Online",
+                  "notes": "Notes",
+                  "state": "rescheduled",
+                  "consultation": null,
+                  "resource_status": "new",
+                  "started_at": null,
+                  "completed_at": null,
+                  "valid": true,
+                  "updated_at": "2016-12-29T10:33:03.000+00:00",
+                  "created_at": "2016-12-27T16:39:21.000+00:00",
+                  "initial_appointment_id": null
+                }
+
 ## Show [/partners/doctor/requested_services/consultation_appointments/online/{id}]
 
 ### Show [GET]
@@ -5560,6 +5664,110 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 
 
 # Group Partner Doctor Requested Service Offline Consultation Appointments
+
+## Index [/partners/doctor/requested_services/consultation_appointments/offline]
+
+### Index [GET]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+                
+    + Body
+
+                { 
+                 "filter": { 
+                                "partner_id": 1, 
+                                "location_id": 1,
+                                "profile_id": 1,
+                                "start_datetime": "2017-1-12 2:00",
+                                "end_datetime": "2017-1-17 2:00"
+                            }
+                }  
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "collection": [
+                    {
+                      "id": 50,
+                      "profile_id": 1,
+                      "partner_id": 1,
+                      "location_id": 51,
+                      "service_id": 5,
+                      "datetime": "2017-01-11T12:00:00.000+00:00",
+                      "date": "2017-01-11",
+                      "time": "12:00",
+                      "type": "Offline",
+                      "notes": null,
+                      "state": "rescheduled",
+                      "consultation": null,
+                      "resource_status": "deleted",
+                      "started_at": null,
+                      "completed_at": null,
+                      "valid": true,
+                      "updated_at": "2016-12-29T10:33:03.000+00:00",
+                      "created_at": "2016-12-27T16:39:21.000+00:00",
+                      "initial_appointment_id": null
+                    }
+                  ],
+                  "per_page": 50,
+                  "current_page": 1,
+                  "total_pages": 1,
+                  "last_page": true
+                }
+
+## Create [/partners/doctor/requested_services/consultation_appointments/offline]
+
+### Create [POST]
+            
++ Request (application/json)
+
+    + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+                
+    + Body
+
+               {
+                    "datetime": "2017-1-11 12:00",
+                    "notes": "Notes",
+                    "location_id": 1,
+                    "profile_id": 1,
+                    "partner_id": 1
+                }  
+           
++ Response 200 (application/json)
+   
+   + Body
+                
+                {
+                  "id": 50,
+                  "profile_id": 1,
+                  "partner_id": 1,
+                  "location_id": 51,
+                  "service_id": 5,
+                  "datetime": "2017-01-11T12:00:00.000+00:00",
+                  "date": "2017-01-11",
+                  "time": "12:00",
+                  "type": "Offline",
+                  "notes": "Notes",
+                  "state": "rescheduled",
+                  "consultation": null,
+                  "resource_status": "new",
+                  "started_at": null,
+                  "completed_at": null,
+                  "valid": true,
+                  "updated_at": "2016-12-29T10:33:03.000+00:00",
+                  "created_at": "2016-12-27T16:39:21.000+00:00",
+                  "initial_appointment_id": null
+                }
 
 ## Show [/partners/doctor/requested_services/consultation_appointments/offline/{id}]
 
