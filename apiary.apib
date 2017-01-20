@@ -7188,7 +7188,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Update [/partners/doctor/requested_services/consultations/online/{id}]
+## Update [/partners/doctor/services/consultations/online/{id}]
 
 ### Update [PUT]
             
@@ -7236,7 +7236,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
 
                 
-## Start [/partners/doctor/requested_services/consultations/online/{id}/start]
+## Start [/partners/doctor/services/consultations/online/{id}/start]
 
 ### Start [PUT]
     To start online consultation. The `started_at` response params will be timestamped.
@@ -7276,7 +7276,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Complete [/partners/doctor/requested_services/consultations/online/{id}/complete]
+## Complete [/partners/doctor/services/consultations/online/{id}/complete]
 
 ### Complete [PUT]
     To start online consultation. The `completed_at` response params will be timestamped.
@@ -7412,7 +7412,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                       "initial_reference_id": null
                 }
 
-## Show [/partners/doctor/requested_services/consultations/online/{online_id}/conversations/{id}]
+## Show [/partners/doctor/services/consultations/online/{online_id}/conversations/{id}]
 
 ### Show [GET]
             
@@ -7439,7 +7439,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Update [/partners/doctor/requested_services/consultations/online/{online_id}/conversations/{id}]
+## Update [/partners/doctor/services/consultations/online/{online_id}/conversations/{id}]
 
 ### Update [PUT]
             
@@ -7474,7 +7474,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
 
 # Group Partner Doctor Online Consultation Conversation               
 
-## List Activities [/partners/doctor/requested_services/consultations/online/{online_id}/conversations/{id}/activities]
+## List Activities [/partners/doctor/services/consultations/online/{online_id}/conversations/{id}/activities]
 
 ### List Activities [GET]
             
@@ -7558,7 +7558,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
 
 # Group Partner Doctor Online Consultation Conversation Messages                
 
-## List Messages [/partners/doctor/requested_services/consultations/online/{online_id}/conversations/{conversation_id}/messages]
+## List Messages [/partners/doctor/services/consultations/online/{online_id}/conversations/{conversation_id}/messages]
 
 ### List Messages [GET]
             
@@ -7613,7 +7613,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 
 
 
-## Create Message [/partners/doctor/requested_services/consultations/online/{online_id}/conversations/{conversation_id}/messages]
+## Create Message [/partners/doctor/services/consultations/online/{online_id}/conversations/{conversation_id}/messages]
 
 ### Create [POST]
     Selain untuk membuat message, endpoint ini juga untuk trigger start consultation object event
@@ -7667,7 +7667,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Read Message [/partners/doctor/requested_services/consultations/online/{online_id}/conversations/{conversation_id}/messages/{id}/read]
+## Read Message [/partners/doctor/services/consultations/online/{online_id}/conversations/{conversation_id}/messages/{id}/read]
 
 ### Read Message [PUT]
             
@@ -7715,7 +7715,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
 
 # Group Partner Doctor Online Consultation Conversation Call      
 
-## List Calls [/partners/doctor/requested_services/consultations/online/{online_id}/conversations/{conversation_id}/calls]
+## List Calls [/partners/doctor/services/consultations/online/{online_id}/conversations/{conversation_id}/calls]
 
 ### List Calls [GET]
             
@@ -7769,7 +7769,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Create [/partners/doctor/requested_services/consultations/online/{online_id}/conversations/{conversation_id}/calls]
+## Create [/partners/doctor/services/consultations/online/{online_id}/conversations/{conversation_id}/calls]
 
 ### Calss Message Online Consultation Conversation [POST]
     Selain untuk membuat call, endpoint ini juga untuk trigger start consultation object event
@@ -7822,7 +7822,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Receive Call [/partners/doctor/requested_services/consultations/online/{online_id}/conversations/{conversation_id}/messages/{id}/read]
+## Receive Call [/partners/doctor/services/consultations/online/{online_id}/conversations/{conversation_id}/messages/{id}/read]
 
 ### Receive Call [PUT]
             
@@ -7870,7 +7870,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
 
 # Group Partner Doctor Service Offline Consultation
 
-## Show [/partners/doctor/requested_services/consultations/offline/{id}]
+## Show [/partners/doctor/services/consultations/offline/{id}]
 
 ### Show Doctor Offline Consultation [GET]
             
@@ -7908,7 +7908,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Update [/partners/doctor/requested_services/consultations/offline/{id}]
+## Update [/partners/doctor/services/consultations/offline/{id}]
 
 ### Update [PUT]
             
@@ -7955,7 +7955,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Start [/partners/doctor/requested_services/consultations/offline/{id}/start]
+## Start [/partners/doctor/services/consultations/offline/{id}/start]
 
 ### Start [PUT]
             
@@ -7993,7 +7993,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
                 }
                 
 
-## Complete [/partners/doctor/requested_services/consultations/offline/{id}/complete]
+## Complete [/partners/doctor/services/consultations/offline/{id}/complete]
 
 ### Complete [PUT]
             
@@ -8129,7 +8129,7 @@ Detail dokter berdasarkan id yang dikirim. Optionally, developer juga dapat meng
 
 # Group Partner Doctor Service Consultation Health Status
         
-## Show [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{id}]
+## Show [/partners/doctor/services/consultations/{consultation_id}/health_status/{id}]
 
 ### show [GET]
 Digunakan untuk mendapatkan data terupdate dari health status yang dibuat.
@@ -8170,7 +8170,7 @@ Digunakan untuk mendapatkan data terupdate dari health status yang dibuat.
               "updated_at": "2016-08-16T07:45:21.000+00:00"
             }
         
-# Submit [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{id}/submit]
+# Submit [/partners/doctor/services/consultations/{consultation_id}/health_status/{id}/submit]
 
 ### submit [PUT]
 Digunakan untuk mengakhiri perubahan data di health status dan mengirim health status tersebut ke pasien.
@@ -8200,7 +8200,7 @@ Digunakan untuk mengakhiri perubahan data di health status dan mengirim health s
               "updated_at": "2016-08-16T07:45:21.000+00:00"
             }
 
-# Create [/partners/doctor/requested_services/consultations/{consultation_id}/health_status]
+# Create [/partners/doctor/services/consultations/{consultation_id}/health_status]
 
 ### create [POST]
 Digunakan untuk mengenerate health status baru.
@@ -8236,7 +8236,7 @@ Digunakan untuk mengenerate health status baru.
                   "updated_at": "2016-08-16T07:45:21.000+00:00"
                 }
         
-# Create Soap [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/soaps]
+# Create Soap [/partners/doctor/services/consultations/{consultation_id}/health_status/{health_status_id}/soaps]
 
 ### create soap [POST]
 Digunakan untuk membuat SOAP di health status
@@ -8367,7 +8367,7 @@ Digunakan untuk membuat SOAP di health status
               "updated_at": "2016-05-17T09:22:46.000+00:00"
             }
 
-# Update Soap [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/soaps/{id}]
+# Update Soap [/partners/doctor/services/consultations/{consultation_id}/health_status/{health_status_id}/soaps/{id}]
 
 ### update soap [PUT]
 Digunakan untuk mengupdate SOAP di health status.
@@ -8564,7 +8564,7 @@ Digunakan untuk mengupdate SOAP di health status.
               "updated_at": "2016-05-17T09:22:46.000+00:00"
             }
             
-# Create Soap Medication [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/soaps/{soap_id}/medications]
+# Create Soap Medication [/partners/doctor/services/consultations/{consultation_id}/health_status/{health_status_id}/soaps/{soap_id}/medications]
 
 ### create soap medication [POST]
 Digunakan untuk menambahkan satu buah object medication di SOAP health status.
@@ -8646,7 +8646,7 @@ Digunakan untuk menambahkan satu buah object medication di SOAP health status.
               "extraction_status": "pending"
             }
 
-# Edit Soap Medication [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/soaps/{soap_id}/medications/{id}]
+# Edit Soap Medication [/partners/doctor/services/consultations/{consultation_id}/health_status/{health_status_id}/soaps/{soap_id}/medications/{id}]
 
 ### edit soap medication [PUT]
 Digunakan untuk mengedit satu object medication di SOAP health status.
@@ -8724,7 +8724,7 @@ Digunakan untuk mengedit satu object medication di SOAP health status.
               "extraction_status": "pending"
             }
             
-# Delete Soap Medication [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/soaps/{soap_id}/medications/{id}]
+# Delete Soap Medication [/partners/doctor/services/consultations/{consultation_id}/health_status/{health_status_id}/soaps/{soap_id}/medications/{id}]
 
 ### delete soap medication [DELETE]
 Digunakan untuk menghapus satu buah object medication di SOAP health status
@@ -8774,7 +8774,7 @@ Digunakan untuk menghapus satu buah object medication di SOAP health status
               "extraction_status": "pending"
             }
 
-# Create Record [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/records]
+# Create Record [/partners/doctor/services/consultations/{consultation_id}/health_status/{health_status_id}/records]
 
 ### create record [POST]
 Digunakan untuk membuat satu object record (health document) baru di health status
@@ -8843,7 +8843,7 @@ Digunakan untuk membuat satu object record (health document) baru di health stat
                   ]
                 }
             
-# Edit Record [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/records/{id}]
+# Edit Record [/partners/doctor/services/consultations/{consultation_id}/health_status/{health_status_id}/records/{id}]
 
 ### edit record [PUT]
 Digunakan untuk mengedit satu buah object record (health document) di health status
@@ -8931,7 +8931,7 @@ Digunakan untuk mengedit satu buah object record (health document) di health sta
                   ]
                 }
 
-# Delete Record [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/records/{id}]
+# Delete Record [/partners/doctor/services/consultations/{consultation_id}/health_status/{health_status_id}/records/{id}]
 
 ### delete record [DELETE]
 Digunakan untuk menghapus satu buah object record (health document) di health status
@@ -8980,7 +8980,7 @@ Digunakan untuk menghapus satu buah object record (health document) di health st
                   ]
                 }
             
-# Batch Record [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/records/batch]
+# Batch Record [/partners/doctor/services/consultations/{consultation_id}/health_status/{health_status_id}/records/batch]
 
 ### batch record [POST]
 Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu object record (health document) di health status. Untuk menambahkan data tidak perlu mengirim param `id` pada object record atau mengirim param `id` dengan value = 0. Untuk mengedit data, param `id` harus diisi dan tidak boleh bernilai 0. Untuk menghapus data juga harus ada param `id` yang tidak bernilai 0 dan param `_destroy` di-set true. 
@@ -9109,7 +9109,7 @@ Digunakan jika ingin menambahkan, mengedit, atau menghapus lebih dari satu objec
                     
                 }
        
-# Create Record Attachment [/partners/doctor/requested_services/consultations/{consultation_id}/health_status/{health_status_id}/records/{record_id}/attachments]
+# Create Record Attachment [/partners/doctor/services/consultations/{consultation_id}/health_status/{health_status_id}/records/{record_id}/attachments]
 
 ### create record attachment [POST]
 Digunakan jika ingin menambahkan satu buah attachment di satu record (health document) pada health status.
