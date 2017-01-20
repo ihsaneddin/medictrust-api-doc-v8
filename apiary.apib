@@ -817,6 +817,113 @@ New Payment API
 
    + Body
 
+                 {
+                  "id": 2,
+                  "name": "obat",
+                  "cost": "100",
+                  "quantity": 1,
+                  "notes": null,
+                  "invoice_id": 7,
+                  "amount": 100,
+                  "reference_id": null,
+                  "resource_status": "new",
+                  "created_at": "2017-01-19T18:47:41.000+00:00",
+                  "updated_at": "2017-01-19T18:47:41.000+00:00"
+                }
+                
+## Update [/accounts/invoices/{invoice_id}/details/{id}]
+    
+### Update [PUT]
+
++ Request (application/json)
+
+   + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+
+   + Body
+
+                { 
+                  "name": "dada", 
+                  "payment_type": "cash",
+                  "details": {}
+                }  
+
++ Response 200 (application/json)
+
+   + Body
+
+                {
+                  "id": 2,
+                  "name": "obat",
+                  "cost": "100",
+                  "quantity": 1,
+                  "notes": null,
+                  "invoice_id": 7,
+                  "amount": 100,
+                  "reference_id": null,
+                  "resource_status": "updated",
+                  "created_at": "2017-01-19T18:47:41.000+00:00",
+                  "updated_at": "2017-01-19T18:47:41.000+00:00"
+                }
+                
+## Delete [/accounts/invoices/{invoice_id}/details/{id}]
+    
+### Delete [DELETE]
+
++ Request (application/json)
+
+   + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+
++ Response 200 (application/json)
+
+   + Body
+
+                {
+                  "id": 2,
+                  "name": "obat",
+                  "cost": "100",
+                  "quantity": 1,
+                  "notes": null,
+                  "invoice_id": 7,
+                  "amount": 100,
+                  "reference_id": null,
+                  "resource_status": "deleted",
+                  "created_at": "2017-01-19T18:47:41.000+00:00",
+                  "updated_at": "2017-01-19T18:47:41.000+00:00"
+                }
+                
+# Group Invoice Details
+    Endpoints API untuk create and update invoice details.
+
+## Create [/accounts/invoices/{invoice_id}/details]
+    
+### Create [POST]
+
++ Request (application/json)
+
+   + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+
+   + Body
+
+                { 
+                    "name": "obat",
+                    "quantity": 1,
+                    "cost": 100,
+                    "notes": ""
+                }
+
++ Response 200 (application/json)
+
+   + Body
+
                 {
                   "id": 3,
                   "invoice_id": 7,
