@@ -804,7 +804,7 @@ New Payment API
                 }
                 
 ## Notify Payer [/accounts/invoices/{id}/notify_payer]
-    send email receipt to payer. can be accessed when invoice state is `paid`
+    send email receipt to payer. can be accessed when invoice state is `paid`. if no email params defined, it will be send to invoice.payer.email,
     
 ### Notify Payer [POST]
 
@@ -818,7 +818,7 @@ New Payment API
    + Body
 
                 { 
-                  "email": "dada", 
+                  "email": "aing@mail.com", 
                   "printed_by": "cash"
                 } 
 
