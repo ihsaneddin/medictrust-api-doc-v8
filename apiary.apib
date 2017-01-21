@@ -803,6 +803,27 @@ New Payment API
                   "initial_reference_id": null
                 }
                 
+## Notify Payer [/accounts/invoices/{id}/notify_payer]
+    send email receipt to payer. can be accessed when invoice state is `paid`
+    
+### Notify Payer [POST]
+
++ Request (application/json)
+
+   + Headers
+
+                X-MedicTrust-Token: 129j0asn0cn1
+                X-MedicTrust-Lang: en
+
+
++ Response 200 (application/json)
+
+   + Body
+
+                {
+                    "message": "Email receipt sent."
+                }
+                
 # Group Invoice Details
     Endpoints API untuk create and update invoice details.
 
