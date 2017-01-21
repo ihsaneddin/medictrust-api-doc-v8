@@ -496,7 +496,7 @@ New Payment API
                 }
                 
 ## Capture [/accounts/invoices/{id}/capture]
-    to change state to `captured` from `authorized`
+    to change state to `captured` from `authorized`. the invoice payment object must be present!
     
 ### Authorize [PUT]
 
@@ -650,7 +650,7 @@ New Payment API
                 }
                 
 ## Authorize and Capture [/accounts/invoices/{id}/authorize_and_capture]
-    to change state to `captured` from `pending`
+    to change state to `captured` from `pending`. the payment object must be present!.
     
 ### Authorize and Capture [PUT]
 
