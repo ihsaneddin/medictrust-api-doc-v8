@@ -181,6 +181,7 @@ New Payment API
                             "quantity": 1,
                             "cost": 100,
                             "notes": "",
+                            "service_type": "medication",
                             "id": 1,
                             "_destroy": false
                         },
@@ -191,6 +192,7 @@ New Payment API
                         { 
                             "name": "obat",
                             "quantity": 1,
+                            "service_type": "medication",
                             "cost": 100,
                             "notes": ""
                         }
@@ -230,6 +232,7 @@ New Payment API
                       "cost": "100",
                       "quantity": 1,
                       "notes": null,
+                      "service_type": "medication",
                       "invoice_id": 7,
                       "amount": 100,
                       "reference_id": null,
@@ -243,6 +246,7 @@ New Payment API
                       "cost": "100",
                       "quantity": 1,
                       "notes": null,
+                      "service_type": "medication",
                       "invoice_id": 7,
                       "amount": 100,
                       "reference_id": null,
@@ -256,6 +260,7 @@ New Payment API
                       "cost": "100",
                       "quantity": 1,
                       "notes": null,
+                      "service_type": "medication",
                       "invoice_id": 7,
                       "amount": 100,
                       "reference_id": null,
@@ -381,6 +386,7 @@ New Payment API
                       "cost": "100",
                       "quantity": 1,
                       "notes": null,
+                      "service_type": "medication",
                       "invoice_id": 7,
                       "amount": 100,
                       "reference_id": null,
@@ -394,6 +400,7 @@ New Payment API
                       "cost": "100",
                       "quantity": 1,
                       "notes": null,
+                      "service_type": "medication",
                       "invoice_id": 7,
                       "amount": 100,
                       "reference_id": null,
@@ -407,6 +414,7 @@ New Payment API
                       "cost": "100",
                       "quantity": 1,
                       "notes": null,
+                      "service_type": "medication",
                       "invoice_id": 7,
                       "amount": 100,
                       "reference_id": null,
@@ -532,6 +540,7 @@ New Payment API
                       "cost": "100",
                       "quantity": 1,
                       "notes": null,
+                      "service_type": "medication",
                       "invoice_id": 7,
                       "amount": 100,
                       "reference_id": null,
@@ -545,6 +554,7 @@ New Payment API
                       "cost": "100",
                       "quantity": 1,
                       "notes": null,
+                      "service_type": "medication",
                       "invoice_id": 7,
                       "amount": 100,
                       "reference_id": null,
@@ -558,6 +568,7 @@ New Payment API
                       "cost": "100",
                       "quantity": 1,
                       "notes": null,
+                      "service_type": "medication",
                       "invoice_id": 7,
                       "amount": 100,
                       "reference_id": null,
@@ -683,6 +694,7 @@ New Payment API
                       "cost": "100",
                       "quantity": 1,
                       "notes": null,
+                      "service_type": "medication",
                       "invoice_id": 7,
                       "amount": 100,
                       "reference_id": null,
@@ -696,6 +708,7 @@ New Payment API
                       "cost": "100",
                       "quantity": 1,
                       "notes": null,
+                      "service_type": "medication",
                       "invoice_id": 7,
                       "amount": 100,
                       "reference_id": null,
@@ -709,6 +722,7 @@ New Payment API
                       "cost": "100",
                       "quantity": 1,
                       "notes": null,
+                      "service_type": "medication",
                       "invoice_id": 7,
                       "amount": 100,
                       "reference_id": null,
@@ -788,13 +802,10 @@ New Payment API
                   "initial_reference_id": null
                 }
                 
-# Group Invoice Payment
-    Endpoints API untuk create and update invoice payment.
+# Group Invoice Details
+    Endpoints API untuk create and update invoice details.
 
-## Create [/accounts/invoices/{invoice_id}/payments]
-    To create invoice payment. invoice has only one payment
-    params `payment_type` is allowed only 'bank_transfer', 'cash', 'credit_card', 'topup', 'insurance', 'pos_cash', 'pos_credit_card'
-    every type have different details. as for now the default details is blank.
+## Create [/accounts/invoices/{invoice_id}/details]
     
 ### Create [POST]
 
@@ -823,6 +834,7 @@ New Payment API
                   "cost": "100",
                   "quantity": 1,
                   "notes": null,
+                  "service_type": "medication",
                   "invoice_id": 7,
                   "amount": 100,
                   "reference_id": null,
@@ -860,6 +872,7 @@ New Payment API
                   "cost": "100",
                   "quantity": 1,
                   "notes": null,
+                  "service_type": "medication",
                   "invoice_id": 7,
                   "amount": 100,
                   "reference_id": null,
@@ -889,6 +902,7 @@ New Payment API
                   "cost": "100",
                   "quantity": 1,
                   "notes": null,
+                  "service_type": "medication",
                   "invoice_id": 7,
                   "amount": 100,
                   "reference_id": null,
@@ -897,10 +911,12 @@ New Payment API
                   "updated_at": "2017-01-19T18:47:41.000+00:00"
                 }
                 
-# Group Invoice Details
-    Endpoints API untuk create and update invoice details.
+# Group Invoice Payment
+    To create invoice payment. invoice has only one payment
+    params `payment_type` is allowed only 'bank_transfer', 'cash', 'credit_card', 'topup', 'insurance', 'pos_cash', 'pos_credit_card'
+    every type have different details. as for now the default details is blank.
 
-## Create [/accounts/invoices/{invoice_id}/details]
+## Create [/accounts/invoices/{invoice_id}/payments]
     
 ### Create [POST]
 
@@ -914,11 +930,10 @@ New Payment API
    + Body
 
                 { 
-                    "name": "obat",
-                    "quantity": 1,
-                    "cost": 100,
-                    "notes": ""
-                }
+                  "name": "dada", 
+                  "payment_type": "cash",
+                  "details": {}
+                } 
 
 + Response 200 (application/json)
 
