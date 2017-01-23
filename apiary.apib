@@ -847,11 +847,15 @@ New Payment API
 
    + Body
 
-                { 
-                  "name": "dada", 
-                  "payment_type": "cash",
-                  "details": {}
-                } 
+                {
+                  "name": "obat",
+                  "cost": "100",
+                  "quantity": 1,
+                  "notes": null,
+                  "service_type": "medication",
+                  "invoice_id": 7,
+                  "amount": 100
+                }
 
 + Response 200 (application/json)
 
@@ -885,11 +889,15 @@ New Payment API
 
    + Body
 
-                { 
-                  "name": "dada", 
-                  "payment_type": "cash",
-                  "details": {}
-                }  
+                {
+                  "name": "obat",
+                  "cost": "100",
+                  "quantity": 1,
+                  "notes": null,
+                  "service_type": "medication",
+                  "invoice_id": 7,
+                  "amount": 100
+                } 
 
 + Response 200 (application/json)
 
